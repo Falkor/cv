@@ -55,7 +55,7 @@ When you type `make`, the following process is operated:
 
 ## Bibliography management
 
-
+TODO
 
 -----------
 # Licence
