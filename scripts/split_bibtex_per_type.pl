@@ -1,31 +1,27 @@
 #!/usr/bin/perl -w
 
-##############################################################################
+################################################################################
 # File      : split_bibtex_per_type.pl
-# Author    : Sebastien Varrette <Sebastien.Varrette@uni.lu>
 # Creation  : 26 Oct 2009
-# Time-stamp: <Wed 2011-02-23 02:20 svarrette>
-# $Id$
+# Time-stamp: <Wed 2011-02-23 13:18 svarrette>
+#
+# Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+#               http://varrette.gforge.uni.lu
 #
 # Description : split a single BibTeX file into several sub-file, each
 #               containing entries of the same type.
-#       See the man page for more information.
+#               Run 'split_bibtex_per_type.pl --help' for more information.
 #
-# Copyright (c) 2009 Sebastien Varrette (http://www-id.imag.fr/~svarrett/)
+################################################################################
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+# Unported License (CC-by-nc-sa 3.0)
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-##############################################################################
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  For more details, please visit:
+#              http://creativecommons.org/licenses/by-nc-sa/3.0/
+################################################################################
 use strict;
 use warnings;
 
@@ -79,6 +75,7 @@ tie (my %type_met, 'Tie::IxHash');
 tie (my %titles, 'Tie::IxHash');
 %titles =
   (
+   "phdthesis"     => "PhD Thesis",
    "book"          => "Books",
    "incollection"  => "Magazine",
    "inbook"        => "Book Chapters",
@@ -88,7 +85,6 @@ tie (my %titles, 'Tie::IxHash');
    "inproceedings_national"      => "(French) national conferences with proceedings and reviews",
    "inproceedings_noreview"      => "International conferences with proceedings",
    "inproceedings_noproceedings" => "International conferences with reviews",
-   "phdthesis"     => "PhD Thesis",
    "mastersthesis" => "Masters Thesis",
    "techreport"    => "Technical Reports",
    "misc"          => "Miscellaneous",
@@ -158,7 +154,7 @@ print OUT <<EndText;
     \\begin{tabular}{|c|c|}
         \\hline
         \\rowcolor{lightgray}
-        \\textbf{Publication category} & \\textbf{Quantity} 
+        \\textbf{Publication category} & \\textbf{Quantity}
 %  & \\textbf{Section}
 %        \\multicolumn{1}{|l}{}
         \\\\
@@ -168,7 +164,7 @@ EndText
 foreach my $type (keys %titles) {
     if (defined($type_met{$type})) {
         print OUT <<EndText;
-        $titles{$type} & $type_met{$type} 
+        $titles{$type} & $type_met{$type}
 %        & \\multicolumn{1}{l|}{\\S\\ref{sec:publis:details:$bibinputfile:$type}}
         \\\\
 EndText
@@ -359,19 +355,112 @@ I<split_bibtex_per_type.pl> takes a BibTeX file as input and filter it per entry
 type (article, book, inproceedings etc.) to generate several output files that
 contains the entries of a given type.
 
-This particularly useful for the multibib package of LaTeX that permit to manage
-several separate bibtex files. After the run, you'll typically add the following
-line in your LaTeX file:
+It has been designed to work in collaboration with the C<bibtopic> LaTeX package
+(see L<http://www.ctan.org/tex-archive/macros/latex/contrib/bibtopic/>) that
+permits to use multiple bibliography file in a single document.
 
-  \IfFileExists{__sub_xxxxxxxxx_main.tex}{\input{__sub_xxxxxxxxxx_main}}{}
+For instance, invoked on the BibTeX file C<file.bib>,
+I<split_bibtex_per_type.pl> will generate the following files:
 
-where xxxxxxxxx is the name of teh main bibtex file (file.bib in the synopsis)
+=over 12
+
+=item C<__sub_file_*.bib>
+
+These files contains BibTeX entries of a given type (for instance,
+C<__sub_file_article.bib> contains all entries of type C<@Article{...}> in
+C<file.bib>).
+
+=item C<__sub_file_main.tex>
+
+This is the main LaTeX you probably want to include in your document as it
+contains the code (with the )to include the relevant sub-files.
+
+=item C<__sub_file_summary.tex>
+
+You may want to include this LaTeX file as it will generate a table
+summarizing the number of publications per type.
+
+=back
+
+The best way to integrate transparently the files generated by this script in
+your LaTeX document is to add the following lines in your LaTeX file: 
+
+    \def\bibfile{file}  % basename of your BibTeX main file - here 'file.bib'
+
+    % Summary of the publications
+    \IfFileExists{__sub_\bibfile_summary.tex}{
+      \input{__sub_\bibfile_summary}
+    }{}
+
+    % Detailed list
+    \IfFileExists{__sub_\bibfile_main.tex}{
+      \input{__sub_\bibfile_main}
+    }{}
+
+You probably want to invoke this script via a C<Makefile>. Here is an advised
+structure for it:
+
+    # LaTeX sources and the master file(s)
+    SRC = $(widlcard *.tex)
+    LATEX_MASTER_FILE = $(shell grep -l "[\]begin{document}" $(SRC) | xargs echo)
+    # Your BibTeX file
+    MAIN_BIB = file.bib
+    # Target PDF to be generated from the LaTeX sources by pdflatex
+    PDF = $(LATEX_MASTER_FILE:%.tex=%.pdf)
+    # the script to split the bibliographic file
+    SPLIT_BIB_SCRIPT = ./path/to/split_bibtex_per_type.pl
+
+    all: split_bib pdf
+
+    pdf $(PDF): $(SRC)
+	    @for f in $(LATEX_MASTER_FILE); do  \
+	       pdflatex $$f;           \
+	       $(MAKE) bib;            \
+	       pdflatex $$f;           \
+	       pdflatex $$f;           \
+	    done
+
+    split_bib:
+	    @if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$(MAIN_BIB)" ]; then \
+	       echo "=> processing the BibTeX file $(MAIN_BIB) with $(SPLIT_BIB_SCRIPT)"; \
+	       $(SPLIT_BIB_SCRIPT) $(MAIN_BIB); \
+	    fi
+
+    bib: split_bib
+        @for f in $(LATEX_MASTER_FILE); do \
+	       bib=`grep "^[\]bibliography{" $$f|sed -e "s/^[\]bibliography{\(.*\)}/\1/"|tr "," " "`;\
+	       btsectfile=`grep -c btSect *.tex | grep -v ":0" | cut -d ":" -f 1 | xargs echo`;\
+	       if [ ! -z "$$bib" ]; then                                 \
+	  	      echo "==> Now running BibTeX ($$bib used in $$f)";   \
+		      bibtex `basename $$f .tex`;                       \
+	       fi; \
+	       echo "=> processing the LaTeX files $$btsectfile containing splitted BibTeX entries"; \
+	       btsect=`grep "[\]begin{btSect}"  $$btsectfile | sed -e "s/^[\]begin{btSect}{\(.*\)}/\1/" | wc -l`; \
+	       echo "=> $$btsect entry btsect found"; \
+	       for btnum in `seq 1 $$btsect`; do  \
+		      echo "=> running bibtex on `basename $$f .tex`$$btnum"; \
+		      bibtex `basename $$f .tex`$$btnum;    \
+	       done;\
+	   done
+
+     clean:
+        rm -f $(PDF) *.aux *.log *.toc *.lof *.lot *.bbl *.blg *.out *~
+        @if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$(MAIN_BIB)" ]; then \
+	        $(SPLIT_BIB_SCRIPT) --force --clean $(MAIN_BIB); \
+	    fi 
+
+If you want to see this script in action, take a look at my CV hosted on GitHub
+URL: L<https://github.com/Falkor/cv>.
 
 =head1 OPTIONS
 
 The following options are available:
 
 =over 12
+
+=item B<--clean>
+
+Remove the generated files. Useful for an invocation in a Makefile.
 
 =item B<--debug>
 
@@ -402,9 +491,50 @@ Display the version number then quit.
 
 =back
 
+=head1 ADVANCED TIPS
+
+=head2 SPECIAL TREATMENT OF INPROCEEDINGS ENTRIES
+
+It appeared difficult to distinguish BibTeX entries related to international
+conferences, national conferences with or without reviews/proceedings: you
+probably refer to them using a BibTeX entry as follows: 
+
+    @InProceedings{xx,
+        author =    {xx},
+        title =     {xx},
+        booktitle = {xx},
+        pages =     {xx -- xx},
+        year =      {20xx},
+    }
+
+To distinguish these C<InProceedings> entries, I<split_bibtex_per_type.pl>
+detect the eventual presence of a specific directive C<type = {xx}> where C<xx>
+can have one of the following values: "national", "noreview" and
+"noproceedings".  The absence of this directive (as in the above BibTeX entry)
+is equivalent to specifying the value "default".
+
+Then the splitting of the bibliography will lead to the creation of the files 
+C<__sub_file_inproceedings_default.bib>,
+C<__sub_file_inproceedings_national.bib>,
+C<__sub_file_inproceedings_noreview.bib>,
+C<__sub_file_inproceedings_noproceedings.bib>,
+
+Of course, if you don't use this technics, all your C<InProceedings> entries
+will be grouped in the file C<__sub_file_inproceedings_default.bib>
+
+=head2 CHANGING PUBLICATION CATEGORY AND/OR ORDER
+
+If you don't like the way each publication category is labelled, feel free to
+adapt the values (not the keys!) of the C<%titles> hash table in
+I<split_bibtex_per_type.pl>.
+
+Changing the order of the pairs E<lt>C<"key">, C<"value"> E<gt> in this hash
+will change the order of the corresponding sections in the summary table and the
+detailed list.
+
 =head1 BUGS
 
-Please report bugs to Sebastien Varrette <Sebastien.Varrette@uni.lu>
+Please report bugs to Sebastien Varrette E<lt>L<Sebastien.Varrette@uni.lu>E<gt>
 
 =head1 AUTHOR
 
@@ -412,8 +542,16 @@ Sebastien Varrette -- L<http://varrette.gforge.uni.lu/>
 
 =head1 COPYRIGHT
 
-This  is a free software. There is NO warranty; not even for
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+This program is free software: you can redistribute it and/or modify it under
+the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+Unported License (CC-by-nc-sa 3.0)
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  
+
+For more details, please visit:
+L<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
 =cut
 
