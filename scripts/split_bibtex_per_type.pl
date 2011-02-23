@@ -3,7 +3,7 @@
 ################################################################################
 # File      : split_bibtex_per_type.pl
 # Creation  : 26 Oct 2009
-# Time-stamp: <Wed 2011-02-23 13:18 svarrette>
+# Time-stamp: <Wed 2011-02-23 13:29 svarrette>
 #
 # Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 #               http://varrette.gforge.uni.lu
@@ -451,6 +451,9 @@ structure for it:
 
 If you want to see this script in action, take a look at my CV hosted on GitHub
 URL: L<https://github.com/Falkor/cv>.
+
+More particularly, see the content of the LaTeX file C<_publis.tex> and the PDF
+generated (see L<https://github.com/downloads/Falkor/cv/cv-varrette-en.pdf>)
 
 =head1 OPTIONS
 

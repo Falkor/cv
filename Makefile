@@ -13,8 +13,18 @@
 # This is a generic makefile in the sense that it doesn't require to be 
 # modified when adding/removing new source files.
 # --------------------------------------------------------------------------------
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+# Unported License (CC-by-nc-sa 3.0)
 #
-# Compilation of files written in LaTeX
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  For more details, please visit:
+#              http://creativecommons.org/licenses/by-nc-sa/3.0/
+# --------------------------------------------------------------------------------
+# Compilation of files written in LaTeX, adapted to the generation of my CV (as
+# it includes the invocation of a script to split my single BibTeX file to
+# classify biblio entries by their type).
 #
 # This makefile search for LaTeX sources from the current directory, identifies 
 # the main files (i.e the one containing the sequence '\begin{document}') and 
@@ -41,17 +51,7 @@
 #     to $(TRASH_DIR)/ (if it exists). 
 #   - the target files (dvi, pdf, ps.gz etc.) will stay in the current directory.  
 #
-# Available Commands  
-# ------------------
-# make       : Compile LaTeX files, generated files (pdf etc.) are placed in $(OUTPUT_DIR)/
-# make bib   : process the bibliography file 
-# make force : Force re-compilation, even if not needed 
-# make clean : Remove all generated files 
-# make rtf :   Generate an RTF file using latex2rtf
-# make html  : generate HTML files from tex in $(HTML_DIR)/ (using latex2html)
-#                  The directory is created on the first invocation
-# make help      : print help message 
-#
+# Available Commands: run 'make help'
 ############################## Variables Declarations ##############################
 
 # set to 'yes' to use pdflatex for the direct generation of pdf from LaTeX sources
@@ -299,10 +299,12 @@ help :
 	@echo '+---------------------------------------------------------------+'
 	@echo '|                        Available Commands                     |'
 	@echo '+------------+--------------------------------------------------+'
-	@echo '| make       | Compile LaTeX files.                             |'
-	@echo '|            | Generated files (pdf etc.) are placed in $(OUTPUT_DIR)/ '
+	@echo '| make       | Compile LaTeX files. Generated files (pdf etc.)  |'
+	@echo '|            | are placed in the current directly               |'
 	@echo '| make force | Force re-compilation, even if not needed         |'
 	@echo '| make clean | Remove all generated files                       |'
+	@echo '| make bib   | handle the BibTeX entries                        |'
+	@echo '| make rtf   | Generate rtf file from LaTeX using latex2rtf     |'
 	@echo '| make html  | Generate HTML files from TeX in $(HTML_DIR)/     '
 	@echo '| make help  | Print help message                               |'
 	@echo '+------------+--------------------------------------------------+'
