@@ -1,13 +1,12 @@
 % ==============================================================================
 % _publis.tex -- List of my personal publication
 % 
-% Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+% Copyright (c) 2004-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 % .             http://varrette.gforge.uni.lu
 % 
 % This file is part of my CV (see 'cv-varrette-en.tex')
 % 
-% This work is licensed under the Creative Commons
-% Attribution-NonCommercial-ShareAlike 3.0 Unported License (see LICENCE file)
+% This work is licensed under the CC-by-nc-sa 3.0 Licence (see LICENCE file)
 % ==============================================================================
 % 
 % Based on the files produced by 'scripts/split_bibtex_per_type.pl'
@@ -16,26 +15,33 @@
 \def\bibfile{biblio-varrette}
 
 \begin{rubrique}{Publications}
-
-    {\small
-      % search "varrette" in the domain "Engineering, Computer Science, Mathematics"
-      \href{http://www.harzing.com/pop.htm}{Publish or Perish}: [
-      Papers:29 | Citations:86 | Years:8 | h-index:6 | g-index:8 |
-      hc-index:5,hI-index:1.80,hI-norm:4 |
-      AWCR:12.40 | AW-index:3.52 | AWCRpA:4.93 | e-index:4.90 |
-      hm-index:3.83,"22/02/2011" ] \\
-   }
-    
     % Summary of the publications
     \IfFileExists{__sub_\bibfile_summary.tex}{
       \input{__sub_\bibfile_summary}
     }{}
 
+    % Publish or Perish statistics (based on Google Scholar)
+    {\footnotesize
+      % TODO on UPDATE:
+      % search "varrette" in the domain "Engineering, Computer Science, Mathematics"
+      \href{http://www.harzing.com/pop.htm}{Publish or Perish}:
+      \begin{tabular}{|cccccc|}
+          \hline
+          Papers:29    & Citations:86  & Years:8     & h-index:6    & g-index:8 & hc-index:5,hI-index:1.80,hI-norm:4
+          \\
+          & AWCR:12.40 & AW-index:3.52 & AWCRpA:4.93 & e-index:4.90 & hm-index:3.83,"\textbf{22/02/2011}"
+          \\
+          \hline
+      \end{tabular}
+    }
+    ~\\[2em]
 
+
+    % Detailed list
     \IfFileExists{__sub_\bibfile_main.tex}{
       \input{__sub_\bibfile_main}
     }{}
-    
+
 \end{rubrique}
 
 
@@ -48,6 +54,5 @@
 % Local Variables:
 % mode: latex
 % mode: flyspell
-% mode: auto-fill
 % fill-column: 80
 % End:
