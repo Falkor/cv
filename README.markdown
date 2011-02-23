@@ -1,6 +1,6 @@
 -*- mode: markdown; mode: auto-fill; fill-column: 80 -*-
 
-    Time-stamp: <Wed 2011-02-23 00:31 svarrette> 
+    Time-stamp: <Wed 2011-02-23 14:41 svarrette> 
 
 Copyright (c) 2011 [Sebastien Varrette](http://varrette.gforge.uni.lu) - [mail](mailto:Sebastien.Varrette@uni.lu)
 
@@ -41,8 +41,11 @@ Run `make help` for more details about the available commands.
 
 ## Configuration 
 
-If you want to reuse these files, you should update the `\name` variable in 
-`_style.sty`
+If you want to reuse these files, you should update the following elements:
+
+* the `\name` variable in `_style.sty`
+* the `\bibfile` variable in `_publis.tex` (to match the basename of your
+  bibliographic file) 
 
 ## Repository organization 
 
