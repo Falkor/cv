@@ -4,7 +4,7 @@
 # File      : split_bibtex_per_type.pl
 # Author    : Sebastien Varrette <Sebastien.Varrette@uni.lu>
 # Creation  : 26 Oct 2009
-# Time-stamp: <Wed 2011-02-23 00:12 svarrette>
+# Time-stamp: <Wed 2011-02-23 02:20 svarrette>
 # $Id$
 #
 # Description : split a single BibTeX file into several sub-file, each
@@ -108,6 +108,10 @@ tie (my %titles, 'Tie::IxHash');
 
 if ($CLEAN_MODE) {
     my $generated_files = getOutputNameFrom($bibinputfile,"*");
+    my $latex = getOutputNameFrom($bibinputfile,"main");
+    $latex .= " " . getOutputNameFrom($bibinputfile,"summary");
+    $latex =~ s/\.bib/\.tex/g;
+    $generated_files .= " $latex";
     info("removing generated files $generated_files\n");
     really_continue();
     execute("rm -f $generated_files");
@@ -150,10 +154,12 @@ open(OUT, ">" . $latexsummary);
 print OUT <<EndText;
 \\begin{table}[ht]
     \\centering
-    \\begin{tabular}{|c|c|c|}
+%    \\begin{tabular}{|c|c|c|}
+    \\begin{tabular}{|c|c|}
         \\hline
         \\rowcolor{lightgray}
-        \\textbf{Publication category} & \\textbf{Quantity} & \\textbf{Section}
+        \\textbf{Publication category} & \\textbf{Quantity} 
+%  & \\textbf{Section}
 %        \\multicolumn{1}{|l}{}
         \\\\
         \\hline
@@ -162,8 +168,8 @@ EndText
 foreach my $type (keys %titles) {
     if (defined($type_met{$type})) {
         print OUT <<EndText;
-        $titles{$type} & $type_met{$type} &
-        \\multicolumn{1}{l|}{\\S\\ref{sec:publis:details:$bibinputfile:$type}}
+        $titles{$type} & $type_met{$type} 
+%        & \\multicolumn{1}{l|}{\\S\\ref{sec:publis:details:$bibinputfile:$type}}
         \\\\
 EndText
     }
@@ -193,7 +199,7 @@ foreach my $type (keys %titles) {
         $bib =~ s/\.bib//;
         print OUT <<EndText;
 %        \\section{$titles{$type}  ($type_met{$type})}
-        \\noindent \\textbf{$titles{$type}} ($type_met{$type})
+        \\noindent \\textbf{$titles{$type} ($type_met{$type}})
         \\label{sec:publis:details:$bibinputfile:$type}
         \\begin{btSect}{$bib}
            \\btPrintAll
