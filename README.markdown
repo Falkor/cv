@@ -1,6 +1,6 @@
 -*- mode: markdown; mode: auto-fill; fill-column: 80 -*-
 
-    Time-stamp: <Tue 2011-02-22 20:43 svarrette> 
+    Time-stamp: <Wed 2011-02-23 00:31 svarrette> 
 
 Copyright (c) 2011 [Sebastien Varrette](http://varrette.gforge.uni.lu) - [mail](mailto:Sebastien.Varrette@uni.lu)
 
@@ -38,6 +38,11 @@ This should create the file `cv-varrette-en.pdf` in the current directory.
 Run `make help` for more details about the available commands.
 
 # Advanced tips
+
+## Configuration 
+
+If you want to reuse these files, you should update the `\name` variable in 
+`_style.sty`
 
 ## Repository organization 
 
