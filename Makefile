@@ -124,6 +124,7 @@ dvi $(DVI) : $(SRC)
 	   $(LATEX) $$f;                   \
 	   $(MAKE) bib;                    \
 	   $(LATEX) $$f;                   \
+	   $(LATEX) $$f;                   \
 	   $(MAKE) move_to_trash;          \
 	done
 	@echo "==> $(DVI) generated"
