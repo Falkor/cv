@@ -176,7 +176,7 @@
 \newcommand{\photo}[1]{\raggedleft\includegraphics[height=8.5em]{#1}}
 
 \newenvironment{chapeau}{%
-\vspace*{-1.5cm}%
+%\vspace*{-1.5cm}%
 \def\ligne{\rule[2pt]{24pt}{1pt}}%
 \noindent\begin{minipage}{\linewidth}\hspace{-1cm}%
 }

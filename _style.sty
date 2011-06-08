@@ -1,4 +1,4 @@
-% Time-stamp: <Mon 2011-06-06 11:57 svarrette>
+% Time-stamp: <Wed 2011-06-08 11:38 svarrette>
 %=============================================================================
 % _style.sty --  LaTeX style configuration for the document 
 % 
@@ -40,7 +40,6 @@
   pdfpagemode = UseNone
 }
 
-
 \usepackage{xspace}
 \usepackage[nolist,smaller,nohyperlinks]{acronym}          % for acronyms
 
@@ -49,7 +48,7 @@
 \geometry{
   a4paper,
   textwidth=185mm,
-  textheight=237mm,
+  textheight=255mm,
   marginparsep=7pt,
   marginparwidth=.6in
 }
@@ -93,7 +92,28 @@
 \newcommand{\offset}{~~~}
 \newcommand{\miniurl}[1]{{\scriptsize\url{#1}}}
 
+%%%%%
+% Add entry for a conference 
+% Format:
+%   \conference{shortname}{url}{name}{adress}{date}
+%\newcommand{\conference}[5]{\href{#2}{\textsc{#1}}, {\small #3} (#4, #5)}
+\newcommand{\conference}[5]{\href{#2}{#1} {\small (#4)}}
 
+%%%%%
+% Add entry for a student supervision
+% Format:
+%   \supervision{firstame name}{date}{subject}
+\newcommand{\supervision}[3]{\textsc{#1} (#2)  \hfill {\small #3}}
+
+%%%%%
+% Add an entry for a journal name
+% Format:
+%    \journal{name}{url}{publisher}
+\newcommand{\journal}[3]{\href{#2}{#1} {\small (#3)}}
+
+
+
+% Institutions
 \newcommand{\UL}{\ac{UL}\xspace}
 \newcommand{\ID}{{\small\href{http://www-id.imag.fr}{ID-IMAG}}}
 % Telecoms has now merged completely with ENSIMAG
@@ -106,4 +126,6 @@
 % Local Variables:
 % mode: latex
 % mode: flyspell
+% mode: auto-fill
+% fill-column: 80
 % End:
