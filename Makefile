@@ -53,6 +53,7 @@
 #
 # Available Commands: run 'make help'
 ############################## Variables Declarations ##############################
+SHELL=/bin/bash 
 
 # set to 'yes' to use pdflatex for the direct generation of pdf from LaTeX sources
 # set to 'no' to use the classical scheme tex -> dvi -> [ps|pdf] by dvips
@@ -112,6 +113,8 @@ TO_MOVE      = *.aux *.log *.toc *.lof *.lot *.bbl *.blg *.out
 
 # Specific bibliographic processing
 SPLIT_BIB_SCRIPT = ./scripts/split_bibtex_per_type.pl
+PERLMODULES=$(shell grep "^use " $(SPLIT_BIB_SCRIPT) | cut -d ' ' -f 2 | grep -v "strict" | grep -v "warnings" | sed -e "s/;//" | sort | uniq)
+MANDATORY_BINARIES = latex pdflatex bibtex perl seq
 
 ############################### Now starting rules ################################
 # Required rule : what's to be done each time 
@@ -257,6 +260,37 @@ bib: split_bib
 	   done;\
 	done
 
+check:
+	@echo "*** Check local installation ***"
+	@echo " => check mandatory binaries"
+	@for cmd in $(MANDATORY_BINARIES); do \
+		echo -n "   check $$cmd... "; \
+		if [ -z "`which $$cmd`" ]; then \
+			echo " FAILED!"; \
+			echo "*** /!\ ERROR ($$cmd not present within your PATH)***"; \
+			echo "*** /!\ Install the missing package and re-run 'make check' to check your config"; \
+			exit 1; \
+		else \
+			echo "OK"; \
+		fi \
+	done
+	@echo " => Perl modules used in $(SPLIT_BIB_SCRIPT):"
+	@for p in $(PERLMODULES); do \
+	 	echo -n "     $$p..."; \
+		perl -M$$p -e 1; \
+		if [ $$? == 0 ]; then \
+			echo "OK"; \
+		else \
+			echo "*** /!\ ERROR ($$p not installed)***"; \
+			echo "*** /!\ Install the missing module via cpan typically ('sudo cpan' followed by 'install $$p')."; \
+			echo "*** /!\ Once installed, re-run 'make check' to check your config"; \
+			exit 1; \
+		fi; \
+	done
+#		if [ $$? -eq 0 ]; then echo "OK"; else echo "FAILED!" fi; \
+	done
+
+
 
 
 # force recompilation
@@ -294,6 +328,10 @@ test:
 	@echo "TARGET_PDF   -> $(TARGET_PDF)"
 	@echo "TARGETS      -> $(TARGETS)"
 	@echo "BACKUP_FILES -> $(BACKUP_FILES)"
+	@echo "--- Bibliography management --- "
+	@echo "SPLIT_BIB_SCRIPT   -> $(SPLIT_BIB_SCRIPT)"
+	@echo "PERLMODULES        -> $(PERLMODULES)"
+	@echo "MANDATORY_BINARIES -> $(MANDATORY_BINARIES)"	
 
 # print help message
 help :
