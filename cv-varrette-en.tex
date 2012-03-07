@@ -1,4 +1,4 @@
-% Time-stamp: <Wed 2011-06-08 11:13 svarrette>
+% Time-stamp: <Wed 2012-03-07 15:52 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 % 
@@ -22,7 +22,6 @@
 \usepackage{_style}
 
 \begin{document}
-
 % ---------- Header -----------
 \begin{chapeau}
     \begin{adresse}
@@ -49,13 +48,30 @@
 \begin{tabular}{ll}
     \textsc{Engineer Expertise:} & \acf{HPC}, Grid \& Cluster Platforms.
     \\
-    & \hfill I'm administrating cluster-based \ac{HPC} systems since 2003
-    (Linux/Debian environment)
+    & I'm administrating cluster-based \ac{HPC} systems since 2003
+    (Linux environment)
     \\
-    \textsc{Main research domains}: & Security of Distributed Computing
-    Platforms (clusters, grids or clouds)
+    & \offset \offset \underline{\textit{Keywords:}} HPC, Debian, Xen, Puppet,
+    OpenLDAP, git\\
+    \\
+    \textsc{Main research domains}: & Security and Evaluation of Distributed
+    Computing Platforms (clusters, grids or clouds).\\
+    & Relevant contributions in which I'm involved: \\
+    %& Main achievements:\\
+    & \offset $\bullet$ Design of \textsc{CertiCloud}, a Cloud IaaS secure
+    platform \cite{BVP_CLOUD11, BVB_Renpar11, BVB_TSI12} \\
+    & \offset $\bullet$ Crash/cheating faults analysis in grid platforms \cite{VRL_SBAC04,KRJV_EGC05, RV_Pasco07,Var_phD07,GGPV_PDP09,VTB_NIDISC11,MVBSK_CAMWA12}\\
+    & \offset $\bullet$ Performance evaluation of computing clusters \cite{DVB_SPECTS08,DVB_PPAM09} \\
+    & \offset $\bullet$ Design of the authentication system of Grid5000
+    \cite{VGMRL_Gada05}\\
+    & \offset $\bullet$ Developing security awareness by education \cite{DRTV_ThCode07,BCCDV_DistSyst11_Chap10,DRTV_FoundationCoding12}
+    % & \offset \offset \underline{\textit{Keywords:}} Grid Computing, Cloud, Security,
+    % Fault-Tolerance, Authentication\\
+    %\\
+    %\multicolumn{2}{l}{I am a quick learner and a good communicator with the
+    %  ability to work within multi-cultural teams.}
 \end{tabular}
-
+\vspace{-2em}
 % ---------- Education -----------
 \input{_education}
 
@@ -65,9 +81,9 @@
 % ---------- Teaching-----------
 \input{_teaching}
 
-% ---------- Additional information ----------
-\input{_other}
 
+%---------- Additional information ----------
+\input{_other}
 \clearpage
 
 %---------- Graduate student supervision -----------
