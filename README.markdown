@@ -1,6 +1,6 @@
 -*- mode: markdown; mode: auto-fill; fill-column: 80 -*-
 
-    Time-stamp: <Mon 2011-06-06 17:51 svarrette> 
+    Time-stamp: <Mer 2012-11-14 14:15 svarrette> 
 
 Copyright (c) 2011 [Sebastien Varrette](http://varrette.gforge.uni.lu) - [mail](mailto:Sebastien.Varrette@uni.lu)
 
