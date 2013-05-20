@@ -469,15 +469,19 @@ help :
 	@echo '+---------------------------------------------------------------+'
 	@echo '|                        Available Commands                     |'
 	@echo '+------------+--------------------------------------------------+'
-	@echo '| make       | Compile LaTeX files. Generated files (pdf etc.)  |'
-	@echo '|            | are placed in the current directly               |'
+	@echo '| make       | Compile Full version of the CV                   |'
+	@echo '| make full  | As above                                         |'
+	@echo '| make short | Compile Short version of the CV (3 pages)        |'
+	@echo '| make tiny  | Compile Tiny version of the CV (1 page)          |'
 	@echo '| make force | Force re-compilation, even if not needed         |'
 	@echo '| make clean | Remove all generated files                       |'
-	@echo '| make bib   | handle the BibTeX entries                        |'
-	@echo '| make rtf   | Generate rtf file from LaTeX using latex2rtf     |'
-	@echo '| make html  | Generate HTML files from TeX in $(HTML_DIR)/     '
+#	@echo '| make bib   | handle the BibTeX entries                        |'
+#	@echo '| make rtf   | Generate rtf file from LaTeX using latex2rtf     |'
+#	@echo '| make html  | Generate HTML files from TeX in $(HTML_DIR)/     '
 	@echo '| make help  | Print help message                               |'
 	@echo '+------------+--------------------------------------------------+'
+	@echo " Use 'make start_bump_{patch,minor,major}' to bump the repository to a new version"
+	@echo " then use 'make release' to release the new version."
 
 # RTF generation using latex2rtf
 rtf $(RTF): $(TARGET_PDF)

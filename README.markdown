@@ -1,6 +1,6 @@
 -*- mode: markdown; mode: auto-fill; fill-column: 80 -*-
 
-    Time-stamp: <Lun 2013-05-20 16:29 svarrette> 
+    Time-stamp: <Lun 2013-05-20 16:42 svarrette> 
 
 Copyright (c) 2011 [Sebastien Varrette](http://varrette.gforge.uni.lu) - [mail](mailto:Sebastien.Varrette@uni.lu)
 
@@ -96,6 +96,10 @@ publications) which I used in project proposal, just run:
 
 > `make short`
 
+
+If you want to generate the tiny version of my CV (1 page), just run
+
+> `make tiny`
 
 Run `make help` for more details about the available commands.
 
