@@ -1,4 +1,4 @@
-% Time-stamp: <Lun 2013-05-20 14:48 svarrette>
+% Time-stamp: <Lun 2013-05-20 16:38 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 % 
@@ -72,15 +72,17 @@
     %  ability to work within multi-cultural teams.}
 \end{tabular}
 \vspace{-3em}
+
 % ---------- Education -----------
 \input{_education}
 
 % ---------- Employment -----------
 \input{_employment}
 
+\ifnum\pdfstrcmp{\cvtype}{\cvtiny}=0
+\else
 % ---------- Teaching-----------
 \input{_teaching}
-
 
 %---------- Additional information ----------
 \input{_other}
@@ -99,6 +101,7 @@
 \input{_participations}
 
 \clearpage
+\fi
 % ---------- Publications ----------
 \input{_publis}
 

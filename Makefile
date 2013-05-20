@@ -236,14 +236,14 @@ conf_short:
 	@echo "\def\cvtype{\cvshort}" > $(CV_CONF)
 
 conf_tiny:
-	@echo "=> configure CV to generate 'FULL' version"
+	@echo "=> configure CV to generate 'TINY' version"
 	@echo "\def\cvtype{\cvtiny}" > $(CV_CONF)
 
 full: conf_full split_bib $(TARGET_PDF)
 
 short: conf_short split_bib $(TARGET_PDF)
 
-tiny: conf_short split_bib $(TARGET_PDF)
+tiny: conf_tiny split_bib $(TARGET_PDF)
 
 
 ########################## Dvi/PS files generation ############################
