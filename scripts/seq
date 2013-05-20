@@ -1,0 +1,36 @@
+#!/bin/bash
+# Time-stamp: <Wed 2011-06-08 12:14 svarrette>
+################################################################################
+# seq - print a sequence of numbers to standard output
+#
+# Syntax
+#      seq [options]... [FIRST [STEP]] LAST... 
+# 
+# This script to be used on Mac OS X to imitate the `seq` command so common
+# on GNU/Linux system. Whereas this command is normally part of the 'coreutils'
+# package on all distributions, the installation of this package via Macports
+# ('sudo port install coreutils') do not solve the problem, probably because BSD
+# systems relies on `jot` for this purpose.  
+#
+# Installation: simply put this script in a directory part of your PATH
+# variable, i.e. `/usr/local/bin/` or `$HOME/bin` and make it executable.
+#
+# Copyright (c) 2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+#               http://varrette.gforge.uni.lu
+#
+# Man page: see See http://linux.die.net/man/1/seq for instance
+################################################################################
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+################################################################################
+jot - $@

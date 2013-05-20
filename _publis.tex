@@ -1,0 +1,79 @@
+% Time-stamp: <Lun 2013-05-20 15:50 svarrette>
+% ==============================================================================
+% _publis.tex -- List of my personal publication
+% 
+% Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+% .             http://varrette.gforge.uni.lu
+% 
+% ==============================================================================
+% This file is part of my CV (see 'cv-varrette-en.tex' and README)
+% 
+% This work is licensed under the terms of the Creative Commons CC-by-nc-sa 3.0
+% licence (see LICENCE). For more details, visit:
+% .         http://creativecommons.org/licenses/by-nc-sa/3.0/
+% ==============================================================================
+% 
+% Based on the files produced by 'scripts/split_bibtex_per_type.pl'
+% 
+
+\def\bibfile{biblio-varrette}
+
+\begin{rubrique}{Publications}
+    % Summary of the publications
+    \IfFileExists{__sub_\bibfile_summary.tex}{
+      \input{__sub_\bibfile_summary}
+    }{}
+
+    % Publish or Perish statistics (based on Google Scholar)
+    {\footnotesize
+      % TODO on UPDATE:
+      % search "varrette" in the domain "Engineering, Computer Science, Mathematics"
+      
+      \begin{tabular}{|c||ccccc|}
+           \hline
+           \multirow{2}{4em}{\href{http://www.harzing.com/pop.htm}{Publish or Perish}} & 
+           
+          Papers:48    & Citations:149,Years:11     & h-index:8,g-index:10 & \multicolumn{2}{l|}{hc-index:4,hI-index:2.56,hI-norm:4}
+          \\
+          &Cites/year: 13.55 & Cites/paper: 3.10/2.0/0 & Cites/author: 58.98 &
+          Papers/author: 20.25 & Query date: \textbf{2013-05-20}
+          %AWCR:20.62 & AW-index:4.54 & AWCRpA:8.00 & e-index:5.66 & hm-index:3.78,"\textbf{2012-11-14}"
+          \\
+          \hline
+      \end{tabular}
+    }
+    ~\\[2em]
+
+
+    % \ifx\cvtype\cvfull
+    % \ifstrequal{\cvtype}{\cvfull}
+    \ifnum\pdfstrcmp{\cvtype}{\cvfull}=0%
+
+    % Detailed list
+    \IfFileExists{__sub_\bibfile_main.tex}{
+      \input{__sub_\bibfile_main}
+    }{}
+
+
+    \else
+    \vspace{-1em}
+    \paragraph{Selected Publications}~\\
+    \IfFileExists{__sub_selected_\bibfile_main.tex}{
+      \input{__sub_selected_\bibfile_main}
+    }{}
+
+    \fi
+\end{rubrique}
+
+
+
+
+
+% ==============================================================================
+% eof
+% 
+% Local Variables:
+% mode: latex
+% mode: flyspell
+% fill-column: 80
+% End:

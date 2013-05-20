@@ -1,0 +1,154 @@
+% Time-stamp: <Lun 2013-05-20 14:47 svarrette>
+%=============================================================================
+% _style.sty --  LaTeX style configuration for the document 
+% 
+% Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+% .             http://varrette.gforge.uni.lu
+%
+% ==============================================================================
+% This file is part of my CV (see 'cv-varrette-en.tex' and README)
+%
+% This work is licensed under the terms of the Creative Commons CC-by-nc-sa 3.0
+% licence (see LICENCE). For more details, visit:
+% .         http://creativecommons.org/licenses/by-nc-sa/3.0/
+% ==============================================================================
+
+% Set your name here
+\def\name{Sebastien Varrette}
+
+% The different types of CV
+\def\cvfull{Full}% COmplete version 
+\def\cvshort{Short}% 3 pages version
+\def\cvtiny{Tiny}% 1 pages version
+
+% CV configuration
+\IfFileExists{_cv_config.sty}{
+  \input{_cv_config.sty}
+}{
+%  \def\cvtype{\cvfull}
+  \def\cvtype{\cvshort}
+}
+
+\newcommand{\cvcite}[1]{
+  \ifnum\pdfstrcmp{\cvtype}{\cvfull}=0%
+  \cite{#1}
+  \else
+  \fi
+}
+
+\usepackage{etoolbox}%
+
+\usepackage[english]{babel}
+\usepackage{ae,a4,url}
+\usepackage[T1]{fontenc}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{eurosym}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage{float}
+%\usepackage{floatflt}         % floating figures
+\usepackage{multirow}
+%\usepackage{rotating}
+% Hyper links in PDF
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  urlcolor =cyan,
+  citecolor = cyan,
+  pdfauthor = {\name},
+  pdfkeywords = {HPC,Fault Tolerance,UL,Result Checking},
+  pdftitle = {\name: Curriculum Vitae},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone
+}
+
+\usepackage{xspace}
+\usepackage[nolist,smaller,nohyperlinks]{acronym}          % for acronyms
+
+% Document layout
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  textwidth=185mm,
+  textheight=265mm,
+  marginparsep=7pt,
+  marginparwidth=.6in
+}
+\setlength\parindent{0in}
+
+
+\usepackage{bibtopic}   % for multiple bibliography file
+%\usepackage{fullpage}
+
+\usepackage[usenames]{colortbl}
+%\usepackage[usenames]{color} % see http://en.wikibooks.org/wiki/LaTeX/Colors
+\definecolor{lightgray}{gray}{0.95}      % color for code extract
+
+\graphicspath{{Images/}} % Add this directory to the searched paths for graphics
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Versionning with day and time
+%%%%%%%%%%%%%%
+% months
+\def\ftoday{\number\day\space
+ \ifcase\month\or
+ january\or february\or march\or april\or may\or june\or
+ july\or august\or september\or october\or november\or december\fi
+ \space\number\year}
+% \isodayandtime to get current date and time
+\begingroup
+\count0=\time \divide\count0by60 % Hour
+\count2=\count0 \multiply\count2by-60 \advance\count2by\time% Min
+\def\2#1{\ifnum#1<10 0\fi\the#1}
+\xdef\isodayandtime{\the\year-\2\month-\2\day\space\2{\count0}:%sec
+\2{\count2}}
+\endgroup
+
+
+% ================= Bibliography style =================
+\bibliographystyle{unsrt}
+
+
+% New commands
+\newcommand{\offsetintab}{0.12\textwidth}
+\newcommand{\offset}{~~~}
+\newcommand{\miniurl}[1]{{\scriptsize\url{#1}}}
+
+%%%%%
+% Add entry for a conference 
+% Format:
+%   \conference{shortname}{url}{name}{adress}{date}
+%\newcommand{\conference}[5]{\href{#2}{\textsc{#1}}, {\small #3} (#4, #5)}
+\newcommand{\conference}[5]{\href{#2}{#1} {\small (#4)}}
+
+%%%%%
+% Add entry for a student supervision
+% Format:
+%   \supervision{firstame name}{date}{subject}
+\newcommand{\supervision}[3]{\textsc{#1} (#2)  \hfill {\small #3}}
+
+%%%%%
+% Add an entry for a journal name
+% Format:
+%    \journal{name}{url}{publisher}
+\newcommand{\journal}[3]{\href{#2}{#1} {\small (#3)}}
+
+
+
+% Institutions
+\newcommand{\UL}{\ac{UL}\xspace}
+\newcommand{\ID}{{\small\href{http://www-id.imag.fr}{ID-IMAG}}}
+% Telecoms has now merged completely with ENSIMAG
+\newcommand{\TelecomsENSIMAG}{\href{http://ensimag.grenoble-inp.fr/}{Telecoms ENSIMAG}}
+
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% eof
+%
+% Local Variables:
+% mode: latex
+% mode: flyspell
+% mode: auto-fill
+% fill-column: 80
+% End:
