@@ -3,7 +3,7 @@
 ################################################################################
 # File      : split_bibtex_per_type.pl
 # Creation  : 26 Oct 2009
-# Time-stamp: <Wed 2011-02-23 13:29 svarrette>
+# Time-stamp: <Sun 2013-05-19 11:20 svarrette>
 #
 # Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 #               http://varrette.gforge.uni.lu
@@ -39,6 +39,7 @@ sub getOutputNameFrom($$@);
 my $VERSION = '0.2';            # Script version
 my $VERBOSE = 0;   # option variable for verbose mode with default value (false)
 my $DEBUG   = 0;   # option variable for debug mode with default value (false)
+my $TITLE   = 1;   # option to display a title of publication category before the list itself (in the main file)
 my $QUIET   = 0;   # By default, display all informations
 my $FORCE   = 0;   # don't ask
 my $numargs = scalar(@ARGV);    # Number of arguments
@@ -54,6 +55,7 @@ my $getoptRes = GetOptions('dry-run|n' => \$SIMULATION_MODE, # Simulation mode
                            'clean'     => \$CLEAN_MODE,
                            'force|f'   => \$FORCE,
                            'verbose|v' => \$VERBOSE, # Verbose mode
+                           'notitle'   => sub { $TITLE = 0; }, # Do not display a title before listing the info
                            'quiet|q'   => sub { $QUIET=1, $FORCE=1; }, # Quiet mode
                            'debug'     => sub { $DEBUG = 1; $VERBOSE = 1; }, # Debug mode
                            'help|h'    => sub { pod2usage(-exitval => 1,
@@ -193,10 +195,14 @@ foreach my $type (keys %titles) {
     my $bib = getOutputNameFrom($bibinputfile,$type);
     if (-e "$bib") {
         $bib =~ s/\.bib//;
-        print OUT <<EndText;
-%        \\section{$titles{$type}  ($type_met{$type})}
+        if ($TITLE) {
+            print OUT <<EndText;
+%       \\section{$titles{$type}  ($type_met{$type})}
         \\noindent \\textbf{$titles{$type} ($type_met{$type}})
         \\label{sec:publis:details:$bibinputfile:$type}
+EndText
+        }
+        print OUT <<EndText;
         \\begin{btSect}{$bib}
            \\btPrintAll
         \\end{btSect}

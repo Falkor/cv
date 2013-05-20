@@ -1,4 +1,4 @@
-% Time-stamp: <Wed 2012-03-07 15:48 svarrette>
+% Time-stamp: <Lun 2013-05-20 14:47 svarrette>
 %=============================================================================
 % _style.sty --  LaTeX style configuration for the document 
 % 
@@ -15,6 +15,28 @@
 
 % Set your name here
 \def\name{Sebastien Varrette}
+
+% The different types of CV
+\def\cvfull{Full}% COmplete version 
+\def\cvshort{Short}% 3 pages version
+\def\cvtiny{Tiny}% 1 pages version
+
+% CV configuration
+\IfFileExists{_cv_config.sty}{
+  \input{_cv_config.sty}
+}{
+%  \def\cvtype{\cvfull}
+  \def\cvtype{\cvshort}
+}
+
+\newcommand{\cvcite}[1]{
+  \ifnum\pdfstrcmp{\cvtype}{\cvfull}=0%
+  \cite{#1}
+  \else
+  \fi
+}
+
+\usepackage{etoolbox}%
 
 \usepackage[english]{babel}
 \usepackage{ae,a4,url}

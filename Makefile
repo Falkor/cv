@@ -75,8 +75,9 @@ else
 MAIN_TEX   = $(shell grep -l "[\]begin{document}" $(TEX_SRC) | xargs echo)
 FIGURES    = $(shell find . -name "*.eps" -o -name "*.fig" | xargs echo)
 MAIN_BIB   = biblio-varrette.bib
+SELECTED_BIB = selected_biblio-varrette.bib
 STYLE_FILES = $(wildcard *.sty)
-
+CV_CONF     = _cv_config.sty
 SRC= $(TEX_SRC) $(STYLE_FILES) $(FIGURES) $(MAIN_BIB) 
 
 ifeq ($(MAIN_TEX),)
@@ -118,7 +119,27 @@ MANDATORY_BINARIES = latex pdflatex bibtex perl seq
 
 ############################### Now starting rules ################################
 # Required rule : what's to be done each time 
-all: split_bib $(TARGET_PDF)
+all: 
+
+## Prepare the configuration for a given type of CV
+conf_full:
+	@echo "=> configure CV to generate 'FULL' version"
+	@echo "\def\cvtype{\cvfull}" > $(CV_CONF)
+
+conf_short:
+	@echo "=> configure CV to generate 'SHORT' version (3 pages)"
+	@echo "\def\cvtype{\cvshort}" > $(CV_CONF)
+
+conf_tiny:
+	@echo "=> configure CV to generate 'FULL' version"
+	@echo "\def\cvtype{\cvtiny}" > $(CV_CONF)
+
+full: conf_full split_bib $(TARGET_PDF)
+
+short: conf_short split_bib $(TARGET_PDF)
+
+tiny: conf_short split_bib $(TARGET_PDF)
+
 
 # Dvi files generation
 dvi $(DVI) : $(SRC)
@@ -238,10 +259,13 @@ clean:
 
 # bibliography aspects
 split_bib: 
-	@if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$(MAIN_BIB)" ]; then \
-	   echo "=> processing the BibTeX file $(MAIN_BIB) with $(SPLIT_BIB_SCRIPT)"; \
-	   $(SPLIT_BIB_SCRIPT) $(MAIN_BIB); \
-	fi 
+	@for bb in $(MAIN_BIB) $(SELECTED_BIB); do \
+		[ "$$bb" == "$(SELECTED_BIB)" ] && script_opt=" --notitle" || script_opt=""; \
+		if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$$bb" ]; then \
+			echo "=> processing the BibTeX file $$b with $(SPLIT_BIB_SCRIPT) $$script_opt"; \
+	   		$(SPLIT_BIB_SCRIPT) $$script_opt $$bb; \
+		fi \
+	done
 
 bib: split_bib
 	@for f in $(MAIN_TEX); do                                    \
