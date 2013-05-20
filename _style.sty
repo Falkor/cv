@@ -1,4 +1,4 @@
-% Time-stamp: <Lun 2013-05-20 14:47 svarrette>
+% Time-stamp: <Lun 2013-05-20 16:30 svarrette>
 %=============================================================================
 % _style.sty --  LaTeX style configuration for the document 
 % 
@@ -17,7 +17,7 @@
 \def\name{Sebastien Varrette}
 
 % The different types of CV
-\def\cvfull{Full}% COmplete version 
+\def\cvfull{Full}% Complete version 
 \def\cvshort{Short}% 3 pages version
 \def\cvtiny{Tiny}% 1 pages version
 
@@ -25,8 +25,9 @@
 \IfFileExists{_cv_config.sty}{
   \input{_cv_config.sty}
 }{
-%  \def\cvtype{\cvfull}
-  \def\cvtype{\cvshort}
+  % By default generate the full version of the CV
+  \def\cvtype{\cvfull}
+%  \def\cvtype{\cvshort}
 }
 
 \newcommand{\cvcite}[1]{

@@ -1,6 +1,6 @@
 -*- mode: markdown; mode: auto-fill; fill-column: 80 -*-
 
-    Time-stamp: <Mer 2012-11-14 14:15 svarrette> 
+    Time-stamp: <Lun 2013-05-20 16:42 svarrette> 
 
 Copyright (c) 2011 [Sebastien Varrette](http://varrette.gforge.uni.lu) - [mail](mailto:Sebastien.Varrette@uni.lu)
 
@@ -14,6 +14,8 @@ This LaTeX document can (_should_) be compiled using the [GNU Make](http://www.g
 Documentation on the Make utility may be found [here](http://www.gnu.org/software/make/manual/make.html)
 
 # Prerequisite 
+
+### LaTeX and Perl modules 
 
 The compilation of the files contained in this directory requires the following binaries : 
 
@@ -41,6 +43,42 @@ To install it, simply copy the provided script `scripts/seq` into a directory se
 		Module::Name installed successfully
 		cpan[2]> quit
 
+### Git
+
+You should become familiar (if not yet) with Git. Consider these resources:
+
+* [Git book](http://book.git-scm.com/index.html)
+* [Github:help](http://help.github.com/mac-set-up-git/)
+* [Git reference](http://gitref.org/)
+
+Remember to correctly initialize git with your name and email as follows: 
+
+      $> git config --global user.name "Firstname Name"
+      $> git config --global user.email Firstname.Name@uni.lu
+
+### git-flow
+
+The Git branching model for this repository follows the guidelines of [gitflow](http://nvie.com/posts/a-successful-git-branching-model/).
+In particular, the central repo (on [GitHub](https://github.com/Falkor/cv) holds two main branches with an infinite lifetime:
+
+* `production`: the *production-ready* benchmark data 
+* `master`: the main branch where the latest developments interviene. This is
+  the *default* branch you get when you clone the repo.
+
+You should therefore install [git-flow](https://github.com/nvie/gitflow), and probably also its associated [bash completion](https://github.com/bobthecow/git-flow-completion).
+
+      $> apt-get install git-flow # On Debian-like systems
+      
+      $> brew install git-flow    # On Mac-OS using Homebrew
+
+Also, to facilitate the tracking of remote branches, you need to install [grb](https://github.com/webmat/git_remote_branch), typically via ruby gems: 
+
+      $> gem install git_remote_branch
+
+Then, to make your local copy of the repository ready to use my git-flow workflow, you have to run the following commands once you cloned it for the first time:
+
+      $> make setup
+
 
 # CV Compilation
 
@@ -48,7 +86,20 @@ To generate the PDF file from the LaTeX source, you just have to run the followi
 
 > `make` 
 
-This should create the file `cv-varrette-en.pdf` in the current directory. 
+This should create the file `cv-varrette-en.pdf` in the current directory.
+It corresponds to the full version of my CV and is the equivalent of running:
+
+> `make full`
+
+If you want to generate the short version of my CV (3 pages and selected 10
+publications) which I used in project proposal, just run:
+
+> `make short`
+
+
+If you want to generate the tiny version of my CV (1 page), just run
+
+> `make tiny`
 
 Run `make help` for more details about the available commands.
 
@@ -61,7 +112,7 @@ If you want to reuse these files, you should update the following elements:
 * the `\name` variable in `_style.sty`
 * the `\bibfile` variable in `_publis.tex` (to match the basename of your
   bibliographic file) 
-* the `MAIN_BIB` variable in the `Makefile`
+* the `MAIN_BIB` and `SELECTED_BIB` variables in the `Makefile`
 
 ## Repository organization 
 
@@ -193,6 +244,42 @@ For those interested, here is an extract of the help message for this script:
 	    Changing the order of the pairs <"key", "value" > in this hash will
 	    change the order of the corresponding sections in the summary table and
 	    the detailed list.
+
+## Releasing mechanism
+
+The operation consisting of releasing a new version of this repository is automated by a set of tasks within the `Makefile`. 
+
+In this context, a version number have the following format: 
+
+      <major>.<minor>.<patch>-b<build>
+      
+where:
+
+* `<major>` corresponds to the major version number
+* `<minor>` corresponds to the minor version number
+* `<patch>` corresponds to the patching version number
+* `<build>` states the build number _i.e._ the total number of commits within the `master` branch. 
+      
+Example: `1.0.0-b28`
+
+The current version number is stored in the file `VERSION`. __/!\ NEVER MAKE ANY MANUAL CHANGES TO THIS FILE__
+
+For more information on the version, run:
+
+     $> make versioninfo
+
+If a new  version number such be bumped, you simply have to run:
+
+      $> make start_bump_{major,minor,patch}
+
+This will start the release process for you using `git-flow`. Probably after that, the first things to do is to change within the main LaTeX document the version number and commit this change. 
+Then, to make the release effective, just run: 
+
+      $> make release
+
+it will finish the release using `git-flow`, create the appropriate tag in the `production` branch and merge all things the way they should be. 
+Also, you will have the generated PDF for the freshly released version as a file named `release/intro_HPC_platforms_v<major>.<minor>.<patch>-b<build>.pdf`.
+
 
 
 
