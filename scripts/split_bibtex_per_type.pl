@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl -w
 
 ################################################################################
 # File      : split_bibtex_per_type.pl
