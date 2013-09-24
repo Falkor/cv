@@ -218,7 +218,7 @@ start_bump_major: clean
 
 release: clean generate
 	git commit -s -m "New PDF release v.$(VERSION) of the CVs " $(RELEASE_DIR)/
-	$(MAKE) CLEAN
+	$(MAKE) clean
 	git flow release finish -s $(VERSION)
 	git checkout $(GITFLOW_BR_MASTER)
 	git push origin
