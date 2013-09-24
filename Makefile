@@ -89,9 +89,10 @@ USE_PDFLATEX = yes
 
 # Directory where PDF, Postcript files and other generated files will be placed
 # /!\ Please ensure there is no trailing space after the values
-OUTPUT_DIR = .
-TRASH_DIR  = .Trash
-HTML_DIR   = $(OUTPUT_DIR)/HTML
+OUTPUT_DIR  = .
+TRASH_DIR   = .Trash
+HTML_DIR    = $(OUTPUT_DIR)/HTML
+RELEASE_DIR = releases
 # Check avalibility of source files
 TEX_SRC    = $(wildcard *.tex)
 ifeq ($(TEX_SRC),)
@@ -215,7 +216,9 @@ start_bump_major: clean
 	@echo "=> run 'make release' once you finished the bump"
 
 
-release: clean 
+release: clean generate
+	git commit -s -m "New PDF release v.$(VERSION) of the CVs " $(RELEASE_DIR)/
+	$(MAKE) clean
 	git flow release finish -s $(VERSION)
 	git checkout $(GITFLOW_BR_MASTER)
 	git push origin
@@ -313,6 +316,19 @@ pdf $(TARGET_PDF): $(DVI)
 	fi
 	@$(MAKE) help
 endif
+
+
+generate:
+	for f in $(TARGET_PDF); do   \
+		$(MAKE) clean; \
+		$(MAKE); \
+		mv $$f $(RELEASE_DIR)/; \
+		for type in tiny short; do \
+			$(MAKE) clean; \
+			$(MAKE) $$type; \
+			mv $$f $(RELEASE_DIR)/`basename $$f .pdf`_$$type.pdf;  \
+		done; \
+	done
 
 ########################## Complementary tasks  ############################
 TO_TRASH=$(shell ls $(TO_MOVE) 2>/dev/null | xargs echo)
