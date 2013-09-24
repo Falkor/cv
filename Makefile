@@ -216,7 +216,9 @@ start_bump_major: clean
 	@echo "=> run 'make release' once you finished the bump"
 
 
-release: clean 
+release: clean generate
+	git commit -s -m "New PDF release v.$(VERSION) of the CVs " $(RELEASE_DIR)/
+	$(MAKE) CLEAN
 	git flow release finish -s $(VERSION)
 	git checkout $(GITFLOW_BR_MASTER)
 	git push origin
