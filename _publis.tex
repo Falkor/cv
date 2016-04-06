@@ -1,74 +1,88 @@
-% Time-stamp: <Sam 2015-04-11 14:26 svarrette>
+% Time-stamp: <Wed 2016-04-06 12:27 svarrette>
 % ==============================================================================
 % _publis.tex -- List of my personal publication
-% 
+%
 % Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 % .             http://varrette.gforge.uni.lu
-% 
+%
 % ==============================================================================
 % This file is part of my CV (see 'cv-varrette-en.tex' and README)
-% 
+%
 % This work is licensed under the terms of the Creative Commons CC-by-nc-sa 3.0
 % licence (see LICENCE). For more details, visit:
 % .         http://creativecommons.org/licenses/by-nc-sa/3.0/
 % ==============================================================================
-% 
+%
 % Based on the files produced by 'scripts/split_bibtex_per_type.pl'
-% 
+%
 
 \def\bibfile{biblio-varrette}
 
 \begin{rubrique}{Publications}
-    % Summary of the publications
-    \IfFileExists{__sub_\bibfile_summary.tex}{
-      \input{__sub_\bibfile_summary}
-    }{}
+  % Summary of the publications
+  \IfFileExists{__sub_\bibfile_summary.tex}{
+    \input{__sub_\bibfile_summary}
+  }{}
 
-    % Publish or Perish statistics (based on Google Scholar)
-    {\footnotesize
-      % TODO on UPDATE:
-      % search "varrette" in the domain "Engineering, Computer Science, Mathematics"
+  % Publish or Perish statistics (based on Google Scholar)
+  {\footnotesize
+    % TODO on UPDATE:
+    % search "varrette" in the domain "Engineering, Computer Science, Mathematics"
 
-      \begin{tabular}{|c||ccccc|}
-        \hline
-        \multirow{2}{4em}{\href{http://www.harzing.com/pop.htm}{Publish or Perish}} &
-        Papers:107    & Citations:261,Years:12     & \textbf{h-index:9},g-index:13 &
-        \multicolumn{2}{l|}{hc-index:8,hI-index:2,79,hI-norm:4}
-        \\
-        &Cites/year: 21.75 & Cites/paper: 2.44/0.0/0 & Cites/author: 93.18 &
-        Papers/author: 38.22 & Query date: \textbf{2015-07-06}
-        % AWCR:20.62 & AW-index:4.54 & AWCRpA:8.00 & e-index:5.66 & hm-index:3.78,"\textbf{2012-11-14}"
-        \\
-        \hline
-        \href{http://www.informatik.uni-trier.de/~ley/pers/hd/v/Varrette:S=eacute=bastien.html}{DBLP} & 
-        \multicolumn{1}{c|}{\href{https://scholar.google.fr/citations?hl=fr\&user=6PTStIcAAAAJ\&view_op=list_works\&sortby=pubdate}{Google Scholar}}\\
-        \cline{1-2} 
-      \end{tabular}
-    }
-    ~\\[2em]
+    % varrette
+    % Query date: 2016-04-05
+    % Papers: 112
+    % Citations: 330
+    % Years: 13
+    % Cites/year: 25.38
+    % Cites/paper: 2.95/1.0/0 (mean/median/mode)
+    % Cites/author: 113.24
+    % Cites/author/year: 8.71
+    % Papers/author: 40.16
+    % Authors/paper: 3.48/4.0/4 (mean/median/mode)
+    % h-index: 10 (60%)
+    % g-index: 15 (71%)
+    % e-index: 9.85
+    % hc-index: 8
+    % hI-index: 2.78
+    % hI,norm: 5
+    % hI,annual: 0.38
 
-    \ifnum\pdfstrcmp{\cvtype}{\cvtiny}=0%
-    \else
-    % \ifx\cvtype\cvfull
-    % \ifstrequal{\cvtype}{\cvfull}
-    \ifnum\pdfstrcmp{\cvtype}{\cvfull}=0%
+    \begin{tabular}{|c||ccccc|}
+      \hline
+      \multirow{2}{4em}{\href{http://www.harzing.com/pop.htm}{Publish or Perish}}
+      & Papers:117        & Citations:330,Years:13   & \textbf{h-index:10},g-index:15 & \multicolumn{2}{l|}{hc-index:8,hI-index:2,78,hI-norm:5}\\
+      & Cites/year: 25.38 & Cites/paper: 2.95/1.0/0  & Cites/author: 113.24 & Papers/author: 40.16 & Query date: \textbf{2016-04-05}\\
+      \hline
+      \href{http://www.informatik.uni-trier.de/~ley/pers/hd/v/Varrette:S=eacute=bastien.html}{DBLP} &
+                                                                                                      \multicolumn{1}{c|}{\href{https://scholar.google.fr/citations?hl=fr\&user=6PTStIcAAAAJ\&view_op=list_works\&sortby=pubdate}{Google Scholar}}\\
+      \cline{1-2}
+    \end{tabular}
+  }
+  ~\\[2em]
 
-    % Detailed list
-    \IfFileExists{__sub_\bibfile_main.tex}{
-      \input{__sub_\bibfile_main}
-    }{}
+  \ifnum\pdfstrcmp{\cvtype}{\cvtiny}=0%
+  \else
+  % \ifx\cvtype\cvfull
+  % \ifstrequal{\cvtype}{\cvfull}
+  \ifnum\pdfstrcmp{\cvtype}{\cvfull}=0%
+
+  % Detailed list
+  \IfFileExists{__sub_\bibfile_main.tex}{
+    \input{__sub_\bibfile_main}
+  }{}
 
 
-    \else
-    \vspace{-1em}
-    \paragraph{Selected Publications}~\\
-    \IfFileExists{__sub_selected_\bibfile_main.tex}{
-      \input{__sub_selected_\bibfile_main}
-    }{}
+  \else
+  \vspace{-1em}
+  \paragraph{Selected Publications}~\\
+  \IfFileExists{__sub_selected_\bibfile_main.tex}{
+    \input{__sub_selected_\bibfile_main}
+  }{}
 
-    \fi
-    \fi
-    
+  \fi
+  \fi
+
 \end{rubrique}
 
 
@@ -77,7 +91,7 @@
 
 % ==============================================================================
 % eof
-% 
+%
 % Local Variables:
 % mode: latex
 % mode: flyspell
