@@ -1,6 +1,68 @@
 # -*- mode: makefile; -*-
 # Specific part releasing
 
+CV_CONF    = _cv_config.sty
+TARGET_PDF = cv-varrette-en.pdf
+
+
+## Prepare the configuration for a given type of CV
+conf_full:
+	@echo "=> configure CV to generate 'FULL' version"
+	@echo "\def\cvtype{\cvfull}" > $(CV_CONF)
+
+conf_short:
+	@echo "=> configure CV to generate 'SHORT' version (3 pages)"
+	@echo "\def\cvtype{\cvshort}" > $(CV_CONF)
+
+conf_small:
+	@echo "=> configure CV to generate 'SMALL' version (2 pages)"
+	@echo "\def\cvtype{\cvsmall}" > $(CV_CONF)
+
+conf_tiny:
+	@echo "=> configure CV to generate 'TINY' version"
+	@echo "\def\cvtype{\cvtiny}" > $(CV_CONF)
+
+full:  conf_full  $(TARGET_PDF)
+short: conf_short $(TARGET_PDF)
+small: conf_small $(TARGET_PDF)
+tiny:  conf_tiny  $(TARGET_PDF)
+
+####
+
+# Specific bibliographic processing
+PERLMODULES=$(shell grep "^use " $(SPLIT_BIB_SCRIPT) | cut -d ' ' -f 2 | grep -v "strict" | grep -v "warnings" | sed -e "s/;//" | sort | uniq)
+MANDATORY_BINARIES = latex pdflatex bibtex perl seq
+
+check:
+	@echo " => check mandatory binaries"
+	@for cmd in $(MANDATORY_BINARIES); do \
+		echo -n "     check $$cmd... "; \
+		if [ -z "`which $$cmd`" ]; then \
+			echo " FAILED!"; \
+			echo "*** /!\ ERROR ($$cmd not present within your PATH)***"; \
+			echo "*** /!\ Install the missing package and re-run 'make check' to check your config"; \
+			exit 1; \
+		else \
+			echo "OK"; \
+		fi \
+	done
+	@echo " => Perl modules used in $(SPLIT_BIB_SCRIPT):"
+	@for p in $(PERLMODULES); do \
+	 	echo -n "     $$p..."; \
+		perl -M$$p -e 1; \
+		if [ $$? == 0 ]; then \
+			echo "OK"; \
+		else \
+			echo "*** /!\ ERROR ($$p not installed)***"; \
+			echo "*** /!\ Install the missing module via cpan typically ('sudo cpan' followed by 'install $$p')."; \
+			echo "*** /!\ Once installed, re-run 'make check' to check your config"; \
+			exit 1; \
+		fi; \
+	done
+#		if [ $$? -eq 0 ]; then echo "OK"; else echo "FAILED!" fi; \
+	done
+
+############ Adapted from https://github.com/Falkor/Makefiles/blob/devel/repo/Makefile
 # Git stuff management
 HAS_GITFLOW     = $(shell git flow version 2>/dev/null || [ $$? -eq 0 ])
 LAST_TAG_COMMIT = $(shell git rev-list --tags --max-count=1)
@@ -14,7 +76,6 @@ GIT_DIRTY      = $(shell git diff --shortstat 2> /dev/null | tail -n1 )
 GITFLOW_BR_MASTER  = production
 GITFLOW_BR_DEVELOP = master
 
-## Adapted from https://github.com/Falkor/Makefiles/blob/devel/repo/Makefile
 ############################### Git Bootstrapping rules ################################
 setup:
 	git fetch origin
