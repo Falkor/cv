@@ -1,0 +1,97 @@
+# -*- mode: makefile; -*-
+# Specific part releasing
+
+# Git stuff management
+HAS_GITFLOW     = $(shell git flow version 2>/dev/null || [ $$? -eq 0 ])
+LAST_TAG_COMMIT = $(shell git rev-list --tags --max-count=1)
+LAST_TAG        = $(shell git describe --tags $(LAST_TAG_COMMIT) )
+TAG_PREFIX = "v"
+
+CURRENT_BRANCH = $(shell git rev-parse --abbrev-ref HEAD)
+GIT_REMOTES    = $(shell git remote | xargs echo )
+GIT_DIRTY      = $(shell git diff --shortstat 2> /dev/null | tail -n1 )
+
+GITFLOW_BR_MASTER  = production
+GITFLOW_BR_DEVELOP = master
+
+## Adapted from https://github.com/Falkor/Makefiles/blob/devel/repo/Makefile
+############################### Git Bootstrapping rules ################################
+setup:
+	git fetch origin
+	git branch --set-upstream $(GITFLOW_BR_MASTER) origin/$(GITFLOW_BR_MASTER)
+	git config gitflow.branch.master     $(GITFLOW_BR_MASTER)
+	git config gitflow.branch.develop    $(GITFLOW_BR_DEVELOP)
+	git config gitflow.prefix.feature    feature/
+	git config gitflow.prefix.release    release/
+	git config gitflow.prefix.hotfix     hotfix/
+	git config gitflow.prefix.support    support/
+	git config gitflow.prefix.versiontag $(TAG_PREFIX)
+	$(MAKE) update
+	$(if $(GIT_SUBTREE_REPOS), $(MAKE) subtree_setup)
+
+fetch:
+	git fetch --all -v
+
+versioninfo:
+	@echo "Current version: $(VERSION)"
+	@echo "Last tag: $(LAST_TAG)"
+	@echo "$(shell git rev-list $(LAST_TAG).. --count) commit(s) since last tag"
+	@echo "Build: $(BUILD) (total number of commits)"
+	@echo "next major version: $(NEXT_MAJOR_VERSION)"
+	@echo "next minor version: $(NEXT_MINOR_VERSION)"
+	@echo "next patch version: $(NEXT_PATCH_VERSION)"
+
+### Git flow management - this should be factorized
+ifeq ($(HAS_GITFLOW),)
+start_bump_patch start_bump_minor start_bump_major release:
+	@echo "Unable to find git-flow on your system. "
+	@echo "See https://github.com/nvie/gitflow for installation details"
+else
+start_bump_patch: clean
+	@echo "Start the patch release of the repository from $(VERSION) to $(NEXT_PATCH_VERSION)"
+	git pull origin
+	git flow release start $(NEXT_PATCH_VERSION)
+	@echo $(NEXT_PATCH_VERSION) > VERSION
+	git commit -s -m "Patch bump to version $(NEXT_PATCH_VERSION)" VERSION
+	@echo "=> remember to update the version number in $(MAIN_TEX)"
+	@echo "=> run 'make release' once you finished the bump"
+
+start_bump_minor: clean
+	@echo "Start the minor release of the repository from $(VERSION) to $(NEXT_MINOR_VERSION)"
+	git pull origin
+	git flow release start $(NEXT_MINOR_VERSION)
+	@echo $(NEXT_MINOR_VERSION) > VERSION
+	git commit -s -m "Minor bump to version $(NEXT_MINOR_VERSION)" VERSION
+	@echo "=> remember to update the version number in $(MAIN_TEX)"
+	@echo "=> run 'make release' once you finished the bump"
+
+start_bump_major: clean
+	@echo "Start the major release of the repository from $(VERSION) to $(NEXT_MAJOR_VERSION)"
+	git pull origin
+	git flow release start $(NEXT_MAJOR_VERSION)
+	@echo $(NEXT_MAJOR_VERSION) > VERSION
+	git commit -s -m "Major bump to version $(NEXT_MAJOR_VERSION)" VERSION
+	@echo "=> remember to update the version number in $(MAIN_TEX)"
+	@echo "=> run 'make release' once you finished the bump"
+
+release: clean generate
+	git flow release finish -s $(VERSION)
+	git checkout $(GITFLOW_BR_MASTER)
+	git push origin
+	git checkout $(GITFLOW_BR_DEVELOP)
+	git push origin
+	git push origin --tags
+endif
+
+
+### Git submodule management: pull and upgrade to the latest version
+update:
+	git pull origin
+	git submodule init
+	git submodule update
+
+upgrade: update
+	git submodule foreach 'git fetch origin; git checkout $$(git rev-parse --abbrev-ref HEAD); git reset --hard origin/$$(git rev-parse --abbrev-ref HEAD); git submodule update --recursive; git clean -dfx'
+	@for submoddir in $(shell git submodule status | awk '{ print $$2 }' | xargs echo); do \
+		git commit -s -m "Upgrading Git submodule '$$submoddir' to the latest version" $$submoddir || true;\
+	done
