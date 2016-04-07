@@ -1,6 +1,6 @@
 ####################################################################################
 # Makefile (configuration file for GNU make - see http://www.gnu.org/software/make/)
-# Time-stamp: <Thu 2016-04-07 14:25 svarrette>
+# Time-stamp: <Thu 2016-04-07 15:54 svarrette>
 #     __  __       _         __ _ _            __   _         _____   __  __
 #    |  \/  | __ _| | _____ / _(_) | ___      / /  | |    __ |_   _|__\ \/ /
 #    | |\/| |/ _` | |/ / _ \ |_| | |/ _ \    / /   | |   / _` || |/ _ \\  /
@@ -115,8 +115,7 @@ LIST_RELEASE_TO_DELETE = $(shell [ -d "$(RELEASE_DIR)" ] && ls $(RELEASE_DIR)/*.
 
 # Ghostscript for the help of producing optimized PDF
 GS      = $(shell which gs)
-GS_OPTS = -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress
-
+GS_OPT  = -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress
 ### Main variables
 BEFORE_TARGETS = split_bib
 TARGETS        = $(BEFORE_TARGETS) $(TARGET_PDF)
@@ -181,7 +180,7 @@ test:
 	@echo "PANDOC       -> '$(PANDOC)'"
 	@echo "BIBTEX       -> '$(BIBTEX)'"
 	@echo "GS           -> '$(GS)'"
-	@echo "GS_OPTS      -> '$(GS_OPTS)'"
+	@echo "GS_OPT       -> '$(GS_OPT)'"
 	@echo
 	@echo "--- Files --- "
 	@echo "TEX_SRC      -> '$(TEX_SRC)'"
@@ -218,15 +217,24 @@ generate:
 	for f in $(TARGET_PDF); do   \
 		$(MAKE) clean; \
 		$(MAKE); \
+		if [ -n "$(GS)" ]; then \
+			optimf="`basename $$f .pdf`-optimized.pdf"; \
+			$(GS) $(GS_OPT) -sOutputFile=$$optimf $$f; \
+			mv $$optimf $$f; \
+		fi; \
 		mv $$f $(RELEASE_DIR)/; \
 		for type in tiny short; do \
 			$(MAKE) clean; \
 			$(MAKE) $$type; \
+			if [ -n "$(GS)" ]; then \
+				optimf="`basename $$f .pdf`-optimized.pdf"; \
+				$(GS) $(GS_OPT) -sOutputFile=$$optimf $$f; \
+				mv $$optimf $$f; \
+			fi; \
 			mv $$f $(RELEASE_DIR)/`basename $$f .pdf`_$$type.pdf;  \
 		done; \
-		git commit -s -m "New PDF release v.$(VERSION) of the CVs " $(RELEASE_DIR)/; \
-		$(MAKE) clean; \
 	done
+
 
 ####################### LaTeX Compilation rules ########################
 # Markdown files processing
