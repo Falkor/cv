@@ -1,59 +1,42 @@
 ####################################################################################
 # Makefile (configuration file for GNU make - see http://www.gnu.org/software/make/)
+# Time-stamp: <Thu 2016-04-07 10:45 svarrette>
+#     __  __       _         __ _ _            __   _         _____   __  __
+#    |  \/  | __ _| | _____ / _(_) | ___      / /  | |    __ |_   _|__\ \/ /
+#    | |\/| |/ _` | |/ / _ \ |_| | |/ _ \    / /   | |   / _` || |/ _ \\  /
+#    | |  | | (_| |   <  __/  _| | |  __/   / /    | |__| (_| || |  __//  \
+#    |_|  |_|\__,_|_|\_\___|_| |_|_|\___|  /_/     |_____\__,_||_|\___/_/\_\
 #
-# Copyright (c) 2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
-# .              http://varrette.gforge.uni.lu
-# .                      __  __       _         __ _ _
-# .                     |  \/  | __ _| | _____ / _(_) | ___
-# .                     | |\/| |/ _` | |/ / _ \ |_| | |/ _ \
-# .                     | |  | | (_| |   <  __/  _| | |  __/
-# .                     |_|  |_|\__,_|_|\_\___|_| |_|_|\___|
-# .
+# Copyright (c) 2004-2015 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+# .             http://varrette.gforge.uni.lu
+#
+####################################################################################
+# Compilation of files written in LaTeX.
+# If you can, consider [Latexmk](http://www.ctan.org/pkg/latexmk/) as a far more
+# complete solution for the compilation of your LaTeX documents.
+# This Makefile appeared sufficient for all my workflows.
+#
+# Grab the lastest version of this Makefile from:
+#            https://github.com/Falkor/Makefiles/tree/devel/latex
+#
 # --------------------------------------------------------------------------------
-# This is a generic makefile in the sense that it doesn't require to be 
+# This is a generic makefile in the sense that it doesn't require to be
 # modified when adding/removing new source files.
 # --------------------------------------------------------------------------------
-# This program is free software: you can redistribute it and/or modify it under
-# the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0
-# Unported License (CC-by-nc-sa 3.0)
 #
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  For more details, please visit:
-#              http://creativecommons.org/licenses/by-nc-sa/3.0/
-# --------------------------------------------------------------------------------
-# Compilation of files written in LaTeX, adapted to the generation of my CV (as
-# it includes the invocation of a script to split my single BibTeX file to
-# classify biblio entries by their type).
+# This makefile search for LaTeX sources from the current directory, identifies
+# the main files (i.e the one containing the sequence '\begin{document}') and
+# launch the compilation for the generation of PDFs using the pdflatex compiler
+# (or others such as lualatex for instance) specified by the LATEX variable.
 #
-# This makefile search for LaTeX sources from the current directory, identifies 
-# the main files (i.e the one containing the sequence '\begin{document}') and 
-# launch the compilation for the generation of PDFs and optionnaly compressed 
-# Postscript files. 
-# Two compilation modes can be configured using the USE_PDFLATEX variable:
-#    1/ Rely on pdflatex to generate directly a pdfs from the LaTeX sources. 
-#       The compilation follow then the scheme: 
+# Upon compilation:
+# * all the intermediate files (main.aux, main.log etc.) will be moved
+#   to $(TRASH_DIR)/ (if it exists).
+# * the gererated files (pdf etc.) will stay in the current directory.
 #
-#                main.tex --[pdflatex/bibtex]--> main.pdf + main.[aux|log etc.]
-#
-#       Note that in that case, your figures should be in pdf format instead of eps.
-#       To use this mode, just set the USE_PDFLATEX variable to 'yes'
-# 
-#    2/ Respect the classical scheme:                             +-[dvips]-> main.ps
-#                                                                 |             |             
-#                                                                 |        +-[gzip]
-#       main.tex -[latex/bibtex]-> main.dvi + main.[aux|log etc.]-+        |     
-#                                                                 |        +-> main.ps.gz     
-#                                                                 +-[dvipdf]-> main.pdf
-#       To use this mode, just set the USE_PDFLATEX variable to 'no'
-# In all cases: 
-#   - all the intermediate files (main.aux, main.log etc.) will be moved
-#     to $(TRASH_DIR)/ (if it exists). 
-#   - the target files (dvi, pdf, ps.gz etc.) will stay in the current directory.  
-#
-# Available Commands: run 'make help'
+# Available Commands : see `make help`
 ############################## Variables Declarations ##############################
-SHELL=/bin/bash 
+SHELL=/bin/bash
 
 UNAME = $(shell uname)
 
@@ -74,7 +57,7 @@ VERSION  = $(shell [ -f VERSION ] && head VERSION || echo "0.0.1")
 MAJOR      = $(shell echo $(VERSION) | sed "s/^\([0-9]*\).*/\1/")
 MINOR      = $(shell echo $(VERSION) | sed "s/[0-9]*\.\([0-9]*\).*/\1/")
 PATCH      = $(shell echo $(VERSION) | sed "s/[0-9]*\.[0-9]*\.\([0-9]*\).*/\1/")
-# total number of commits 		
+# total number of commits
 BUILD      = $(shell git log --oneline | wc -l | sed -e "s/[ \t]*//g")
 
 #REVISION   = $(shell git rev-list $(LAST_TAG).. --count)
@@ -100,14 +83,14 @@ all:
 	@echo "No source files available - I can't handle the compilation"
 	@echo "Please check the presence of source files (with .tex extension)"
 else
-# Main tex file and figures it may depend on 
+# Main tex file and figures it may depend on
 MAIN_TEX   = $(shell grep -l "[\]begin{document}" $(TEX_SRC) | xargs echo)
 FIGURES    = $(shell find . -name "*.eps" -o -name "*.fig" | xargs echo)
 MAIN_BIB   = biblio-varrette.bib
 SELECTED_BIB = selected_biblio-varrette.bib
 STYLE_FILES = $(wildcard *.sty)
 CV_CONF     = _cv_config.sty
-SRC= $(TEX_SRC) $(STYLE_FILES) $(FIGURES) $(MAIN_BIB) 
+SRC= $(TEX_SRC) $(STYLE_FILES) $(FIGURES) $(MAIN_BIB)
 
 ifeq ($(MAIN_TEX),)
 all:
@@ -129,11 +112,11 @@ PS           = $(MAIN_TEX:%.tex=%.ps)
 PS_GZ        = $(MAIN_TEX:%.tex=%.ps.gz)
 PDF          = $(MAIN_TEX:%.tex=%.pdf)
 RTF          = $(MAIN_TEX:%.tex=%.rtf)
-TARGET_PDF   = $(PDF)   
-TARGET_PS_GZ = $(PS_GZ) 
+TARGET_PDF   = $(PDF)
+TARGET_PS_GZ = $(PS_GZ)
 ifneq ($(OUTPUT_DIR),.)
 TARGET_PDF   = $(PDF:%=$(OUTPUT_DIR)/%)
-TARGET_PS_GZ = $(PS_GZ:%=$(OUTPUT_DIR)/%) 
+TARGET_PS_GZ = $(PS_GZ:%=$(OUTPUT_DIR)/%)
 endif
 TARGETS      = $(DVI) $(TARGET_PDF) $(TARGET_PS_GZ)
 BACKUP_FILES = $(shell find . -name "*~")
@@ -148,12 +131,12 @@ MANDATORY_BINARIES = latex pdflatex bibtex perl seq
 
 
 ### Main variables
-.PHONY: all archive clean conf_full conf_short conf_tiny full help release setup short start_bump_major start_bump_minor start_bump_patch test tiny versioninfo 
+.PHONY: all archive clean conf_full conf_short conf_tiny full help release setup short start_bump_major start_bump_minor start_bump_patch test tiny versioninfo
 
 
 ############################### Now starting rules ################################
-# Required rule : what's to be done each time 
-all: full 
+# Required rule : what's to be done each time
+all: full
 
 ############################### Archiving ################################
 archive: clean
@@ -182,9 +165,9 @@ versioninfo:
 	@echo "next minor version: $(NEXT_MINOR_VERSION)"
 	@echo "next patch version: $(NEXT_PATCH_VERSION)"
 
-# Git flow management - this should be factorized 
+# Git flow management - this should be factorized
 ifeq ($(GITFLOW),)
-start_bump_patch start_bump_minor start_bump_major release: 
+start_bump_patch start_bump_minor start_bump_major release:
 	@echo "Unable to find git-flow on your system. "
 	@echo "See https://github.com/nvie/gitflow for installation details"
 else
@@ -261,7 +244,7 @@ dvi $(DVI) : $(SRC)
 	done
 	@echo "==> $(DVI) generated"
 
-# Compressed Postscript generation 
+# Compressed Postscript generation
 ps $(PS) $(TARGET_PS_GZ) : $(DVI)
 	@for dvi in $(DVI); do                            \
 	   	ps=`basename $$dvi .dvi`.ps;                  \
@@ -278,7 +261,7 @@ ps $(PS) $(TARGET_PS_GZ) : $(DVI)
 	fi
 
 ########################## PDF files generation ############################
-# The following part is specific for the case where pdflatex is used (by default) 
+# The following part is specific for the case where pdflatex is used (by default)
 ifeq ("$(USE_PDFLATEX)", "yes")
 
 pdf pdflatex $(TARGET_PDF): $(SRC)
@@ -299,7 +282,7 @@ pdf pdflatex $(TARGET_PDF): $(SRC)
 	fi
 	@$(MAKE) help
 
-else 
+else
 
 pdf $(TARGET_PDF): $(DVI)
 	@for dvi in $(DVI); do                            \
@@ -307,7 +290,7 @@ pdf $(TARGET_PDF): $(DVI)
 	   	echo "==> Now generating $$pdf from $$dvi";   \
 	  	$(DVIPDF) $$dvi;                              \
 	done
-	$(MAKE) create_output_dir           	     
+	$(MAKE) create_output_dir
 	@if [ "$(OUTPUT_DIR)" != "." ]; then              \
 		for pdf in $(PDF); do                         \
 			echo "==> Now moving $$pdf to $(OUTPUT_DIR)/";   \
@@ -339,13 +322,13 @@ move_to_trash:
         elif [ ! -d $(TRASH_DIR) ]; then                             \
                 echo "*** /!\ The trah directory $(TRASH_DIR)/ does not exist!!!";       \
                 echo "***     May be you should create it to hide the files ${TO_TRASH}";\
-        fi;   
+        fi;
 
-create_output_dir: 
+create_output_dir:
 	@if [ ! -d $(OUTPUT_DIR) ]; then                                                  \
 		echo "    /!\ $(OUTPUT_DIR)/ does not exist ==> Now creating ./$(OUTPUT_DIR)/"; \
 		mkdir -p ./$(OUTPUT_DIR);                                                 \
-	fi;  
+	fi;
 
 
 # Clean option
@@ -378,10 +361,10 @@ clean:
 	fi
 	@if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$(MAIN_BIB)" ]; then \
 	   $(SPLIT_BIB_SCRIPT) --force --clean $(MAIN_BIB); \
-	fi 
+	fi
 
 # bibliography aspects
-split_bib: 
+split_bib:
 	@for bb in $(MAIN_BIB) $(SELECTED_BIB); do \
 		[ "$$bb" == "$(SELECTED_BIB)" ] && script_opt=" --notitle" || script_opt=""; \
 		if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$$bb" ]; then \
@@ -445,7 +428,7 @@ force :
 	@touch $(MAIN_TEX)
 	@$(MAKE)
 
-# Test values of variables - for debug purpose  
+# Test values of variables - for debug purpose
 test:
 	@echo "USE_PDFLATEX: $(USE_PDFLATEX)"
 	@echo "--- Directories --- "
@@ -478,7 +461,7 @@ test:
 	@echo "--- Bibliography management --- "
 	@echo "SPLIT_BIB_SCRIPT   -> $(SPLIT_BIB_SCRIPT)"
 	@echo "PERLMODULES        -> $(PERLMODULES)"
-	@echo "MANDATORY_BINARIES -> $(MANDATORY_BINARIES)"	
+	@echo "MANDATORY_BINARIES -> $(MANDATORY_BINARIES)"
 
 # print help message
 help :
@@ -530,7 +513,7 @@ else
 	$(LATEX2HTML) -show_section_numbers -local_icons -split +1 \
 		-dir $(HTML_DIR) $(MAIN_TEX)
 	@rm -f *.aux *.bbl $(HTML_DIR)/*.tex $(HTML_DIR)/*.aux $(HTML_DIR)/*.bbl
-	@echo "==> HTML files generated in $(HTML_DIR)/" 
+	@echo "==> HTML files generated in $(HTML_DIR)/"
 	@echo "May be you can try to execute 'mozilla ./$(HTML_DIR)/index.html'"
 endif
 endif
