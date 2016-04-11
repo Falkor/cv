@@ -76,7 +76,7 @@ As mentioned above, the compilation of this document relies on [GNU Make](http:/
 Several versions of my CV can be compiled:
 
 | Compilation Command | Output file                                                     | Size    | Description                                            |
-|---------------------+-----------------------------------------------------------------+---------+--------------------------------------------------------|
+|---------------------|-----------------------------------------------------------------|---------|--------------------------------------------------------|
 | `make`              | [`cv-varrette-en.pdf`](releases/cv-varrette-en.pdf)             | 8 pages | Full complete version, holding **all** my publications |
 | `make short`        | [`cv-varrette-en_short.pdf`](releases/cv-varrette-en_short.pdf) | 3 pages | Short version (3p), holding selected publications      |
 | `make small`        | [`cv-varrette-en_small.pdf`](releases/cv-varrette-en_small.pdf) | 2 pages | Small version (2p), holding selected publications      |
