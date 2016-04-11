@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Tue 2016-04-12 00:51 svarrette>
+       Time-stamp: <Tue 2016-04-12 00:52 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -142,6 +142,8 @@ Once you have finished to commit your last changes, make the release effective b
       $> make release
 
 It will finish the release using `git-flow`, create the appropriate tag in the `production` branch and merge all things the way they should be.
+Also, you will have the generated PDF for the freshly released version as a file under `release/cv-varrette-en.tex[_<type>].pdf`.
+
 
 ### Directory Layout
 
