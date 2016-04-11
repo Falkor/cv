@@ -1,6 +1,6 @@
 ####################################################################################
 # Makefile (configuration file for GNU make - see http://www.gnu.org/software/make/)
-# Time-stamp: <Thu 2016-04-07 17:58 svarrette>
+# Time-stamp: <Mon 2016-04-11 23:09 svarrette>
 #     __  __       _         __ _ _            __   _         _____   __  __
 #    |  \/  | __ _| | _____ / _(_) | ___      / /  | |    __ |_   _|__\ \/ /
 #    | |\/| |/ _` | |/ / _ \ |_| | |/ _ \    / /   | |   / _` || |/ _ \\  /
@@ -313,6 +313,7 @@ create_output_dir:
 $(TARGET_PDF): $(TARGETS_DEPS)
 	@$(MAKE) singlerun OPTIONAL_OPT=-draftmode
 	@$(MAKE) bib
+	@$(MAKE) singlerun
 	@$(MAKE) singlerun
 	@$(MAKE) move_to_trash
 	@if [ "$(OUTPUT_DIR)" != "." ]; then              \

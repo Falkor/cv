@@ -1,4 +1,4 @@
-% Time-stamp: <Mon 2016-04-11 22:43 svarrette>
+% Time-stamp: <Mon 2016-04-11 23:13 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -86,14 +86,14 @@
 
 \unlesstinycv{
   % ---------- Teaching-----------
-  \ifinlist{\cvtype}{ShortOrFull}{
+  \ifShortOrFull{
     \input{_teaching}
-  }{}
+  }
 
   % ---------- Additional information ----------
-  \ifinlist{\cvtype}{ShortOrFull}{
+  \ifShortOrFull{
     \input{_other}
-  }{}
+  }
   % \clearpage
 
   % ---------- Graduate student supervision -----------
@@ -105,9 +105,9 @@
   \input{_research_project}
 
   % ---------- Professional development ----------
-  \ifinlist{\cvtype}{ShortOrFull}{
+  \ifShortOrFull{
     \input{_professional_dev}
-  }{}
+  }
 
   % ---------- Participation -----------
   % \input{_participations}
