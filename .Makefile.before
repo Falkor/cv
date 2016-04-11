@@ -1,0 +1,4 @@
+# -*- mode: makefile; -*-
+# Specific part for CV compilations
+
+BEFORE_TARGETS += conf_full

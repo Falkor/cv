@@ -1,3 +1,4 @@
+*.synctex*
 .DS_Store
 .Trash/*
 __sub_*
