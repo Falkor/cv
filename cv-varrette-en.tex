@@ -1,4 +1,4 @@
-% Time-stamp: <Mon 2016-04-11 23:13 svarrette>
+% Time-stamp: <Mon 2016-04-11 23:27 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -73,7 +73,7 @@
                                   % \multicolumn{2}{l}{I am a quick learner and a good communicator with the
                                   % ability to work within multi-cultural teams.}
 \end{tabular}
-\vspace{-3em}
+\vspace{-2em}
 
 % ---------- Education -----------
 \input{_education} % ALL
@@ -94,7 +94,7 @@
   \ifShortOrFull{
     \input{_other}
   }
-  % \clearpage
+  \ifshortcv{\clearpage}
 
   % ---------- Graduate student supervision -----------
   \input{_supervision}

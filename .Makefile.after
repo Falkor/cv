@@ -8,24 +8,24 @@ TARGET_PDF = cv-varrette-en.pdf
 ## Prepare the configuration for a given type of CV
 conf_full:
 	@echo "=> configure CV to generate 'FULL' version"
-	@echo "\toggletrue{fullcv}" >> $(CV_CONF)
+	@echo "\toggletrue{fullcv}" > $(CV_CONF)
 
 conf_short:
 	@echo "=> configure CV to generate 'SHORT' version (3 pages)"
-	@echo "\toggletrue{shortcv}" >> $(CV_CONF)
+	@echo "\toggletrue{shortcv}" > $(CV_CONF)
 
 conf_small:
 	@echo "=> configure CV to generate 'SMALL' version (2 pages)"
-	@echo "\toggletrue{smallcv}" >> $(CV_CONF)
+	@echo "\toggletrue{smallcv}" > $(CV_CONF)
 
 conf_tiny:
 	@echo "=> configure CV to generate 'TINY' version"
-	@echo "\toggletrue{tinycv}" >> $(CV_CONF)
+	@echo "\toggletrue{tinycv}" > $(CV_CONF)
 
-full:  conf_full  $(TARGET_PDF)
-short: conf_short $(TARGET_PDF)
-small: conf_small $(TARGET_PDF)
-tiny:  conf_tiny  $(TARGET_PDF)
+full:  conf_full  split_bib $(TARGET_PDF)
+short: conf_short split_bib $(TARGET_PDF)
+small: conf_small split_bib $(TARGET_PDF)
+tiny:  conf_tiny  split_bib $(TARGET_PDF)
 
 ####
 

@@ -1,4 +1,4 @@
-% Time-stamp: <Mon 2016-04-11 22:20 svarrette>
+% Time-stamp: <Mon 2016-04-11 23:58 svarrette>
 % ==============================================================================
 % _publis.tex -- List of my personal publication
 %
@@ -68,14 +68,17 @@
     }{}
   }
 
+  % \iftoggle{fullcv}{Full CV}{}
+  % \iftoggle{smallcv}{Small CV}{}
+  % \iftoggle{shortcv}{Short CV}{}
+  % \iftoggle{tinycv}{Tiny CV}{}
+
   % Selected list for short and small CV
   \ifSmallOrShort{
     \vspace{-1em}
     \paragraph{Selected Publications}~\\
-    \IfFileExists{__sub_selected_\bibfile_main.tex}{
-      \input{__sub_selected_\bibfile_main}
-    }{}
-  }{}
+    \IfFileExists{__sub_selected_\bibfile_main.tex}{\input{__sub_selected_\bibfile_main}}{}
+  }
 
 \end{rubrique}
 

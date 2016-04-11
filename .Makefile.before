@@ -1,5 +1,4 @@
 # -*- mode: makefile; -*-
 # Specific part for CV compilations
 
-TO_MOVE += _cv_config.sty
 BEFORE_TARGETS += conf_full

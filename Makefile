@@ -1,6 +1,6 @@
 ####################################################################################
 # Makefile (configuration file for GNU make - see http://www.gnu.org/software/make/)
-# Time-stamp: <Mon 2016-04-11 23:09 svarrette>
+# Time-stamp: <Mon 2016-04-11 23:59 svarrette>
 #     __  __       _         __ _ _            __   _         _____   __  __
 #    |  \/  | __ _| | _____ / _(_) | ___      / /  | |    __ |_   _|__\ \/ /
 #    | |\/| |/ _` | |/ / _ \ |_| | |/ _ \    / /   | |   / _` || |/ _ \\  /
@@ -281,7 +281,7 @@ split_bib:
 		fi \
 	done
 
-bib: split_bib
+bib:
 	@for f in $(MAIN_TEX); do                                    \
 		bib=`grep "^[\]bibliography{" $$f|sed -e "s/^[\]bibliography{\(.*\)}/\1/"|tr "," " "`;\
 		btsectfile=`grep -c btSect *.tex | grep -v ":0" | cut -d ":" -f 1 | xargs echo`;\
@@ -371,7 +371,7 @@ move_to_trash:
 
 # Clean option
 clean:
-	rm -f $(TARGETS) $(RTF) $(TO_MOVE) $(BACKUP_FILES) *.synctex.gz* CORRECTION_*
+	rm -f $(TARGETS) $(RTF) $(CV_CONF) $(TO_MOVE) $(BACKUP_FILES) *.synctex.gz* CORRECTION_*
 	@if [ ! -z "$(OUTPUT_DIR)" -a -d $(OUTPUT_DIR) -a "$(OUTPUT_DIR)" != "." ]; then       \
 		for f in $(MAIN_TEX); do                                  \
 			base=`basename $$f .tex`;                            \
