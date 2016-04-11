@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Tue 2016-04-12 00:55 svarrette>
+       Time-stamp: <Tue 2016-04-12 01:06 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -53,7 +53,9 @@ The compilation of the files contained in this directory requires the following 
 * (optional) `latex2rtf`   			(rtf generation from LaTeX)
 * a few [CPAN](http://search.cpan.org) modules used in the [perl](http://www.perl.org/) script mentioned above, namely `Data::Dumper`,  `Getopt::Long`,  `Pod::Usage`, `Term::ANSIColor`, `Text::BibTeX` and `Tie::IxHash`.
 
-Please check that your system is correctly configured by running `make check`.
+**`/!\ IMPORTANT:`** Please check that your system is correctly configured by running
+
+> `make check`.
 
 * If you run a Mac OS X, the `seq` command is absent from your system.
 To install it, simply copy the provided script `scripts/seq` into a directory searched by your system (_i.e._ part of your PATH variable), for instance `/usr/local/bin` or `$HOME/bin`.
