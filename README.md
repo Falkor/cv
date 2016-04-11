@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Tue 2016-04-12 00:50 svarrette>
+       Time-stamp: <Tue 2016-04-12 00:51 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -13,7 +13,7 @@
         |_|  \__,_|_|_|\_\___/|_|   |___/  \_____|   \/
 
 
-       Copyright (c) 2016 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+       Copyright (c) 2011-2016 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 
 
 ## Synopsis
