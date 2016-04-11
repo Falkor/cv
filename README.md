@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Tue 2016-04-12 00:53 svarrette>
+       Time-stamp: <Tue 2016-04-12 00:55 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -75,13 +75,13 @@ As mentioned above, the compilation of this document relies on [GNU Make](http:/
 
 Several versions of my CV can be compiled:
 
-| Compilation Command | Output file                | Size    | Description                                            |
-|---------------------|----------------------------|---------|--------------------------------------------------------|
-| `make`              | `cv-varrette-en.pdf`       | 8 pages | Full complete version, holding **all** my publications |
-| `make short`        | `cv-varrette-en_short.pdf` | 3 pages | Short version (3p), holding selected publications      |
-| `make small`        | `cv-varrette-en_small.pdf` | 2 pages | Small version (2p), holding selected publications      |
-| `make tiny`         | `cv-varrette-en_tiny.pdf`  | 1 page  | Tiny version                                           |
-|                     |                            |         |                                                        |
+| Compilation Command | Output file                                                     | Size    | Description                                            |
+|---------------------+-----------------------------------------------------------------+---------+--------------------------------------------------------|
+| `make`              | [`cv-varrette-en.pdf`](releases/cv-varrette-en.pdf)             | 8 pages | Full complete version, holding **all** my publications |
+| `make short`        | [`cv-varrette-en_short.pdf`](releases/cv-varrette-en_short.pdf) | 3 pages | Short version (3p), holding selected publications      |
+| `make small`        | [`cv-varrette-en_small.pdf`](releases/cv-varrette-en_small.pdf) | 2 pages | Small version (2p), holding selected publications      |
+| `make tiny`         | [`cv-varrette-en_tiny.pdf`](releases/cv-varrette-en_tiny.pdf)   | 1 page  | Tiny version                                           |
+|                     |                                                                 |         |                                                        |
 
 When you type `make [type]`, the following process is operated:
 
