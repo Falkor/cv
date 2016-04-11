@@ -1,6 +1,6 @@
 ####################################################################################
 # Makefile (configuration file for GNU make - see http://www.gnu.org/software/make/)
-# Time-stamp: <Thu 2016-04-07 15:54 svarrette>
+# Time-stamp: <Thu 2016-04-07 17:58 svarrette>
 #     __  __       _         __ _ _            __   _         _____   __  __
 #    |  \/  | __ _| | _____ / _(_) | ___      / /  | |    __ |_   _|__\ \/ /
 #    | |\/| |/ _` | |/ / _ \ |_| | |/ _ \    / /   | |   / _` || |/ _ \\  /
@@ -126,6 +126,8 @@ SPLIT_BIB_SCRIPT = ./scripts/split_bibtex_per_type.pl
 MAIN_BIB     = biblio-varrette.bib
 SELECTED_BIB = selected_biblio-varrette.bib
 
+### CV configuration
+CV_CONF = _cv_config.sty
 
 # Local configuration - Kept for compatibity reason
 LOCAL_MAKEFILE = .Makefile.local
@@ -223,7 +225,7 @@ generate:
 			mv $$optimf $$f; \
 		fi; \
 		mv $$f $(RELEASE_DIR)/; \
-		for type in tiny short; do \
+		for type in tiny small short; do \
 			$(MAKE) clean; \
 			$(MAKE) $$type; \
 			if [ -n "$(GS)" ]; then \
@@ -281,21 +283,22 @@ split_bib:
 
 bib: split_bib
 	@for f in $(MAIN_TEX); do                                    \
-	   bib=`grep "^[\]bibliography{" $$f|sed -e "s/^[\]bibliography{\(.*\)}/\1/"|tr "," " "`;\
-	   btsectfile=`grep -c btSect *.tex | grep -v ":0" | cut -d ":" -f 1 | xargs echo`;\
-	   if [ ! -z "$$bib" ]; then                                 \
-	  	echo "==> Now running BibTeX ($$bib used in $$f)";   \
-		$(BIBTEX) `basename $$f .tex`;                       \
-	   fi; \
-	   echo "=> processing the LaTeX files $$btsectfile containing splitted BibTeX entries"; \
-	   btsect=`grep "[\]begin{btSect}"  $$btsectfile | sed -e "s/^[\]begin{btSect}{\(.*\)}/\1/" | wc -l`; \
-	   for btnum in `seq 1 $$btsect`; do  \
-		btf="`basename $$f .tex`$$btnum"; \
-		if [ -f "$$btf.bbl" ]; then \
-			echo "=> running bibtex on `basename $$f .tex`$$btnum"; \
-			$(BIBTEX) `basename $$f .tex`$$btnum;    \
-		fi; \
-	   done;\
+		bib=`grep "^[\]bibliography{" $$f|sed -e "s/^[\]bibliography{\(.*\)}/\1/"|tr "," " "`;\
+		btsectfile=`grep -c btSect *.tex | grep -v ":0" | cut -d ":" -f 1 | xargs echo`;\
+		smallcv=`grep 'small\|short' $(CV_CONF) 2>/dev/null`; \
+		if [ -n "$$smallcv"  ]; then                                \
+			echo "==> Now running BibTeX ($$bib used in $$f)";   \
+			$(BIBTEX) `basename $$f .tex`;                       \
+	   	fi; \
+	   	echo "=> processing the LaTeX files $$btsectfile containing splitted BibTeX entries"; \
+	   	btsect=`grep "[\]begin{btSect}"  $$btsectfile | sed -e "s/^[\]begin{btSect}{\(.*\)}/\1/" | wc -l`; \
+	   	for btnum in `seq 1 $$btsect`; do  \
+			btf="`basename $$f .tex`$$btnum"; \
+			if [ -f "$$btf.bbl" ]; then \
+				echo "=> running bibtex on `basename $$f .tex`$$btnum"; \
+				$(BIBTEX) `basename $$f .tex`$$btnum;    \
+			fi; \
+	   	done;\
 	done
 
 # PDF generation

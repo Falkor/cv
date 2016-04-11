@@ -1,7 +1,7 @@
-% Time-stamp: <Lun 2013-05-20 16:30 svarrette>
+% Time-stamp: <Mon 2016-04-11 22:51 svarrette>
 %=============================================================================
-% _style.sty --  LaTeX style configuration for the document 
-% 
+% _style.sty --  LaTeX style configuration for the document
+%
 % Copyright (c) 2009-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 % .             http://varrette.gforge.uni.lu
 %
@@ -16,10 +16,26 @@
 % Set your name here
 \def\name{Sebastien Varrette}
 
+\usepackage{etoolbox}%
+
+\newtoggle{fullcv}  % Full
+\newtoggle{shortcv} % 3 pages
+\newtoggle{smallcv} % 2 pages
+\newtoggle{tinycv}  % 1 page
+
+% All false by default
+\togglefalse{fullcv}
+\togglefalse{shortcv}
+\togglefalse{smallcv}
+\togglefalse{tinycv}
+
+
+
 % The different types of CV
-\def\cvfull{Full}% Complete version 
+\def\cvfull{Full}%   Complete version
 \def\cvshort{Short}% 3 pages version
-\def\cvtiny{Tiny}% 1 pages version
+\def\cvsmall{Small}% 2 pages version
+\def\cvtiny{Tiny}%   1 pages version
 
 % CV configuration
 \IfFileExists{_cv_config.sty}{
@@ -27,17 +43,15 @@
 }{
   % By default generate the full version of the CV
   \def\cvtype{\cvfull}
+  \toggletrue{fullcv}
 %  \def\cvtype{\cvshort}
 }
 
 \newcommand{\cvcite}[1]{
-  \ifnum\pdfstrcmp{\cvtype}{\cvfull}=0%
-  \cite{#1}
-  \else
-  \fi
+  \iffullcv{\cite{#1}}{}
 }
 
-\usepackage{etoolbox}%
+
 
 \usepackage[english]{babel}
 \usepackage{ae,a4,url}
@@ -117,7 +131,7 @@
 \newcommand{\miniurl}[1]{{\scriptsize\url{#1}}}
 
 %%%%%
-% Add entry for a conference 
+% Add entry for a conference
 % Format:
 %   \conference{shortname}{url}{name}{adress}{date}
 %\newcommand{\conference}[5]{\href{#2}{\textsc{#1}}, {\small #3} (#4, #5)}
@@ -142,6 +156,23 @@
 \newcommand{\ID}{{\small\href{http://www-id.imag.fr}{ID-IMAG}}}
 % Telecoms has now merged completely with ENSIMAG
 \newcommand{\TelecomsENSIMAG}{\href{http://ensimag.grenoble-inp.fr/}{Telecoms ENSIMAG}}
+
+
+% configuration for the CV type
+
+% \forcsvlist{\listadd\SmallOrShort}{\cvsmall, \cvshort}
+% \forcsvlist{\listadd\ShortOrFull} {\cvshort, \cvfull}
+
+\newcommand{\iftinycv}[1]{\iftoggle{tinycv}{#1}{}}
+\newcommand{\unlesstinycv}[1]{\iftoggle{tinycv}{}{#1}}
+\newcommand{\ifsmallcv}[1]{\iftoggle{smallcv}{#1}{}}
+\newcommand{\ifshortcv}[1]{\iftoggle{shortcv}{#1}{}}
+\newcommand{\iffullcv}[1]{\iftoggle{fullcv}{#1}{}}
+
+% Format: \ifinlist{<item>}{<listmacro>}{<true>}{<false>}
+\newcommand{\ifShortOrFull}[1]{\iftoggle{fullcv}{#1}{\iftoggle{shortcv}{#1}{}}}
+
+\newcommand{\ifSmallOrShort}[1]{\iftoggle{smallcv}{#1}{\iftoggle{shortcv}{#1}{}}}
 
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

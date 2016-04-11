@@ -1,4 +1,4 @@
-% Time-stamp: <Wed 2016-04-06 12:27 svarrette>
+% Time-stamp: <Mon 2016-04-11 22:20 svarrette>
 % ==============================================================================
 % _publis.tex -- List of my personal publication
 %
@@ -61,27 +61,21 @@
   }
   ~\\[2em]
 
-  \ifnum\pdfstrcmp{\cvtype}{\cvtiny}=0%
-  \else
-  % \ifx\cvtype\cvfull
-  % \ifstrequal{\cvtype}{\cvfull}
-  \ifnum\pdfstrcmp{\cvtype}{\cvfull}=0%
+  % Detailed list upon FULL cv
+  \iffullcv{
+    \IfFileExists{__sub_\bibfile_main.tex}{
+      \input{__sub_\bibfile_main}
+    }{}
+  }
 
-  % Detailed list
-  \IfFileExists{__sub_\bibfile_main.tex}{
-    \input{__sub_\bibfile_main}
+  % Selected list for short and small CV
+  \ifSmallOrShort{
+    \vspace{-1em}
+    \paragraph{Selected Publications}~\\
+    \IfFileExists{__sub_selected_\bibfile_main.tex}{
+      \input{__sub_selected_\bibfile_main}
+    }{}
   }{}
-
-
-  \else
-  \vspace{-1em}
-  \paragraph{Selected Publications}~\\
-  \IfFileExists{__sub_selected_\bibfile_main.tex}{
-    \input{__sub_selected_\bibfile_main}
-  }{}
-
-  \fi
-  \fi
 
 \end{rubrique}
 
