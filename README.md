@@ -59,17 +59,22 @@ The compilation of the files contained in this directory requires the following 
 
 * If you run a Mac OS X, the `seq` command is absent from your system.
 To install it, simply copy the provided script `scripts/seq` into a directory searched by your system (_i.e._ part of your PATH variable), for instance `/usr/local/bin` or `$HOME/bin`.
-* If a perl module `Module::Name` is missing on your system, install it via [CPAN](http://search.cpan.org) as follows:
+* If a perl module `Module::Name` is missing on your system, install it via [CPAN](http://search.cpan.org).
+   - if you are under Mac OS, install [Homebrew](http://brew.sh) and the [`cpanminus`](https://libraries.io/homebrew/cpanminus) package. Then install the missing modules as follows:
 
-   		$> sudo cpan
-		[...]
-		cpan shell -- CPAN exploration and modules installation (v1.9402)
-		Enter 'h' for help.
+         cpanm Text::BibTeX Tie::IxHash
 
-		cpan[1]> install Module::Name
-		[...]
-		Module::Name installed successfully
-		cpan[2]> quit
+   - otherwise, use [CPAN](http://search.cpan.org) as follows:
+
+   		   $> sudo cpan
+		     [...]
+		     cpan shell -- CPAN exploration and modules installation (v1.9402)
+		     Enter 'h' for help.
+
+		     cpan[1]> install Module::Name
+		     [...]
+		     Module::Name installed successfully
+		     cpan[2]> quit
 
 ## Compilation of the LaTeX sources
 
