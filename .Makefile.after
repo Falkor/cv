@@ -54,7 +54,7 @@ check:
 			echo "OK"; \
 		else \
 			echo "*** /!\ ERROR ($$p not installed)***"; \
-			echo "*** /!\ Install the missing module via cpan typically ('sudo cpan' followed by 'install $$p')."; \
+			echo "*** /!\ Install the missing module via cpanminus typically (using 'cpanm install $$p')."; \
 			echo "*** /!\ Once installed, re-run 'make check' to check your config"; \
 			exit 1; \
 		fi; \

@@ -1,0 +1,157 @@
+#!/usr/bin/env ruby
+#########################################
+# split_bibtex_per_type.rb
+# @author Sebastien Varrette <Sebastien.Varrette@uni.lu>
+# Time-stamp: <Fri 2018-04-06 23:51 svarrette>
+#
+# @description: New version of the splitting script each a single BibTeX file
+# .             into several sub-file, each containing entries of the same type.
+#
+# Copyright (c) 2018 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+# .
+##############################################################################
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+# Unported License (CC-by-nc-sa 3.0)
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  For more details, please visit:
+#              http://creativecommons.org/licenses/by-nc-sa/3.0/
+################################################################################
+#
+# Run 'bundle install' to install all required packages
+#
+
+# Exit cleanly from an early interrupt
+Signal.trap("INT") { exit 1 }
+
+require 'bibtex'
+require 'citeproc'
+require 'csl/styles'
+require 'falkorlib'
+require 'thor'
+require 'thor/error'
+
+# Bibtex categories and titles
+CATEGORIES = {
+  :phdthesis                   => { :title => 'PhD Thesis' },
+  :book                        => { :title => 'Books' },
+  :incollection                => { :title => 'Magazine' },
+  :inbook                      => { :title => 'Book Chapters' },
+  :article                     => { :title => 'International journals' },
+  :inproceedings               => { :title => 'Conferences Articles' },
+  :inproceedings_default       => { :title => 'International conferences with proceedings and reviews' },
+  :inproceedings_national      => { :title => '(French) national conferences with proceedings and reviews' },
+  :inproceedings_noreview      => { :title => 'International conferences with proceedings' },
+  :inproceedings_noproceedings => { :title => 'International conferences with reviews' },
+  :mastersthesis               => { :title => 'Masters Thesis' },
+  :techreport                  => { :title => 'Technical Reports' },
+  :misc                        => { :title => 'Miscellaneous' },
+  :conference                  => { :title => 'Conferences' },
+  :proceedings                 => { :title => 'Proceedings' },
+}
+
+module ManageBibtex
+
+  include FalkorLib::Common
+
+  # CLI Application, based on [Thor](http://whatisthor.com)
+  class CLI < ::Thor
+    package_name 'Falkor Manage BibTeX (split)'
+
+    class_option :verbose, :aliases => '-v', :type => :boolean,
+                 :desc => "Enable verbose output mode"
+    class_option :debug,   :type => :boolean, :default => FalkorLib.config[:debug],
+                 :desc => "Enable debug output mode"
+    class_option :dry_run, :aliases => '-n', :type => :boolean,
+                 :desc => "Perform a trial run with (normally) no changes made"
+
+    map %w[--help -h] => :help
+
+    ###### split ######
+    method_option :title, :type => :boolean, :default => true,
+                  :aliases => '-t', :desc => "Add title section to the main LaTeX file"
+
+    #......................................
+    desc "split [options]", "Split the bibtex into subfiles"
+    def split(bib = '../biblio-varrette.bib')
+      error "Unable to find the BibTeX file #{bib}" unless File.exist?(bib)
+      b = BibTeX.open(bib)
+      config = CATEGORIES.clone
+      # First pass to generate sub biblios
+      config.each do |t,h|
+        #info "Type: #{t}"
+        ############ Sub BibTeX #{t} ############
+        h[:filename] = "__sub_#{File.basename(bib, '.bib')}_#{t}.bib"
+        if t.to_s !~ /inproceedings_.*/
+          subbib = b["@#{t}"]
+        else
+          category = t.to_s.gsub(/inproceedings_/, '')
+          if category == 'default'
+            subbib = b.query(:all, '@inproceedings') { |e| ! e.fields.include?(:type) }
+          else
+            subbib = b.query(:all, "@inproceedings[type=#{category}]")
+          end
+        end
+        h[:size] = subbib.length
+        #info "==> creating sub Bibtex file '#{h[:filename]}' (size #{h[:size]}) "
+        File.open(h[:filename], 'w') do |file|
+          subbib.each do |entry|
+            file.write entry.to_s
+          end
+        end
+      end
+      ############ Main LaTeX and Summary ############
+      main_filename    = "__sub_#{File.basename(bib, '.bib')}_main.tex"
+      summary_filename = "__sub_#{File.basename(bib, '.bib')}_summary.tex"
+      #puts "=> create file '#{main_filename}' and '#{summary_filename}"
+      File.open(summary_filename, 'w') do |summary|
+        summary.write  %{
+\\begin{table}[ht]
+    \\centering
+    \\begin{tabular}{|c|c|}
+        \\hline
+        \\rowcolor{lightgray}
+        \\textbf{Publication category} & \\textbf{Quantity}
+        \\\\
+        \\hline}
+        File.open(main_filename, 'w') do |main|
+          ####################
+          config.each do |t,h|
+            next if (h[:size] == 0)
+            next if t == :inproceedings
+            if options[:title]
+              main.write %{
+        %       \\section{#{h[:title]}  (#{h[:size]})}
+                \\noindent \\textbf{#{h[:title]}}  (#{h[:size]})
+                \\label{sec:publis:details:#{File.basename(bib, '.bib')}:#{t}}}
+            end
+            main.write %{
+                \\begin{btSect}{#{h[:filename]}}
+                   \\btPrintAll
+                \\end{btSect}}
+            summary.write %{
+         #{h[:title]} & #{h[:size]} \\\\}
+
+          end # config.each
+          #################
+        end # main filename
+
+        summary.write %{
+        \\hline
+        \\multicolumn{1}{r}{\\textbf{Total:}} &
+        \\multicolumn{1}{c}{\\textbf{#{b.length}}} \\\\
+    \\end{tabular}
+\\end{table}}
+      end # summary filename
+    end # split
+
+  end # class CLI
+end # module SplitBibtex
+
+begin
+  ManageBibtex::CLI.start(ARGV, :debug => true)
+rescue Thor::InvocationError => e
+  error e.message.gsub(/^ERROR:/, '')
+end

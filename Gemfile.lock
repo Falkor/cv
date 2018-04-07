@@ -1,0 +1,85 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    CFPropertyList (2.2.8)
+    activesupport (4.2.10)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    artii (2.1.2)
+    awesome_print (1.8.0)
+    bibtex-ruby (4.4.6)
+      latex-decode (~> 0.0)
+    citeproc (1.0.7)
+      namae (~> 1.0)
+    coderay (1.1.2)
+    concurrent-ruby (1.0.5)
+    configatron (3.2.0)
+    csl (1.5.0)
+      namae (~> 1.0)
+    csl-styles (1.0.1.8)
+      csl (~> 1.0)
+    deep_merge (1.0.1)
+    diffy (3.2.0)
+    facter (2.4.6)
+    facter (2.4.6-universal-darwin)
+      CFPropertyList (~> 2.2.6)
+    falkorlib (0.7.9)
+      activesupport (~> 4.0)
+      artii (>= 2.1)
+      awesome_print (~> 1.2)
+      configatron (~> 3.2)
+      deep_merge (~> 1.0.1)
+      diffy (>= 3.0)
+      facter (~> 2.4.1)
+      git_remote_branch (~> 0)
+      json (~> 1.8)
+      license-generator (~> 0)
+      logger (>= 1.2.8)
+      minigit (~> 0)
+      rake (~> 10.1, >= 10.1.0)
+      term-ansicolor (~> 1.3)
+      thor (>= 0.19)
+      thor-zsh_completion
+    git_remote_branch (0.3.8)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    json (1.8.6)
+    latex-decode (0.3.1)
+    license-generator (0.4.1)
+      thor
+    logger (1.2.8)
+    method_source (0.9.0)
+    minigit (0.0.4)
+    minitest (5.11.3)
+    namae (1.0.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    rake (10.5.0)
+    term-ansicolor (1.6.0)
+      tins (~> 1.0)
+    thor (0.20.0)
+    thor-zsh_completion (0.1.4)
+      thor (~> 0)
+    thread_safe (0.3.6)
+    tins (1.16.3)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+    unicode (0.4.4.4)
+
+PLATFORMS
+  ruby
+  x86_64-darwin-16
+
+DEPENDENCIES
+  bibtex-ruby
+  citeproc
+  csl-styles
+  falkorlib
+  pry
+  unicode
+
+BUNDLED WITH
+   1.16.1

@@ -1,7 +1,7 @@
 %=======================================================================
 % biblio-varrette.bib -- my personnal BibTeX entries
 %
-% Copyright (c) 2004-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+% Copyright (c) 2004-2011 Sebastien Varrette
 %               http://varrette.gforge.uni.lu
 %
 %  ____  _ _     _ _         ______     __                  _   _
@@ -32,8 +32,21 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ Books (4) and Book Chapters (8)
+%%%§ Books (5) and Book Chapters (8)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@Book{DLTV_Blockchains18,
+  author =       {J.-G. Dumas and P. Lafourcade and A. Tichit and S. Varrette},
+  title =        {Les blockchains en 50 questions: comprendre le fonctionnement et
+les enjeux de cette technologie innovante},
+  publisher =    {Dunod},
+  year =         {2018},
+  month =        {Juin},
+  series =       {Collection Sciences Sup},
+  edition =      {1er},
+  isbn =         {978-2-1007-7924-6},
+  note =         {224 pages, in French},
+},
+
 @Book{DRTV_FoundationCoding15,
   author =       {J.-G. Dumas and J.-L. Roch and E. Tannier and S. Varrette},
   title =        {{Foundations of Coding: Compression, Encryption, Error-Correction}},
@@ -117,12 +130,12 @@
   OPTannote = 	 {}
 }
 
-@InBook{BCCDV_DistSyst11_Chap10,
+@InBook{BCCDV_DistSyst11_Chap11,
   author =       {B. Bertholon and C. C\'erin and C. Coti and J.-C. Dubacq and S. Varrette},
   OPTeditor =    {S. Haddad and F. Kordon and L. Pautet and L. Petrucci},
   title =        {{Distributed Systems (volume 1); Design and Algorithms}},
   chapter =      {Practical Security in Distributed Systems},
-  publisher =    {Whiley},
+  publisher =    {Wiley},
   year =         {2011},
   OPTmonth =     {},
   volume =       {1},
@@ -135,8 +148,7 @@
   author =       {C. C\'erin and J.-C. Dubacq and T. H\'erault and R. Keryell and
                   J.-L. Pazat and J.-L. Roch and S. Varrette},
   OPTeditor =        {F. Kordon and L. Pautet and L. Petrucci},
-  title =        {{Syst\`emes r\'epartis en action : de l'embarqu\'e aux syst\`emes \`a
-                  large \'echelle}},
+  title =        {{Syst\`emes r\'epartis en action : de l'embarqu\'e aux syst\`emes \`a large \'echelle}},
   chapter =      {S\'ecurit\'e dans les grilles de calcul},
   publisher =    {Herm\`es},
   year =         {2008},
@@ -262,7 +274,7 @@
   series =       {{Num\'ero sp\'ecial : La s\'ecurit\'e des syst\`emes d'information
                   num\'erique}},
   month =        {May},
-  url =          {\url{http://actu.aae-ensimag.com/fr/index/revue.html}}
+  url =          {\url{https://www.ensimag-alumni.com/articles/revue-i-mag-n-37-la-securite-des-systemes-d-information-numerique}}
 }
 
 
@@ -367,8 +379,38 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International conferences with proceedings and reviews (44)
+%%%§ International conferences with proceedings and reviews (46)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@InProceedings{IVP_ICOIN18,
+  author =       {A. A.Z.A. Ibrahim and S. Varrette and P. Bouvry},
+  title =        {{PRESENCE: Toward a Novel Approach for Performance Evaluation of Mobile Cloud SaaS Web Services
+}},
+  booktitle =    {Proc. of the 32nd IEEE Intl. Conf. on Information Networking (ICOIN 2018)},
+  year =         {2018},
+  OPTvolume =    {},
+  OPTnumber =    {},
+  OPTseries =    {},
+  OPTpages =     {},
+  month =        {January},
+  address =      {Chiang Mai, Thailand},
+  publisher =    {IEEE Computer Society},
+  note =         {\textbf{Best Paper Award}},
+}
+
+@InProceedings{RWLBVP_ICNAAM17,
+  author =       {A. Rousset and A. W. Mainassara Chekaraou and Y. Liao and X. Besseron and S. Varrette and B. Peters},
+  title =        {{Comparing Broad-Phase Interaction Detection Algorithms for Multiphysics DEM Applications}},
+  booktitle =    {Proc.of the 15th Intl. Conf. of Numerical Analysis and Applied Mathematics (ICNAAM'17)},
+  year =         {2017},
+  publisher =    {American Institute of Physics (AIP))},
+  OPTvolume =    {},
+  OPTnumber =    {},
+  OPTseries =    {},
+  OPTpages =     {},
+  month =        {Sept},
+  address =      {Thessaloniki, Greece},
+}
+
 @InProceedings{EVB_CLOUD16,
   author =       {J. Emeras and S. Varrette and P. Bouvry},
   title =        {{Amazon Elastic Compute Cloud (EC2) vs. in-House HPC Platform: a Cost Analysis}},
@@ -382,19 +424,13 @@
 }
 
 @inProceedings{EBVBP_ISUM2016,
-  author =       {J. Emeras, X. Besseron, S. Varrette, P. Bouvry and B. Peters},
+  author =       {J. Emeras and X. Besseron and S. Varrette and P. Bouvry and B. Peters},
   title =        {{HPC or the Cloud: a cost study over an XDEM Simulation}},
   booktitle =    {Proc. of the 7th International Supercomputing Conference in Mexico (ISUM 2016)},
-  OPTpublisher =    {},
-  OPTseries =       {},
-  OPTvolume =       {},
   year =         {2016},
   month =        {April},
   address =      {Puebla, M\'exico},
-  OPTpages =        {},
   url =          {\url{http://www.isum.mx/}},
-  OPTisbn =      {},
-  OPTdoi =       {},
 }
 
 @inProceedings{MVB_Evostar2016,
@@ -409,20 +445,6 @@
   address =      {Porto, Portugal},
   OPTpages =        {},
   url =          {\url{http://www.evostar.org/2016/}},
-  OPTisbn =      {},
-  OPTdoi =       {},
-}
-
-@InProceedings{VDB_ECSIM15,
-  author =       {S. Varrette and Bernabe Dorronsorro and P. Bouvry},
-  title =        {{An LLVM-based Approach to Generate Energy Aware Code by means of MOEAs}},
-  booktitle =    {Proc. of the 7th European Symposium on Computational Intelligence and Mathematics.(ESCIM 2015)},
-  year =         {2015},
-  month =        {Oct 7--10},
-  address =      {C\'adiz, Spain},
-  OPTpublisher =    {IEEE Computer Society},
-  OPTpages =        {},
-  url =          {\url{http://escim2015.uca.es/}},
   OPTisbn =      {},
   OPTdoi =       {},
 }
@@ -1251,12 +1273,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ Other misc publications (8 technical reports)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%@TechReport{Var_UrT09,
-%  author =       {S. Varrette},
-%  title =        {{Urban Terror [Server] Guide}},
-%  year =         2009,
-%  urlpdf =       {download/polys/urt_setup.pdf},
-%}
 
 @TechReport{VGVB_HPCSA14,
   author =       {V. Plugaru and F. Georgatos and S. Varrette and P.Bouvry},
