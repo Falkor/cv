@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Sun 2018-04-08 00:30 svarrette>
+       Time-stamp: <Sun 2018-04-08 00:31 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -41,7 +41,7 @@ This repository is hosted on [Github](https://github.com/Falkor/cv).
 
 This will initiate the [git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) layout for this repository.
 
-### LaTeX and Perl modules
+### LaTeX and Ruby gems
 
 The compilation of the files contained in this directory requires the following binaries :
 
