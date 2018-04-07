@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Sun 2018-04-08 00:27 svarrette>
+       Time-stamp: <Sun 2018-04-08 00:30 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -47,34 +47,10 @@ The compilation of the files contained in this directory requires the following 
 
 * `latex`, `pdflatex` and `make` 	(for compilation)
 * `bibtex` 	             			(for bibliography/references)
-* `perl`                   			(the script that split the bibliography is based on Perl)
-* `seq` - this command is missing on Mac OS X. See below for a fix.
+* `ruby`, [`rvm`](https://rvm.io/)  (the script that split the bibliography is based on Ruby)
+    - run `bundle install` to initialize the repository with the appropriate gems.
 * (optional) `latex2html`  			(html generation from LaTeX)
 * (optional) `latex2rtf`   			(rtf generation from LaTeX)
-* a few [CPAN](http://search.cpan.org) modules used in the [perl](http://www.perl.org/) script mentioned above, namely `Data::Dumper`,  `Getopt::Long`,  `Pod::Usage`, `Term::ANSIColor`, `Text::BibTeX` and `Tie::IxHash`.
-
-**`/!\ IMPORTANT:`** Please check that your system is correctly configured by running
-
-> `make check`.
-
-* If you run a Mac OS X, the `seq` command is absent from your system.
-To install it, simply copy the provided script `scripts/seq` into a directory searched by your system (_i.e._ part of your PATH variable), for instance `/usr/local/bin` or `$HOME/bin`.
-* If a perl module `Module::Name` is missing on your system, install it via [CPAN](http://search.cpan.org).
-   - if you are under Mac OS, install [Homebrew](http://brew.sh) and the [`cpanminus`](https://libraries.io/homebrew/cpanminus) package. Then install the missing modules as follows:
-
-         cpanm Text::BibTeX Tie::IxHash
-
-   - otherwise, use [CPAN](http://search.cpan.org) as follows:
-
-   		   $> sudo cpan
-		     [...]
-		     cpan shell -- CPAN exploration and modules installation (v1.9402)
-		     Enter 'h' for help.
-
-		     cpan[1]> install Module::Name
-		     [...]
-		     Module::Name installed successfully
-		     cpan[2]> quit
 
 ## Compilation of the LaTeX sources
 
@@ -190,6 +166,32 @@ For a CV, it make more sense to me to present my bibliographic entries by type, 
 
 The parsing in itself is made using the [`Text::BibTeX`](http://search.cpan.org/~ambs/Text-BibTeX-0.56/lib/Text/BibTeX.pm) module so it should be installed on your system.
 Some additional modules are required (`Tie::IxHash` for instance). Once this script behave normally on your system, you should not take care of it as it will do the job transparently.
+
+In details, a few [CPAN](http://search.cpan.org) modules used in the [perl](http://www.perl.org/) script are `Data::Dumper`,  `Getopt::Long`,  `Pod::Usage`, `Term::ANSIColor`, `Text::BibTeX` and `Tie::IxHash`.
+
+**`/!\ IMPORTANT:`** Please check that your system is correctly configured by running
+
+> `make check`.
+
+* If you run a Mac OS X, the `seq` command is absent from your system.
+To install it, simply copy the provided script `scripts/seq` into a directory searched by your system (_i.e._ part of your PATH variable), for instance `/usr/local/bin` or `$HOME/bin`.
+* If a perl module `Module::Name` is missing on your system, install it via [CPAN](http://search.cpan.org).
+   - if you are under Mac OS, install [Homebrew](http://brew.sh) and the [`cpanminus`](https://libraries.io/homebrew/cpanminus) package. Then install the missing modules as follows:
+
+         cpanm Text::BibTeX Tie::IxHash
+
+   - otherwise, use [CPAN](http://search.cpan.org) as follows:
+
+   		   $> sudo cpan
+		     [...]
+		     cpan shell -- CPAN exploration and modules installation (v1.9402)
+		     Enter 'h' for help.
+
+		     cpan[1]> install Module::Name
+		     [...]
+		     Module::Name installed successfully
+		     cpan[2]> quit
+
 
 For those interested, here is an extract of the help message for this script:
 
