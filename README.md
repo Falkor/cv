@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Tue 2016-04-12 01:06 svarrette>
+       Time-stamp: <Sun 2018-04-08 00:27 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -86,7 +86,6 @@ Several versions of my CV can be compiled:
 |---------------------|-----------------------------------------------------------------|---------|--------------------------------------------------------|
 | `make`              | [`cv-varrette-en.pdf`](releases/cv-varrette-en.pdf)             | 8 pages | Full complete version, holding **all** my publications |
 | `make short`        | [`cv-varrette-en_short.pdf`](releases/cv-varrette-en_short.pdf) | 3 pages | Short version (3p), holding selected publications      |
-| `make small`        | [`cv-varrette-en_small.pdf`](releases/cv-varrette-en_small.pdf) | 2 pages | Small version (2p), holding selected publications      |
 | `make tiny`         | [`cv-varrette-en_tiny.pdf`](releases/cv-varrette-en_tiny.pdf)   | 1 page  | Tiny version                                           |
 |                     |                                                                 |         |                                                        |
 
@@ -177,7 +176,12 @@ Also, you will have the generated PDF for the freshly released version as a file
 └── selected_biblio-varrette.bib   # Selected bibliographic entries
 ```
 
-### Bibliography management
+### [New] Bibliography management
+
+I maintain a single [BibTeX](http://www.bibtex.org/) file `biblio-varrette.bib` to collect the entries of my publications.
+A script `script/manage_bibtex` help me to split that biblio in multiple part.
+
+### [Old] Bibliography management
 
 As many others, I maintain a single [BibTeX](http://www.bibtex.org/) file `biblio-varrette.bib` to collect the entries of my publications.
 For a CV, it make more sense to me to present my bibliographic entries by type, and to automate the collection of statistics on them (number of entries per type etc.), I  made a perl script (`scripts/split_bibtex_per_type.pl`) for this purpose. For details about its usage, run
