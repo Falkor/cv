@@ -1,6 +1,6 @@
 ####################################################################################
 # Makefile (configuration file for GNU make - see http://www.gnu.org/software/make/)
-# Time-stamp: <Mon 2016-04-11 23:59 svarrette>
+# Time-stamp: <Fri 2018-04-06 23:52 svarrette>
 #     __  __       _         __ _ _            __   _         _____   __  __
 #    |  \/  | __ _| | _____ / _(_) | ___      / /  | |    __ |_   _|__\ \/ /
 #    | |\/| |/ _` | |/ / _ \ |_| | |/ _ \    / /   | |   / _` || |/ _ \\  /
@@ -122,7 +122,7 @@ TARGETS        = $(BEFORE_TARGETS) $(TARGET_PDF)
 TARGETS_DEPS = $(TEX_SRC) $(MARKDOWN_SRC) $(STYLE_SRC) $(BIB_SRC) $(FIGURES)
 
 ### Automatic split of bibliography
-SPLIT_BIB_SCRIPT = ./scripts/split_bibtex_per_type.pl
+SPLIT_BIB_SCRIPT = ./scripts/manage_bibtex
 MAIN_BIB     = biblio-varrette.bib
 SELECTED_BIB = selected_biblio-varrette.bib
 
@@ -274,10 +274,10 @@ fast: $(TARGETS_DEPS)
 ### Bibliography aspects
 split_bib:
 	@for bb in $(MAIN_BIB) $(SELECTED_BIB); do \
-		[ "$$bb" == "$(SELECTED_BIB)" ] && script_opt=" --notitle" || script_opt=""; \
+		[ "$$bb" == "$(SELECTED_BIB)" ] && script_opt=" --no-title" || script_opt=""; \
 		if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$$bb" ]; then \
 			echo "=> processing the BibTeX file $$b with $(SPLIT_BIB_SCRIPT) $$script_opt"; \
-	   		$(SPLIT_BIB_SCRIPT) $$script_opt $$bb; \
+	   		$(SPLIT_BIB_SCRIPT) split $$script_opt $$bb; \
 		fi \
 	done
 
@@ -285,14 +285,15 @@ bib:
 	@for f in $(MAIN_TEX); do                                    \
 		bib=`grep "^[\]bibliography{" $$f|sed -e "s/^[\]bibliography{\(.*\)}/\1/"|tr "," " "`;\
 		btsectfile=`grep -c btSect *.tex | grep -v ":0" | cut -d ":" -f 1 | xargs echo`;\
+		echo "btsectfile=$$btsectfile"; \
 		smallcv=`grep 'small\|short' $(CV_CONF) 2>/dev/null`; \
 		if [ -n "$$smallcv"  ]; then                                \
 			echo "==> Now running BibTeX ($$bib used in $$f)";   \
 			$(BIBTEX) `basename $$f .tex`;                       \
-	   	fi; \
-	   	echo "=> processing the LaTeX files $$btsectfile containing splitted BibTeX entries"; \
-	   	btsect=`grep "[\]begin{btSect}"  $$btsectfile | sed -e "s/^[\]begin{btSect}{\(.*\)}/\1/" | wc -l`; \
-	   	for btnum in `seq 1 $$btsect`; do  \
+	  fi; \
+	 	echo "=> processing the LaTeX files $$btsectfile containing splitted BibTeX entries"; \
+	 	btsect=`grep "[\]begin{btSect}"  $$btsectfile | sed -e "s/^[\]begin{btSect}{\(.*\)}/\1/" | wc -l`; \
+	 	for btnum in `seq 1 $$btsect`; do  \
 			btf="`basename $$f .tex`$$btnum"; \
 			if [ -f "$$btf.bbl" ]; then \
 				echo "=> running bibtex on `basename $$f .tex`$$btnum"; \
@@ -397,7 +398,9 @@ clean:
 	   echo "==> Now removing $(HTML_DIR)";                      \
 	   rm  -rf $(HTML_DIR);                                      \
 	fi
-	@if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$(MAIN_BIB)" ]; then \
+	rm -f __sub_*
+
+#@if [ -x $(SPLIT_BIB_SCRIPT) -a -n "$(MAIN_BIB)" ]; then \
 		$(SPLIT_BIB_SCRIPT) --force --clean $(MAIN_BIB); \
 		$(SPLIT_BIB_SCRIPT) --force --clean $(SELECTED_BIB); \
 	fi

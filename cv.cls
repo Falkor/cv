@@ -1,4 +1,4 @@
-%% Copyright (c) 2003-2009 Fr????ic Meynadier  
+%% Copyright (c) 2003-2009 Fr????ic Meynadier
 %% Original : Eric-Olivier Le Bigot
 %% Modifs : Fr????ic Meynadier (Frederic.Meynadier@obspm.fr)
 %% Modifs : Dominique Quatravaux (dom@idealx.com) - conversion en
@@ -6,7 +6,7 @@
 %% 03/01/03
 %% Modifs : application d'un patch de Jonas Kahn, 2007-12-19
 %% Modifs : anonymisation de l'exemple en commentaire, 2009-02-25
-%% Modifs : Sebastien Varrette (Sebastien.Varrette@uni.lu) 
+%% Modifs : Sebastien Varrette (Sebastien.Varrette@uni.lu)
 
 %% Permission is hereby granted, free of charge, to any person obtaining a
 %% copy of this software and associated documentation files (the
@@ -54,14 +54,14 @@
 \def\@textbottom{\vspace*{\stretch{1}}}
 \makeatother
 
-  
+
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    %      Param??res r??lables          %
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % L'utilisateur peut les red??inir ceux-ci ?\renewcommand? si besoin :
 
-\newcommand{\espaceInterRubrique}{\medskip\vspace{2em}}
+\newcommand{\espaceInterRubrique}{\medskip\vspace{0.75em}}
 
 % L'utilisateur peut les red??inir ceux-ci ?\setlength? si besoin :
 
@@ -115,14 +115,14 @@
 %
 % Lorsqu'on omet le param??re entre crochets, cela a pour effet
 % de donner la dimension \linewidth ??la premi??e colonne (mais la
-% structure reste celle d'un tableau ??deux colonnes, donc ne pas oublier 
+% structure reste celle d'un tableau ??deux colonnes, donc ne pas oublier
 % d'??rire '\\' pour les retours ??la ligne).
 
 \makeatletter
 
 \newlength{\@cvlenB}\newlength{\@cvlenC}
 
-\newenvironment{rubriquetableau}[2][\linewidth]%% "rubriquetableau" 
+\newenvironment{rubriquetableau}[2][\linewidth]%% "rubriquetableau"
 %						% prend deux arguments
 {\bgroup\rubrique{#2}%     % le second argument : titre
 \setlength{\@cvlenB}{#1}%  % Le premier argument :indentation
@@ -181,6 +181,3 @@
 \noindent\begin{minipage}{\linewidth}\hspace{-1cm}%
 }
 {\end{minipage}\vspace{0.5em}}
-
-
-
