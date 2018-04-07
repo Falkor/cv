@@ -61,7 +61,7 @@
 
 % L'utilisateur peut les red??inir ceux-ci ?\renewcommand? si besoin :
 
-\newcommand{\espaceInterRubrique}{\medskip\vspace{1em}}
+\newcommand{\espaceInterRubrique}{\medskip\vspace{0.75em}}
 
 % L'utilisateur peut les red??inir ceux-ci ?\setlength? si besoin :
 

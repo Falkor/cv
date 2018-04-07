@@ -4,8 +4,8 @@
 % Copyright (c) 2004-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 %               http://varrette.gforge.uni.lu
 %
-%  ____  _ _     _ _         ______     __                  _   _       
-% | __ )(_) |__ | (_) ___   / ___\ \   / /_ _ _ __ _ __ ___| |_| |_ ___ 
+%  ____  _ _     _ _         ______     __                  _   _
+% | __ )(_) |__ | (_) ___   / ___\ \   / /_ _ _ __ _ __ ___| |_| |_ ___
 % |  _ \| | '_ \| | |/ _ \  \___ \\ \ / / _` | '__| '__/ _ \ __| __/ _ \
 % | |_) | | |_) | | | (_) |  ___) |\ V / (_| | |  | | |  __/ |_| ||  __/
 % |____/|_|_.__/|_|_|\___/  |____(_)\_/ \__,_|_|  |_|  \___|\__|\__\___|
@@ -14,8 +14,20 @@
 %=======================================================================
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ Books / and Book Chapters 
+%%%§ Books / and Book Chapters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@Book{DLTV_Blockchains18,
+  author =       {J.-G. Dumas and P. Lafourcade and A. Tichit and S. Varrette},
+  title =        {Les blockchains en 50 questions: comprendre le fonctionnement et
+les enjeux de cette technologie innovante},
+  publisher =    {Dunod},
+  year =         {2018},
+  month =        {Juin},
+  series =       {Collection Sciences Sup},
+  edition =      {1er},
+  isbn =         {978-2-1007-7924-6},
+  note =         {224 pages, in French},
+},
 
 @Book{DRTV_FoundationCoding15,
   author =       {J.-G. Dumas and J.-L. Roch and E. Tannier and S. Varrette},
@@ -31,6 +43,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ International journals
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@Article{NESUS_WG3_SuperFRI15,
+  author = 		 {P. Bouvry and R. Mayer and J. Muszy\'nski and D. Petcu and A. Rauber and G. Tempesti and T. Trinh and S. Varrette},
+  title = 		 {{Resilience within Ultrascale Computing System: Challenges and Opportunities from Nesus Project}},
+  journal = 	 {Intl. J. on Supercomputing Frontiers and Innovations},
+  year = 		 {2015},
+  volume = 	     {2},
+  number = 	     {2},
+  doi =          {10.14529/jsfi1502},
+  pages = 	     {46--63},
+}
+
 @Article{GVPPB_CCPE14,
   author =       {M. Guzek and S. Varrette and V. Plugaru and J. E. Pecero and P. Bouvry},
   title =        {{A Holistic Model of the Performance and the Energy-Efficiency of Hypervisors in an HPC Environment}},
@@ -61,8 +84,36 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International conferences with proceedings and reviews 
+%%%§ International conferences with proceedings and reviews
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@InProceedings{IVP_ICOIN18,
+  author =       {A. A.Z.A. Ibrahim and S. Varrette and P. Bouvry},
+  title =        {{PRESENCE: Toward a Novel Approach for Performance Evaluation of Mobile Cloud SaaS Web Services
+}},
+  booktitle =    {Proc. of the 32nd IEEE Intl. Conf. on Information Networking (ICOIN 2018)},
+  year =         {2018},
+  OPTvolume =    {},
+  OPTnumber =    {},
+  OPTseries =    {},
+  OPTpages =     {},
+  month =        {January},
+  address =      {Chiang Mai, Thailand},
+  publisher =    {IEEE Computer Society},
+  note =         {\textbf{Best Paper Award}},
+}
+
+@InProceedings{EVB_CLOUD16,
+  author =       {J. Emeras and S. Varrette and P. Bouvry},
+  title =        {{Amazon Elastic Compute Cloud (EC2) vs. in-House HPC Platform: a Cost Analysis}},
+  booktitle =    {Proc. of the 9th IEEE Intl. Conf. on Cloud Computing (CLOUD 2016)},
+  year =         {2016},
+  month =        {June},
+  address =      {San Francisco, USA},
+  publisher =    {IEEE Computer Society},
+  OPTnote =      {Acceptance Rate: 15\%},
+  OPTannote =    {}
+}
+
 @InProceedings{PVB_CloudCom14,
   author = 		 {V. Plugaru and S. Varrette and P. Bouvry},
   title = 		 {{Performance Analysis of Cloud Environments on Top of Energy-Efficient Platforms Featuring Low Power Processors}},
@@ -81,7 +132,7 @@
 }
 
 @InProceedings{MVJB_NSS14,
-  author =       {J. Muszy\'nski and S. Varrette and J.L. Jim\'enez Laredo and P. Bouvry}, 
+  author =       {J. Muszy\'nski and S. Varrette and J.L. Jim\'enez Laredo and P. Bouvry},
   title =        {{Exploiting the Hard-wired Vulnerabilities of Newscast via Connectivity-splitting Attack}},
   booktitle =    {Proc. of the IEEE Intl. Conf. on Network and System Security (NSS 2014)},
   year =         {2014},
@@ -92,21 +143,6 @@
   month =        {Oct},
   address =      {Xi'an, China},
   note =         {\textbf{Best Student Paper Award}},
-  OPTannote =    {}
-}
-
-
-
-@InProceedings{VBCG_HPCS14,
-  author =       {S. Varrette and P. Bouvry and H. Cartiaux and F. Georgatos},
-  title =        {{Management of an Academic HPC Cluster: The UL Experience}},
-  booktitle =    {Proc. of the 2014 Intl. Conf. on High Performance Computing \& Simulation (HPCS 2014)},
-  year =         {2014},
-  OPTpages =     {},
-  month =        {July},
-  address =      {Bologna, Italy},
-  publisher =    {IEEE},
-  OPTnote =      {},
   OPTannote =    {}
 }
 
@@ -138,49 +174,11 @@
   OPTnote =		 {Acceptance Rate: 18\% (36/196)},
 }
 
-@InProceedings{DVB_PPAM09,
-  author =		 {D. Dunlop and S. Varrette and P. Bouvry},
-  title =		 {{Deskilling HPL - Using an Evolutionary Algorithm to Automate
-                  Cluster Benchmarking}},
-  booktitle =	 {Proc. of 8th Intl. Conf. on Parallel Processing and Applied
-                  Mathematics - Part II (PPAM 2009)},
-  month =		 {Sept. 13--16},
-  year =		 {2009},
-  series =		 {LNCS},
-  volume =		 {6068},
-  publisher =	 {Springer Verlag},
-  pages =        {102--114},
-  address =		 {Wroclaw, Poland},
-  isbn =         {978-3-642-14402-8},
-  url =			 {\url{http://www.ppam.pl/2009/}},
-  doi =          {http://dx.doi.org/10.1007/978-3-642-14403-5},
-  note =         {Publication appeared in 2010},
-  urlpdf =		 {download/publis/ppam2009.pdf},
-}
-
-
-@InProceedings{RV_Pasco07,
-  author =		 {J.-L. Roch and S. Varrette},
-  title =		 {{Probabilistic Certification of Divide \& Conquer Algorithms
-                  on Global Computing Platforms.  Application to Fault-Tolerant
-                  Exact Matrix-Vector Product}},
-  booktitle =	 {Proc. of the ACM Intl. Workshop on Parallel Symbolic
-                  Computation'07 (PASCO'07)},
-  year =		 {2007},
-  month =		 {July 27--28},
-  address =		 {London, Ontario, Canada},
-  publisher =	 {ACM},
-  pages =		 {88--92},
-  url =			 {\url{http://www.orcca.on.ca/conferences/pasco2007/}},
-  isbn =		 {978-1-59593-741-4},
-  doi =          {http://doi.acm.org/10.1145/1278177.1278191},
-  urlpdf =		 {download/publis/pasco2007.pdf},
-}
 
 
 %=======================================================================
 % eof
 %
-% Local Variables: 
+% Local Variables:
 % mode: bibtex
-% End: 
+% End:

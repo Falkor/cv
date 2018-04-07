@@ -1,4 +1,4 @@
-% Time-stamp: <Sat 2018-04-07 23:28 svarrette>
+% Time-stamp: <Sun 2018-04-08 00:13 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -62,8 +62,11 @@ His main research interests lie in the domains of the security and performance
 of parallel and distributed computing platforms, such as HPC or Cloud Computing
 infrastructures.
 
-\noindent\rule{\textwidth}{0.4pt}
+% He takes part for the management committee and represents Luxembourg within
+% multiple EU projects, such as PRACE (acting Advisor), ETP4HPC
 
+%\iffullcv{
+\noindent\rule{\textwidth}{0.4pt}
 
 \vspace{1em}
 \begin{tabular}{ll}
@@ -93,13 +96,15 @@ infrastructures.
                                   % \multicolumn{2}{l}{I am a quick learner and a good communicator with the
                                   % ability to work within multi-cultural teams.}
 \end{tabular}
-\vspace{-2em}
+\vspace{-1.5em}
+%}
 
 % ---------- Education -----------
 \input{_education} % ALL
 
 % ---------- Employment -----------
 \ifShortOrFull{
+  \vspace*{-1em}
   \input{_employment}
 }
 
@@ -113,7 +118,7 @@ infrastructures.
   }
 
   % ---------- Additional information ----------
-  \ifShortOrFull{
+  \iffullcv{
     \input{_other}
   }
   \ifshortcv{\clearpage}
@@ -128,6 +133,7 @@ infrastructures.
 
   % ---------- Professional development ----------
   \ifShortOrFull{
+    \iffullcv{\clearpage}
     \input{_professional_dev}
   }
 
