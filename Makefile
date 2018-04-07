@@ -1,6 +1,6 @@
 ####################################################################################
 # Makefile (configuration file for GNU make - see http://www.gnu.org/software/make/)
-# Time-stamp: <Fri 2018-04-06 23:52 svarrette>
+# Time-stamp: <Sun 2018-04-08 00:24 svarrette>
 #     __  __       _         __ _ _            __   _         _____   __  __
 #    |  \/  | __ _| | _____ / _(_) | ___      / /  | |    __ |_   _|__\ \/ /
 #    | |\/| |/ _` | |/ / _ \ |_| | |/ _ \    / /   | |   / _` || |/ _ \\  /
@@ -225,7 +225,7 @@ generate:
 			mv $$optimf $$f; \
 		fi; \
 		mv $$f $(RELEASE_DIR)/; \
-		for type in tiny small short; do \
+		for type in tiny short; do \
 			$(MAKE) clean; \
 			$(MAKE) $$type; \
 			if [ -n "$(GS)" ]; then \
