@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #########################################
-# split_bibtex_per_type.rb
+# manage_bibtex
 # @author Sebastien Varrette <Sebastien.Varrette@uni.lu>
 # Time-stamp: <Fri 2018-04-06 23:51 svarrette>
 #
