@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Tue 2016-04-12 01:06 svarrette>
+       Time-stamp: <Sun 2018-04-08 00:31 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -41,40 +41,16 @@ This repository is hosted on [Github](https://github.com/Falkor/cv).
 
 This will initiate the [git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) layout for this repository.
 
-### LaTeX and Perl modules
+### LaTeX and Ruby gems
 
 The compilation of the files contained in this directory requires the following binaries :
 
 * `latex`, `pdflatex` and `make` 	(for compilation)
 * `bibtex` 	             			(for bibliography/references)
-* `perl`                   			(the script that split the bibliography is based on Perl)
-* `seq` - this command is missing on Mac OS X. See below for a fix.
+* `ruby`, [`rvm`](https://rvm.io/)  (the script that split the bibliography is based on Ruby)
+    - run `bundle install` to initialize the repository with the appropriate gems.
 * (optional) `latex2html`  			(html generation from LaTeX)
 * (optional) `latex2rtf`   			(rtf generation from LaTeX)
-* a few [CPAN](http://search.cpan.org) modules used in the [perl](http://www.perl.org/) script mentioned above, namely `Data::Dumper`,  `Getopt::Long`,  `Pod::Usage`, `Term::ANSIColor`, `Text::BibTeX` and `Tie::IxHash`.
-
-**`/!\ IMPORTANT:`** Please check that your system is correctly configured by running
-
-> `make check`.
-
-* If you run a Mac OS X, the `seq` command is absent from your system.
-To install it, simply copy the provided script `scripts/seq` into a directory searched by your system (_i.e._ part of your PATH variable), for instance `/usr/local/bin` or `$HOME/bin`.
-* If a perl module `Module::Name` is missing on your system, install it via [CPAN](http://search.cpan.org).
-   - if you are under Mac OS, install [Homebrew](http://brew.sh) and the [`cpanminus`](https://libraries.io/homebrew/cpanminus) package. Then install the missing modules as follows:
-
-         cpanm Text::BibTeX Tie::IxHash
-
-   - otherwise, use [CPAN](http://search.cpan.org) as follows:
-
-   		   $> sudo cpan
-		     [...]
-		     cpan shell -- CPAN exploration and modules installation (v1.9402)
-		     Enter 'h' for help.
-
-		     cpan[1]> install Module::Name
-		     [...]
-		     Module::Name installed successfully
-		     cpan[2]> quit
 
 ## Compilation of the LaTeX sources
 
@@ -86,7 +62,6 @@ Several versions of my CV can be compiled:
 |---------------------|-----------------------------------------------------------------|---------|--------------------------------------------------------|
 | `make`              | [`cv-varrette-en.pdf`](releases/cv-varrette-en.pdf)             | 8 pages | Full complete version, holding **all** my publications |
 | `make short`        | [`cv-varrette-en_short.pdf`](releases/cv-varrette-en_short.pdf) | 3 pages | Short version (3p), holding selected publications      |
-| `make small`        | [`cv-varrette-en_small.pdf`](releases/cv-varrette-en_small.pdf) | 2 pages | Small version (2p), holding selected publications      |
 | `make tiny`         | [`cv-varrette-en_tiny.pdf`](releases/cv-varrette-en_tiny.pdf)   | 1 page  | Tiny version                                           |
 |                     |                                                                 |         |                                                        |
 
@@ -177,7 +152,12 @@ Also, you will have the generated PDF for the freshly released version as a file
 └── selected_biblio-varrette.bib   # Selected bibliographic entries
 ```
 
-### Bibliography management
+### [New] Bibliography management
+
+I maintain a single [BibTeX](http://www.bibtex.org/) file `biblio-varrette.bib` to collect the entries of my publications.
+A script `script/manage_bibtex` help me to split that biblio in multiple part.
+
+### [Old] Bibliography management
 
 As many others, I maintain a single [BibTeX](http://www.bibtex.org/) file `biblio-varrette.bib` to collect the entries of my publications.
 For a CV, it make more sense to me to present my bibliographic entries by type, and to automate the collection of statistics on them (number of entries per type etc.), I  made a perl script (`scripts/split_bibtex_per_type.pl`) for this purpose. For details about its usage, run
@@ -186,6 +166,32 @@ For a CV, it make more sense to me to present my bibliographic entries by type, 
 
 The parsing in itself is made using the [`Text::BibTeX`](http://search.cpan.org/~ambs/Text-BibTeX-0.56/lib/Text/BibTeX.pm) module so it should be installed on your system.
 Some additional modules are required (`Tie::IxHash` for instance). Once this script behave normally on your system, you should not take care of it as it will do the job transparently.
+
+In details, a few [CPAN](http://search.cpan.org) modules used in the [perl](http://www.perl.org/) script are `Data::Dumper`,  `Getopt::Long`,  `Pod::Usage`, `Term::ANSIColor`, `Text::BibTeX` and `Tie::IxHash`.
+
+**`/!\ IMPORTANT:`** Please check that your system is correctly configured by running
+
+> `make check`.
+
+* If you run a Mac OS X, the `seq` command is absent from your system.
+To install it, simply copy the provided script `scripts/seq` into a directory searched by your system (_i.e._ part of your PATH variable), for instance `/usr/local/bin` or `$HOME/bin`.
+* If a perl module `Module::Name` is missing on your system, install it via [CPAN](http://search.cpan.org).
+   - if you are under Mac OS, install [Homebrew](http://brew.sh) and the [`cpanminus`](https://libraries.io/homebrew/cpanminus) package. Then install the missing modules as follows:
+
+         cpanm Text::BibTeX Tie::IxHash
+
+   - otherwise, use [CPAN](http://search.cpan.org) as follows:
+
+   		   $> sudo cpan
+		     [...]
+		     cpan shell -- CPAN exploration and modules installation (v1.9402)
+		     Enter 'h' for help.
+
+		     cpan[1]> install Module::Name
+		     [...]
+		     Module::Name installed successfully
+		     cpan[2]> quit
+
 
 For those interested, here is an extract of the help message for this script:
 

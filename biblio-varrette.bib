@@ -32,7 +32,7 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ Books (5) and Book Chapters (8)
+%%%§ Books (6) and Book Chapters (9)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @Book{DLTV_Blockchains18,
   author =       {J.-G. Dumas and P. Lafourcade and A. Tichit and S. Varrette},
@@ -46,6 +46,21 @@ les enjeux de cette technologie innovante},
   isbn =         {978-2-1007-7924-6},
   note =         {224 pages, in French},
 },
+
+@Book{DRTV_ThCode18,
+  author =       {J.-G. Dumas and J.-L. Roch and E. Tannier and S. Varrette},
+  title =        {Th\'eorie des Codes : Compression, Cryptage et Correction},
+  publisher =    {Dunod},
+  year =         {2018},
+  month =        {Aug},
+  series =       {Collection Sciences Sup},
+  edition =      {3rd},
+  isbn =         {978-2-10-078109-6},
+  url =          {\url{http://bit.do/theoryofcodes}},
+  %urlimage =     {images/theorie_code_2nd.jpg},
+  note =         {384 pages, in French},
+}
+
 
 @Book{DRTV_FoundationCoding15,
   author =       {J.-G. Dumas and J.-L. Roch and E. Tannier and S. Varrette},
@@ -289,7 +304,8 @@ les enjeux de cette technologie innovante},
   volume = 	     {2},
   number = 	     {2},
   doi =          {10.14529/jsfi1502},
-  pages = 	     {105--},
+  pages = 	     {105--131},
+  note =         {See \url{http://superfri.org/superfri/article/view/48}},
 }
 
 @Article{NESUS_WG3_SuperFRI15,
@@ -301,6 +317,7 @@ les enjeux de cette technologie innovante},
   number = 	     {2},
   doi =          {10.14529/jsfi1502},
   pages = 	     {46--63},
+  note =         {See \url{http://superfri.org/superfri/article/view/46}},
 }
 
 
@@ -379,8 +396,18 @@ les enjeux de cette technologie innovante},
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International conferences with proceedings and reviews (46)
+%%%§ International conferences with proceedings and reviews (47)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@InProceedings{IWVP_CLOUD18,
+  author =       {A. A.Z.A. Ibrahim and U. Wasim and S. Varrette and P. Bouvry},
+  title =        {{PRESENCE: Performance Metrics Models for Cloud SaaS Web Services}},
+  booktitle =    {Proc. of the 11th IEEE Intl. Conf. on Cloud Computing (CLOUD 2018)},
+  year =         {2018},
+  month =        {July},
+  address =      {San Francisco, USA},
+  publisher =    {IEEE Computer Society},
+}
+
 @InProceedings{IVP_ICOIN18,
   author =       {A. A.Z.A. Ibrahim and S. Varrette and P. Bouvry},
   title =        {{PRESENCE: Toward a Novel Approach for Performance Evaluation of Mobile Cloud SaaS Web Services
@@ -1273,6 +1300,78 @@ les enjeux de cette technologie innovante},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ Other misc publications (8 technical reports)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@TechReport{BVPPCP_DataConversation18,
+  author =       {P. Bouvry, S. Varrette, V. Plugaru, S. Peter, H. Cartiaux, C. Parisot},
+  title =        {{Large-scale research data management: Road to GDPR compliance}},
+  institution =  {University opf Luxembourg},
+  year =         {2018},
+  month =        {April},
+  note =         {See \url{https://varrette.gforge.uni.lu/blog/2018/04/26/data-conversation-gdpr/}},
+  OPTannote =    {}
+}
+
+@TechReport{V_cHipSet_Workshop18,
+  author =       {S. Varrette},
+  title =        {Next-Generation Computing and Storage at Scale},
+  institution =  {EU COST cHipSet,  Workshop: Accelerating Modelling and Simulation in the Data Deluge Era},
+  year =         {2018},
+  type =         {Invited speaker},
+  address =      {Fontainebleau, France},
+  month =        {Mar},
+  note =         {},
+  OPTannote =    {}
+}
+
+@TechReport{NESUS_WS_Tutorial-BDA18,
+  author =       {S. Varrette},
+  title =        {{Tutorial Big Data Analytics: Overview and Practical Examples}},
+  institution =  {EU COST NESUS, 3rd NESUS Winter School and PhD Symposium on Data Science and Heterogeneous Computing},
+  year =         {2018},
+  address =      {Zagreb, croatia},
+  month =        {Jan},
+  note =         {See \url{http://nesusws-tutorials-bd-dl.readthedocs.io/}},
+}
+
+@TechReport{CloudCom_Tutorial-Reproducibility16,
+  author =       {S. Varrette},
+  title =        {{Tutorial Reproducible Research at the Cloud Era: Overview, Hands-on and Open challenges}},
+  institution =  {Cloudcom Association, Tutorial, IEEE CloudCom 2016},
+  year =         {2016},
+  address =      {Luxembourg},
+  month =        {Dec},
+  note =         {See \url{http://rr-tutorials.readthedocs.io/}},
+}
+
+@TechReport{UL_PhDSeminar16,
+  author =       {S. Varrette},
+  title =        {{IT/Dev[op]s Army Knives Tools for the researcher: a journey from SSH to Git}},
+  institution =  {University of Luxembourg},
+  year =         {2016},
+  address =      {Luxembourg},
+  month =        {Jul},
+  note =         {See \url{https://varrette.gforge.uni.lu//tutorials/devops-tools-overview.html}},
+}
+
+@TechReport{ULHPC_School15_vagrant_git,
+  author =       {S. Varrette},
+  title =        {{Introduction to Git and Vagrant}},
+  institution =  {University of Luxembourg},
+  year =         {2015},
+  address =      {Luxembourg},
+  month =        {June},
+  note =         {See \url{https://varrette.gforge.uni.lu/blog/2015/06/25/introduction-to-git-and-vagrant/}},
+}
+
+@TechReport{SMAI15,
+  author =       {S. Varrette},
+  title =        {{HPC Performance and Energy Efficiency: Overview and Trends}},
+  institution =  {SMAI Congress},
+  type =         {Invited Speaker},
+  year =         {2015},
+  address =      {Les Karellis, Savoie},
+  month =        {June},
+  note =         {See \url{https://varrette.gforge.uni.lu/blog/2015/06/09/smai-2015-congress-keynote-slides/}},
+}
 
 @TechReport{VGVB_HPCSA14,
   author =       {V. Plugaru and F. Georgatos and S. Varrette and P.Bouvry},
