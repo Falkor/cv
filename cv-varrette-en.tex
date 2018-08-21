@@ -1,4 +1,4 @@
-% Time-stamp: <Mon 2018-08-20 22:37 svarrette>
+% Time-stamp: <Tue 2018-08-21 12:13 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -81,6 +81,7 @@ infrastructures.
   \\
   \textsc{Main research domains}: & Security and Evaluation of Distributed
                                     Computing Platforms \\ % (clusters, grids or clouds).\\
+  \iffullcv{
                                   & \emph{Relevant contributions per domains}: \\
                                   % & Main achievements:\\
                                   & \offset  Crash/cheating faults tolerance \cvcite{VRL_SBAC04,KRJV_EGC05, RV_Pasco07,Var_phD07,GGPV_PDP09,MVBSK_CAMWA12,MVB_CEC2013,MVJB_NSS14,MVB_Evostar2016}\\
@@ -94,8 +95,9 @@ infrastructures.
                                   % \\
                                   % \multicolumn{2}{l}{I am a quick learner and a good communicator with the
                                   % ability to work within multi-cultural teams.}
+  }
 \end{tabular}
-\vspace{-1.5em}
+\iffullcv{\vspace{-1.5em}}
 %}
 
 % ---------- Education -----------
@@ -120,13 +122,14 @@ infrastructures.
   \iffullcv{
     \input{_other}
   }
-  \ifshortcv{\clearpage}
+  %\ifshortcv{\clearpage}
+  \ifshortcv{\input{_phd_board}}
 
   % ---------- Graduate student supervision -----------
   \input{_supervision}
 
   % ---------- Participation PhD. Board -----------
-  \input{_phd_board}
+  \iffullcv{\input{_phd_board}}
 
   %\ifsmallcv{\clearpage}
 
@@ -137,6 +140,7 @@ infrastructures.
   \ifShortOrFull{
     \iffullcv{\clearpage}
     \input{_professional_dev}
+    \ifshortcv{\clearpage}
   }
 
   % ---------- Participation -----------

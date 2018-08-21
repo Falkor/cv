@@ -2,7 +2,7 @@
 #########################################
 # manage_bibtex
 # @author Sebastien Varrette <Sebastien.Varrette@uni.lu>
-# Time-stamp: <Mon 2018-08-20 22:57 svarrette>
+# Time-stamp: <Tue 2018-08-21 13:45 svarrette>
 #
 # @description: New version of the splitting script each a single BibTeX file
 # .             into several sub-file, each containing entries of the same type.
@@ -44,10 +44,10 @@ CATEGORIES = {
   :inproceedings_default       => { :title => 'International conferences with proceedings and reviews' },
   :inproceedings_national      => { :title => '(French) national conferences with proceedings and reviews' },
   :inproceedings_noreview      => { :title => 'International conferences with proceedings' },
-  :inproceedings_noproceedings => { :title => 'International conferences with reviews' },
+  :inproceedings_noproceedings => { :title => 'International conferences with reviews (no proceedings)' },
   :phdthesis                   => { :title => 'PhD Thesis' },
   :mastersthesis               => { :title => 'Masters Thesis' },
-  :techreport                  => { :title => 'Technical Reports' },
+  :techreport                  => { :title => 'Technical Reports and Presentations' },
   :misc                        => { :title => 'Miscellaneous' },
   :conference                  => { :title => 'Conferences' },
   :proceedings                 => { :title => 'Proceedings' },
