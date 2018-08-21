@@ -1,6 +1,5 @@
 -*- mode: markdown; mode: visual-line; fill-column: 80 -*-
 
-[![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
        Time-stamp: <Tue 2018-08-21 12:38 svarrette>
