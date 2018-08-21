@@ -1,7 +1,7 @@
 %=======================================================================
 % biblio-varrette.bib -- my personnal BibTeX entries
 %
-% Copyright (c) 2004-2011 Sebastien Varrette
+% Copyright (c) 2004-2018 Sebastien Varrette
 %               http://varrette.gforge.uni.lu
 %
 %  ____  _ _     _ _         ______     __                  _   _
@@ -26,25 +26,25 @@
   year =         2007,
   month =        {Sept.},
   url =          {\url{http://varrette.gforge.uni.lu/research.html#PhD}},
-  urlps =        {phD/phd_varrette.ps.gz},
-  urlpdf =       {phD/phd_varrette.pdf},
+  OPTurlps =        {phD/phd_varrette.ps.gz},
+  OPTurlpdf =       {phD/phd_varrette.pdf},
   note =         {In French}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ Books (6) and Book Chapters (9)
+%%%§ Books (6) and Book Chapters (11)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @Book{DLTV_Blockchains18,
   author =       {J.-G. Dumas and P. Lafourcade and A. Tichit and S. Varrette},
-  title =        {Les blockchains en 50 questions: comprendre le fonctionnement et
-les enjeux de cette technologie innovante},
+  title =        {Les blockchains en 50 questions: comprendre le fonctionnement et les enjeux de cette technologie innovante},
   publisher =    {Dunod},
   year =         {2018},
-  month =        {Juin},
-  series =       {Collection Sciences Sup},
+  month =        {Sept},
+  OPTseries =       {Hors collection},
   edition =      {1er},
   isbn =         {978-2-1007-7924-6},
-  note =         {224 pages, in French},
+  url =          {\url{http://bit.do/blockchains-dunod}},
+  note =         {296 pages, in French},
 },
 
 @Book{DRTV_ThCode18,
@@ -57,7 +57,7 @@ les enjeux de cette technologie innovante},
   edition =      {3rd},
   isbn =         {978-2-10-078109-6},
   url =          {\url{http://bit.do/theoryofcodes}},
-  %urlimage =     {images/theorie_code_2nd.jpg},
+  OPTurlimage =     {images/theorie_code_2nd.jpg},
   note =         {384 pages, in French},
 }
 
@@ -83,22 +83,8 @@ les enjeux de cette technologie innovante},
   edition =      {2nde},
   isbn =         {978-2-1005-9911-0},
   url =          {\url{http://bit.do/theoryofcodes}},
-  urlimage =     {images/theorie_code_2nd.jpg},
+  OPTurlimage =     {images/theorie_code_2nd.jpg},
   note =         {384 pages, in French},
-}
-
-@Book{VB_Prog_C07,
-  author =       {S. Varrette and N. Bernard},
-  title =        {Programmation avanc\'ee en C (avec exercices et corrig\'es)},
-  publisher =    {Herm\`es},
-  year =         {2007},
-  month =        {Fev.},
-  series =       {Collection Informatique et Syst\`emes d'Informations},
-  OPTedition =   {},
-  isbn =         {978-2-7462-1555-9},
-  url =          {\url{http://varrette.gforge.uni.lu/books.html#ProgAvanceeC}},
-  urlimage =     {images/programmation_c.png},
-  note =         {416 pages, in French},
 }
 
 @Book{DRTV_ThCode07,
@@ -111,11 +97,66 @@ les enjeux de cette technologie innovante},
   edition =      {1st},
   isbn =         {978-2-1005-0692-7},
   url =          {\url{http://varrette.gforge.uni.lu/books.html#TheorieDesCodes}},
-  urlimage =     {images/theorie_code.jpg},
-  note =         {352 pages, in French. Corrected version published in 2009},
+  OPTurlimage =     {images/theorie_code.jpg},
+  note =         {352 pages, in French.},
 }
 
-%%% Book Chapters
+@Book{VB_Prog_C07,
+  author =       {S. Varrette and N. Bernard},
+  title =        {Programmation avanc\'ee en C (avec exercices et corrig\'es)},
+  publisher =    {Herm\`es},
+  year =         {2007},
+  month =        {Fev.},
+  series =       {Collection Informatique et Syst\`emes d'Informations},
+  OPTedition =   {},
+  isbn =         {978-2-7462-1555-9},
+  url =          {\url{http://varrette.gforge.uni.lu/books.html#ProgAvanceeC}},
+  OPTurlimage =     {images/programmation_c.png},
+  note =         {416 pages, in French},
+}
+
+
+%%%%%%%%%%%% Book Chapters %%%%%%%%%
+@InBook{BVWIBT_NESUS_COSTBook_Chap3,
+  author =       {P. Bouvry and S. Varrette and M. U. Wasim and A. A.Z.A. Ibrahim and X. Besseron and T. A. Trinh},
+  editor =       {J. Carretero and E. Jeannot},
+  title =        {Ultrascale Computing Systems},
+  chapter =      {Security, reliability and regulation compliance in Ultrascale Computing System},
+  publisher =    {IET},
+  year =         {2018},
+  OPTkey =       {},
+  OPTvolume =    {},
+  OPTnumber =       {},
+  OPTseries =    {},
+  OPTtype =      {},
+  OPTaddress =   {},
+  OPTedition =   {},
+  month =        {Oct},
+  OPTpages =     {},
+  note =         {accepted, pending publication details},
+  OPTannote =    {}
+}
+
+@InBook{BVWIBT_NESUS_COSTBook_Chap5,
+  author =       {A.-C. Orgerie and S. Varrette},
+  editor =       {J. Carretero and E. Jeannot},
+  title =        {Ultrascale Computing Systems},
+  chapter =      {A Full-Cost Model for Estimating the Energy Consumption of Computing Infrastructures},
+  publisher =    {IET},
+  year =         {2018},
+  OPTkey =       {},
+  OPTvolume =    {},
+  OPTnumber =       {},
+  OPTseries =    {},
+  OPTtype =      {},
+  OPTaddress =   {},
+  OPTedition =   {},
+  month =        {Oct},
+  OPTpages =     {},
+  note =         {accepted, pending publication details},
+  OPTannote =    {}
+}
+
 @InBook{BCDJLPPSV_COSTBook_Chap7,
   author =      {P. Bouvry and G. L. T. Chetsa and G. Da Costa and E. Jeannot and L. Lef{\`e}vre and J.-M. Pierson and F. Pinel and  P. Stolf and S. Varrette},
   editor =      {J-M. Pierson},
@@ -294,8 +335,22 @@ les enjeux de cette technologie innovante},
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International journals (7)
+%%%§ International journals (8)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@Article{IWVB_MobileIS18,
+  author =       {A. A. Z. A. Ibrahim and M. U. Wasim and S. Varrette and Pascal Bouvry},
+  title =        {{PRESENCE: Monitoring and Modelling the Performance Metrics of Mobile Cloud SaaS Web Services}},
+  journal =      {J. Mobile Information Systems},
+  year =         {2018},
+  volume =       {2018},
+  number =       {1351386},
+  OPTpages =     {},
+  month =        {August},
+  doi =          {10.1155/2018/1351386/},
+  note =         {Extended journal version of our IEEE ICoin 2018 paper},
+  OPTannote =    {}
+}
+
 @Article{NESUS_WG5_SuperFRI15,
   author = 		 {M. Bagein and J. Barbosa and V. Blanco and I. Brandic and S. Cremer and S. Fremal and H. Karatza and L. Lefevre and T. Mastelic and A. Oleksiak and A.-C. Orgerie and G.L. Stavrinides and S. Varrette},
   title = 		 {{Energy Efficiency for Ultrascale Systems: Challenges and Trends from Nesus Project}},
@@ -396,8 +451,23 @@ les enjeux de cette technologie innovante},
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International conferences with proceedings and reviews (47)
+%%%§ International conferences with proceedings and reviews (48)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@InProceedings{CRBVP_WAMCA18,
+  author =       {A. W. M. Checkaraou and A. Rousset and X. Besseron and S. Varrette and B. Peters},
+  title =        {Hybrid MPI+OpenMP Implementation of eXtended Discrete Element Method},
+  booktitle =    {Proc. of the 9th Workshop on Applications for Multi-Core Architectures (WAMCA'18), part of 30th Intl. Symp. on Computer Architecture and High Performance Computing (SBAC-PAD 2018)},
+  year =         {2018},
+  OPTpages =     {},
+  month =        {Sept},
+  address =      {Lyon, France},
+  OPTorganization = {},
+  url =          {\url{https://graal.ens-lyon.fr/sbac-pad/}},
+  publisher =    {IEEE Computer Society},
+  OPTnote =      {},
+  OPTannote =    {}
+}
+
 @InProceedings{IWVP_CLOUD18,
   author =       {A. A.Z.A. Ibrahim and U. Wasim and S. Varrette and P. Bouvry},
   title =        {{PRESENCE: Performance Metrics Models for Cloud SaaS Web Services}},
@@ -406,6 +476,22 @@ les enjeux de cette technologie innovante},
   month =        {July},
   address =      {San Francisco, USA},
   publisher =    {IEEE Computer Society},
+}
+
+@inproceedings{IVP_DNS18,
+  author =       {A. A.Z.A. Ibrahim and S. Varrette and P. Bouvry},
+  title =        {On Verifying and Assuring the Cloud {SLA} by Evaluating the
+                  Performance of SaaS Web Services Across Multi-cloud Providers},
+  booktitle =    {48th Annual {IEEE/IFIP} Intl. Conf. on Dependable Systems and
+                  Networks Workshops (DNS'18)},
+  pages =        {69--70},
+  year =         2018,
+  month =        {June},
+  address =      {Luxembourg},
+  publisher =    {IEEE Computer Society},
+  url =          {https://dsn2018.uni.lu/},
+  doi =          {10.1109/DSN-W.2018.00034},
+  note =         {Extended Abstract},
 }
 
 @InProceedings{IVP_ICOIN18,
@@ -1086,6 +1172,21 @@ les enjeux de cette technologie innovante},
   urlpdf =       {download/publis/sbac-pad2004.pdf},
 }
 
+@InProceedings{VRDL_CRIS04,
+  author =       {S. Varrette and J.-L. Roch and Y. Denneulin and F. Leprevost},
+  title =        {{Secure Architecture for Clusters and Grids}},
+  booktitle =    {Proc. of the 2nd Int. Conf. on Critical Infrastructures (CRIS
+                  2004)},
+  year =         2004,
+  publisher =    {IEEE},
+  address =      {Grenoble, France},
+  month =        {October},
+  url =          {\url{http://www.leg.ensieg.inpg.fr/cris2004/}},
+  urlps =        {download/publis/cris2004.ps.gz},
+  urlpdf =       {download/publis/cris2004.pdf},
+  documenturl =  {download/publis/synopsis_cris2004.pdf},
+}
+
 @InProceedings{JVR_DEXA04,
   author =       {S. Jafar and S. Varrette and J.-L. Roch},
   title =        {{Using Data-Flow Analysis for Resilence and Result Checking in
@@ -1105,6 +1206,8 @@ les enjeux de cette technologie innovante},
   urlps =        {download/publis/globe2004.ps.gz},
   urlpdf =       {download/publis/globe2004.pdf},
 }
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ French national conferences with proceedings and reviews (4)
@@ -1167,28 +1270,9 @@ les enjeux de cette technologie innovante},
   urlpdf =       {download/publis/renpar2003_Varrette_Roch.pdf},
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International conferences with proceedings (1)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-@InProceedings{VRDL_CRIS04,
-  type =         {noreview},
-  author =       {S. Varrette and J.-L. Roch and Y. Denneulin and F. Leprevost},
-  title =        {{Secure Architecture for Clusters and Grids}},
-  booktitle =    {Proc. of the 2nd Int. Conf. on Critical Infrastructures (CRIS
-                  2004)},
-  year =         2004,
-  publisher =    {IEEE},
-  address =      {Grenoble, France},
-  month =        {October},
-  url =          {\url{http://www.leg.ensieg.inpg.fr/cris2004/}},
-  urlps =        {download/publis/cris2004.ps.gz},
-  urlpdf =       {download/publis/cris2004.pdf},
-  documenturl =  {download/publis/synopsis_cris2004.pdf},
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International conferences with reviews (7)
+%%%§ International conferences with reviews (no proceedings) (7)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @InProceedings{MVB_GRSRD14,
   type =         {noproceedings},
@@ -1297,14 +1381,39 @@ les enjeux de cette technologie innovante},
   urlps =        {download/rapport_pfe.ps.gz}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ Other misc publications (8 technical reports)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-@TechReport{BVPPCP_DataConversation18,
-  author =       {P. Bouvry, S. Varrette, V. Plugaru, S. Peter, H. Cartiaux, C. Parisot},
-  title =        {{Large-scale research data management: Road to GDPR compliance}},
-  institution =  {University opf Luxembourg},
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%§ Other misc publications (tech reports, presentations as invited speaker)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@TechReport{BV_MUG18,
+  author =       {X. Besseron and S. Varrette},
+  title =        {{High Performance Computing and Big Data analytics in Luxembourg: Overview and Challenges in the EuroHPC horizon}},
+  institution =  {6th MVAPICH User Group (MUG'18) Meeting},
   year =         {2018},
+  month =        {August},
+  type =         {Invited speakers},
+  adress =       {Columbus (OH) USA},
+  note =         {See \url{https://varrette.gforge.uni.lu/blog/2018/08/08/mug18/}},
+  OPTannote =    {}
+}
+
+@TechReport{V_WHPCEuroLatam_ISC18,
+  author =       {S. Varrette},
+  title =        {{Luxembourg Proposals for Large Scale Architectures for Data Science}},
+  institution =  {2nd Workshop on HPC Collaboration between Europe and Latin America (WHPCEuroLatam), part of ISC High Performance conference (ISC'18)},
+  year =         {2018},
+  month =        {June},
+  type =         {Invited speaker},
+  adress =       {Frankfurt, Germany},
+  note =         {See \url{https://varrette.gforge.uni.lu/blog/2018/06/18/isc-workshop/}},
+  OPTannote =    {}
+}
+
+@TechReport{BVPPCP_DataConversation18,
+  author =       {P. Bouvry and S. Varrette and V. Plugaru and S. Peter and H. Cartiaux and C. Parisot},
+  title =        {{Large-scale research data management: Road to GDPR compliance}},
+  institution =  {University of Luxembourg},
+  year =         {2018},
+  type =         {Invited speaker},
   month =        {April},
   note =         {See \url{https://varrette.gforge.uni.lu/blog/2018/04/26/data-conversation-gdpr/}},
   OPTannote =    {}
@@ -1313,12 +1422,12 @@ les enjeux de cette technologie innovante},
 @TechReport{V_cHipSet_Workshop18,
   author =       {S. Varrette},
   title =        {Next-Generation Computing and Storage at Scale},
-  institution =  {EU COST cHipSet,  Workshop: Accelerating Modelling and Simulation in the Data Deluge Era},
+  institution =  {EU COST action cHipSet,  Workshop: Accelerating Modelling and Simulation in the Data Deluge Era},
   year =         {2018},
   type =         {Invited speaker},
   address =      {Fontainebleau, France},
   month =        {Mar},
-  note =         {},
+  note =         {See \url{https://varrette.gforge.uni.lu/blog/2018/03/19/chipset-workshop/}},
   OPTannote =    {}
 }
 

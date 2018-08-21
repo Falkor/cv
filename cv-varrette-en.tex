@@ -1,4 +1,4 @@
-% Time-stamp: <Sun 2018-04-08 00:13 svarrette>
+% Time-stamp: <Tue 2018-08-21 12:13 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -38,7 +38,8 @@
     GPG Key ID: \href{https://pgp.mit.edu/pks/lookup?op=vindex&search=0x5D08BCDD4F156AD7}{5D08BCDD4F156AD7}
   \end{adresse}
   \begin{etatcivil}
-    \photo{Images/MyPhoto}
+    %\includegraphics[width=0.2\textwidth]{Images/cv.jpg}
+    \photo{Images/sv.jpg} %MyPhoto}
 
     Born on November 27th, 1979 (in France)\\
     Married (2004), two children (2007,2010)\\
@@ -52,7 +53,6 @@
 Dr. Sebastien Varrette is Research Scientist within the Parallel Computing and
 Optimization Group (\href{http://pcog.uni.lu}{PCOG}) group led by Prof. Pascal
 Bouvry  at the University of Luxembourg.
-
 Expert in the deployment and management of High Performance Computing (HPC)
 systems, he is leading since that time the development of the University's HPC
 platform, as well as the associated expert team of system administrators
@@ -81,22 +81,23 @@ infrastructures.
   \\
   \textsc{Main research domains}: & Security and Evaluation of Distributed
                                     Computing Platforms \\ % (clusters, grids or clouds).\\
+  \iffullcv{
                                   & \emph{Relevant contributions per domains}: \\
                                   % & Main achievements:\\
                                   & \offset  Crash/cheating faults tolerance \cvcite{VRL_SBAC04,KRJV_EGC05, RV_Pasco07,Var_phD07,GGPV_PDP09,MVBSK_CAMWA12,MVB_CEC2013,MVJB_NSS14,MVB_Evostar2016}\\
-                                  & \offset  Code Obfuscation \cvcite{VTB_NIDISC13,BVB_NSS13}, \textsc{CertiCloud}, a Cloud IaaS secure
-                                    platform \cvcite{BVP_CLOUD11, BVB_Renpar11, BVB_TSI12} \\
-                                  & \offset  Performance,Energy efficiency of HPC/Cloud platforms \cvcite{DVB_SPECTS08,DVB_PPAM09,JVOB_EELSDS13,VGPBP_SBACPAD13,VPGBB_ICPP14,PVB_CloudCom14,EVB_CLOUD16,IVP_ICOIN18} \\
+                                  & \offset  Code Obfuscation \cvcite{VTB_NIDISC13,BVB_NSS13}, Secure IaaS Cloud \cvcite{BVP_CLOUD11, BVB_Renpar11, BVB_TSI12} \\
+                                  & \offset  Perf. \& Energy efficiency of HPC/Cloud platforms \cvcite{DVB_SPECTS08,DVB_PPAM09,JVOB_EELSDS13,VGPBP_SBACPAD13,VPGBB_ICPP14,PVB_CloudCom14,EVB_CLOUD16,IVP_ICOIN18} \\
                                   %& \offset  Design of the authentication system of Grid'5000
                                   % \cvcite{VGMRL_Gada05}\\
-                                  & \offset  Developing security awareness by education \cvcite{DRTV_ThCode07,BCCDV_DistSyst11_Chap11,DRTV_FoundationCoding15,DLTV_Blockchains18}
+                                  %& \offset  Developing security awareness by education \cvcite{DRTV_ThCode07,BCCDV_DistSyst11_Chap11,DRTV_FoundationCoding15,DLTV_Blockchains18}
                                   % & \offset \offset \underline{\textit{Keywords:}} Grid Computing, Cloud, Security,
                                   % Fault-Tolerance, Authentication\\
                                   % \\
                                   % \multicolumn{2}{l}{I am a quick learner and a good communicator with the
                                   % ability to work within multi-cultural teams.}
+  }
 \end{tabular}
-\vspace{-1.5em}
+\iffullcv{\vspace{-1.5em}}
 %}
 
 % ---------- Education -----------
@@ -121,10 +122,14 @@ infrastructures.
   \iffullcv{
     \input{_other}
   }
-  \ifshortcv{\clearpage}
+  %\ifshortcv{\clearpage}
+  \ifshortcv{\input{_phd_board}}
 
   % ---------- Graduate student supervision -----------
   \input{_supervision}
+
+  % ---------- Participation PhD. Board -----------
+  \iffullcv{\input{_phd_board}}
 
   %\ifsmallcv{\clearpage}
 
@@ -135,6 +140,7 @@ infrastructures.
   \ifShortOrFull{
     \iffullcv{\clearpage}
     \input{_professional_dev}
+    \ifshortcv{\clearpage}
   }
 
   % ---------- Participation -----------
@@ -157,6 +163,7 @@ infrastructures.
   \acro{IaaS}{Infrastructure-as-a-Service}
   \acro{ID}[\href{http://www-id.imag.fr}{ID-IMAG}]{Laboratoire Informatique et Distribution}
   \acro{LACS}[\href{http://lacs.uni.lu}{LACS}]{Laboratory of Algorithmics, Cryptology and Security}
+  \acro{PRACE}[\href{http://www.prace-ri.eu/}{PRACE}]{Partnership for Advanced Computing in Europe}
   \acro{TC}{Trusted Computing}
   \acro{TCG}{Trusted Computing Group}
   \acro{TPM}{Trusted Platform Module}

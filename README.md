@@ -1,9 +1,8 @@
 -*- mode: markdown; mode: visual-line; fill-column: 80 -*-
 
-[![Licence](https://img.shields.io/badge/license-CC by--nc--sa-blue.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0)
 ![By Falkor](https://img.shields.io/badge/by-Falkor-blue.svg) [![github](https://img.shields.io/badge/git-github-lightgray.svg)](https://github.com/Falkor/cv) [![Issues](https://img.shields.io/badge/issues-github-green.svg)](https://github.com/Falkor/cv/issues)
 
-       Time-stamp: <Sun 2018-04-08 00:31 svarrette>
+       Time-stamp: <Tue 2018-08-21 12:38 svarrette>
 
          ______    _ _             _        _______      __
         |  ____|  | | |           ( )      / ____\ \    / /
@@ -72,6 +71,19 @@ When you type `make [type]`, the following process is operated:
     * splitting the main bib file into several file `__sub_biblio_*.bib`
     * run `bibtex` on the auxiliary  files
 3. Second and third pass of `pdflatex` to correct the references
+
+## Publication records
+
+A special script `scripts/manage_bibtex` is taking care of parsing the main BibTeX file `biblio-varrette.bib` exploding it into subfiles by type and named `__sub_<mainfilename>_<type>.bib`, while creating two special LaTeX file safe to include in the main LaTeX file (cf also `_publis.tex`):
+
+* `__sub_<mainbib>_summary.tex`: a table providing global statistics of the publications
+* `__sub_<mainbib>_main.tex`: the main file you can include.
+
+It is also a good practice to offer external reports of your publication records.
+[Google Scholar](https://scholar.google.com) is of course a good pointer.
+If you are a researcher in IT, the [DBLP](https://dblp.uni-trier.de/) database is also a well known source of information.
+A Windows program called [Publish or Perish](https://harzing.com/resources/publish-or-perish) is also a nice tool.
+Finally, the University of Luxembourg is offering the [Orbi<sub>lu</sup>](https://orbilu.uni.lu/) portal to refer to all publications produced by UL researchers.
 
 
 ## Issues / Feature request
