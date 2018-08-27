@@ -2,7 +2,7 @@
 #########################################
 # manage_bibtex
 # @author Sebastien Varrette <Sebastien.Varrette@uni.lu>
-# Time-stamp: <Tue 2018-08-21 13:45 svarrette>
+# Time-stamp: <Thu 2018-08-23 13:51 svarrette>
 #
 # @description: New version of the splitting script each a single BibTeX file
 # .             into several sub-file, each containing entries of the same type.
@@ -37,8 +37,8 @@ require 'thor/error'
 CATEGORIES = {
   :book                        => { :title => 'Books' },
   :incollection                => { :title => 'Magazine' },
-
   :inbook                      => { :title => 'Book Chapters' },
+  :proceedings                 => { :title => 'Edited Books / Proceedings' },
   :article                     => { :title => 'International journals' },
   :inproceedings               => { :title => 'Conferences Articles' },
   :inproceedings_default       => { :title => 'International conferences with proceedings and reviews' },
@@ -48,9 +48,8 @@ CATEGORIES = {
   :phdthesis                   => { :title => 'PhD Thesis' },
   :mastersthesis               => { :title => 'Masters Thesis' },
   :techreport                  => { :title => 'Technical Reports and Presentations' },
-  :misc                        => { :title => 'Miscellaneous' },
+  :misc                        => { :title => 'Miscellaneous / Poster' },
   :conference                  => { :title => 'Conferences' },
-  :proceedings                 => { :title => 'Proceedings' },
 }
 
 module ManageBibtex
