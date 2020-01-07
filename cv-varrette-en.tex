@@ -1,4 +1,4 @@
-% Time-stamp: <Wed 2019-04-10 18:05 svarrette>
+% Time-stamp: <Tue 2020-01-07 10:38 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -51,8 +51,8 @@
 
 \emph{Short bio:}
 With more than 12 years of postdoctoral and team management experience, Dr. Varrette is Research Scientist within the University of Luxembourg.
-Expert in the deployment and management of High Performance Computing (HPC) systems, he is leading with Prof. Pascal Bouvry the development of the University’s HPC platform, as well as the associated core expert team managing and supporting it.\\
-In parallel, he is pursuing his research in the domains of the security and performance of parallel and distributed computing platforms, such as HPC or Cloud Computing infrastructures.
+Expert in the deployment and management of High Performance Computing (HPC) systems, he is leading with Prof. Pascal Bouvry the development of the University’s HPC and Big Data platform, as well as the associated core expert team managing and supporting it.\\
+In parallel, he is pursuing his research in the domains of the security and performance of parallel and distributed computing platforms, such as HPC, Cloud Computing or Data Analytics infrastructures.
 His research contributions led to more than 80 publications in high-level scientific journals, or international conference proceedings while co-authoring 4 books. He has a strong involvement in the community with reviewing roles in impact journals, conferences organization (e.g., IEEE CloudCom) and the participation to more than 50 conference program committee.\\
 Finally, he takes part for the management committee and represents Luxembourg within multiple EU HPC projects, such as \href{http://www.prace-ri.eu/}{PRACE} (acting Advisor), \href{http://www.etp4hpc.eu/}{ETP4HPC} or several COST actions. He has also concrete contributions in several strategic projects linked to HPC developed with multiple key decision makers in the Luxembourg context, either from the private sector or at the governmental level. He's also acting as HPC expert for the European Commission in the Enhanced Regional EU-ASEAN Dialogue Instrument (E-READI) program.
 
@@ -67,7 +67,7 @@ Finally, he takes part for the management committee and represents Luxembourg wi
 
 \vspace{1em}
 \begin{tabular}{ll}
-  \textsc{Technical / Management} & \acf{HPC}, Grid, Cluster \& Cloud technologies.
+  \textsc{Technical / Management} & \acf{HPC}, \acf{BD} \& Cloud technologies.
   \\
   \textsc{Expertise:}& Managing cluster-based \ac{HPC} systems since 2003
                        (Linux environment)
@@ -107,9 +107,11 @@ Finally, he takes part for the management committee and represents Luxembourg wi
 }
 
 % ---------- Awards -----------
-\input{_awards}
-
+\ifShortOrFull{
+  \input{_awards}
+}
 \unlesstinycv{
+  \iffullcv{\clearpage}
   % ---------- Teaching-----------
   \ifShortOrFull{
     \input{_teaching}
@@ -135,7 +137,6 @@ Finally, he takes part for the management committee and represents Luxembourg wi
 
   % ---------- Professional development ----------
   \ifShortOrFull{
-    \iffullcv{\clearpage}
     \input{_professional_dev}
     \ifshortcv{\clearpage}
   }
@@ -143,13 +144,14 @@ Finally, he takes part for the management committee and represents Luxembourg wi
   % ---------- Participation -----------
   % \input{_participations}
 }
-
+\iffullcv{\clearpage}
 % ---------- Publications ----------
 \input{_publis}
 
 
 % ===========  Acronyms ===========
 \begin{acronym}
+  \acro{BD}{Big Data}
   \acro{CC}{Cloud Computing}
   \acro{CSC}[\href{http://csc.uni.lu}{CSC}]{Computer Science and Communications}
   \acro{DIF}[\href{http://www.ffkama.fr/direction-technique/formation/formationsfederales.php}{DIF}]{Federal Instructor Diploma}
