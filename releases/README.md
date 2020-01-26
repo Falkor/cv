@@ -1,5 +1,5 @@
 -------------------
-# Official releases of Falkor's CVs
+# Official releases of Sebastien Varrette's CVs
 
 This directory hold the latest release of my CV, in various format.
 
