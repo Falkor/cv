@@ -34,6 +34,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ Books (6) and Book Chapters (11)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@Book{DLTV_Blockchains19,
+  author =       {J.-G. Dumas and P. Lafourcade and A. Tichit and S. Varrette},
+  title =        {Les blockchains en 50 questions: comprendre le fonctionnement et les enjeux de cette technologie innovante},
+  publisher =    {Dunod},
+  year =         {2019},
+  month =        {Nov},
+  OPTseries =    {Hors collection},
+  edition =      {2eme},
+  isbn =         {978-2-1008-0089-6},
+  url =          {https://varrette.gforge.uni.lu/books/blockchains/},
+  note =         {296 pages, in French},
+},
+
 @Book{DLTV_Blockchains18,
   author =       {J.-G. Dumas and P. Lafourcade and A. Tichit and S. Varrette},
   title =        {Les blockchains en 50 questions: comprendre le fonctionnement et les enjeux de cette technologie innovante},
@@ -59,7 +72,6 @@
   url =          {https://varrette.gforge.uni.lu/books/theorie-des-codes/},
   note =         {416 pages, in French},
 }
-
 
 @Book{DRTV_FoundationCoding15,
   author =       {J.-G. Dumas and J.-L. Roch and E. Tannier and S. Varrette},
@@ -113,6 +125,7 @@
 
 
 %%%%%%%%%%%% Edited Books %%%%%%%%%
+
 @Proceedings{CloudCom_2016,
   title =        {{8th IEEE International Conference on Cloud Computing Technology and Science (ClouCom 2016)}},
   year =         {2016},
@@ -126,45 +139,49 @@
 }
 
 %%%%%%%%%%%% Book Chapters %%%%%%%%%
-@InBook{BVWIBT_NESUS_COSTBook_Chap3,
-  author =       {P. Bouvry and S. Varrette and M. U. Wasim and A. A.Z.A. Ibrahim and X. Besseron and T. A. Trinh},
-  editor =       {J. Carretero and E. Jeannot},
+
+@InBook{BVTWIB_NESUS_COSTBook_Chap3,
+  author =       {P. Bouvry and S. Varrette and  T. A. Trinh and M. U. Wasim and A. A.Z.A. Ibrahim and X. Besseron},
+  editor =       {J. Carretero and E. Jeannot and Albert Y. Zomaya},
   title =        {Ultrascale Computing Systems},
   chapter =      {Security, reliability and regulation compliance in Ultrascale Computing System},
-  publisher =    {IET},
-  year =         {2018},
-  OPTkey =       {},
-  OPTvolume =    {},
-  OPTnumber =       {},
-  OPTseries =    {},
-  OPTtype =      {},
-  OPTaddress =   {},
-  OPTedition =   {},
-  month =        {Oct},
-  OPTpages =     {},
-  note =         {accepted, pending publication details},
-  OPTannote =    {}
+  publisher =    {{IET}},
+  year      =    {2019},
+  url       =    {https://doi.org/10.1049/pbpc024e_ch3},
+  doi       =    {10.1049/pbpc024e_ch3},
+  isbn      =    {978-178-5618-33-8},
+  month =        {Jan},
+  pages =        {65--83},
 }
 
-@InBook{BVWIBT_NESUS_COSTBook_Chap5,
+@InBook{OV_NESUS_COSTBook_SubChap5,
   author =       {A.-C. Orgerie and S. Varrette},
-  editor =       {J. Carretero and E. Jeannot},
+  editor =       {J. Carretero and E. Jeannot and Albert Y. Zomaya},
   title =        {Ultrascale Computing Systems},
   chapter =      {A Full-Cost Model for Estimating the Energy Consumption of Computing Infrastructures},
-  publisher =    {IET},
-  year =         {2018},
-  OPTkey =       {},
-  OPTvolume =    {},
-  OPTnumber =       {},
-  OPTseries =    {},
-  OPTtype =      {},
-  OPTaddress =   {},
-  OPTedition =   {},
-  month =        {Oct},
-  OPTpages =     {},
-  note =         {accepted, pending publication details},
-  OPTannote =    {}
+  publisher =    {{IET}},
+  year      =    {2019},
+  url       =    {https://doi.org/10.1049/pbpc024e_ch5},
+  doi       =    {10.1049/pbpc024e_ch5},
+  isbn      =    {978-178-5618-33-8},
+  month =        {Jan},
+  pages     =    {161--176}
 }
+
+@InBook{OLADMFGGLLRMOPPPSSV_NESUS_COSTBook_Chap5,
+  author =       {A. Oleksiak and L. Lefevre and P Alonso and G. Da Costa and V. De Maio and N. Frasheri and V M. Garcia and J. Guerrero and S.  Lafond and A. L. Lastovetsky and R. Reddy Manumachu and B. Muite and A.-C. Orgerie and W. Piatek and J.-M. Pierson and R.Prodan and P.Stolf and E. Sheme and S. Varrette},
+  editor =       {J. Carretero and E. Jeannot and Albert Y. Zomaya},
+  title =        {Ultrascale Computing Systems},
+  chapter =      {Energy aware ultrascale systems},
+  publisher =    {{IET}},
+  year      =    {2019},
+  url       =    {https://doi.org/10.1049/pbpc024e_ch5},
+  doi       =    {10.1049/pbpc024e_ch5},
+  isbn      =    {978-178-5618-33-8},
+  month =        {Jan},
+  pages     =    {127--188}
+}
+
 
 @InBook{BCDJLPPSV_COSTBook_Chap7,
   author =      {P. Bouvry and G. L. T. Chetsa and G. Da Costa and E. Jeannot and L. Lef{\`e}vre and J.-M. Pierson and F. Pinel and  P. Stolf and S. Varrette},
@@ -340,8 +357,21 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International journals (8)
+%%%§ International journals (9)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@ARTICLE{EVPB_TCC_19,
+  author =       {J. Emeras and S. Varrette and V. Plugaru and P. Bouvry},
+  journal   =    {{IEEE} Trans. Cloud Computing},
+  title =        {Amazon Elastic Compute Cloud (EC2) versus In-House HPC Platform: A Cost Analysis},
+  year =         2019,
+  volume =       7,
+  number =       2,
+  pages =        {456-468},
+  doi =          {10.1109/TCC.2016.2628371},
+  ISSN =         {2372-0018},
+  month =        {April},
+}
+
 @Article{IWVB_MobileIS18,
   author =       {A. A. Z. A. Ibrahim and M. U. Wasim and S. Varrette and Pascal Bouvry},
   title =        {{PRESENCE: Monitoring and Modelling the Performance Metrics of Mobile Cloud SaaS Web Services}},
@@ -455,8 +485,25 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%§ International conferences with proceedings and reviews (48)
+%%%§ International conferences with proceedings and reviews (50)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@InProceedings{VPKDB_PPAM19,
+  author =       {S. Varrette and F. Pinel and E. Kieffer and G. Danoy and P. Bouvry},
+  title =        {{Automatic Software Tuning of Parallel Programs for Energy-Aware Executions}},
+  booktitle =    {Proc. of 13th Intl. Conf. on Parallel Processing and Applied Mathematics (PPAM 2019)},
+  year =         {2019},
+  series =       {LNCS},
+  OPTvolume =    {},
+  publisher =    {Springer Verlag},
+  OPTisbn =      {},
+  url =          {http://www.ppam.pl/},
+  OPTdoi =       {},
+  OPTpages =     {},
+  OPTmonth =     {},
+  address =      {Bialystok, Poland},
+  note =         {Publication expected to appear in 2020},
+}
+
 @InProceedings{CRBVP_WAMCA18,
   author =       {A. W. M. Checkaraou and A. Rousset and X. Besseron and S. Varrette and B. Peters},
   title =        {Hybrid MPI+OpenMP Implementation of eXtended Discrete Element Method},
@@ -478,7 +525,10 @@
   booktitle =    {Proc. of the 11th IEEE Intl. Conf. on Cloud Computing (CLOUD 2018)},
   year =         {2018},
   month =        {July},
+  pages =        {936-940},
   address =      {San Francisco, USA},
+  doi =          {10.1109/CLOUD.2018.00140},
+  ISSN =         {2159-6190},
   url =          {http://conferences.computer.org/cloud/2018/},
   publisher =    {IEEE Computer Society},
 }
@@ -495,6 +545,7 @@
   address =      {Luxembourg},
   publisher =    {IEEE Computer Society},
   url =          {https://dsn2018.uni.lu/},
+  ISSN =         {2325-6664},
   doi =          {10.1109/DSN-W.2018.00034},
   note =         {Extended Abstract},
 }
@@ -505,11 +556,9 @@
 }},
   booktitle =    {Proc. of the 32nd IEEE Intl. Conf. on Information Networking (ICOIN 2018)},
   year =         {2018},
-  OPTvolume =    {},
-  OPTnumber =    {},
-  OPTseries =    {},
-  OPTpages =     {},
+  pages =        {50-55},
   month =        {January},
+  doi =          {10.1109/ICOIN.2018.8343082},
   address =      {Chiang Mai, Thailand},
   publisher =    {IEEE Computer Society},
   note =         {\textbf{Best Paper Award}},
@@ -1379,6 +1428,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ Other misc publications (tech reports, presentations as invited speaker)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@TechReport{VS_EU_ASEAN_HPC_Study19,
+  author =       {S. Varrette and I. F. Sulaiman},
+  title =        {{EU-ASEAN High Performance Computing (HPC) Study Expert Mapping of ASEAN policy orientations and related HPC research infrastructures}},
+  institution =  {{European Union - Enhanced Regional EU-ASEAN Dialogue Instrument" (E-READI)}},
+  year =         {2019},
+  month =        {Dec.},
+  note =         {Final Report as EU HPC Expert for European Commission / E-READI program},
+  OPTannote =    {}
+}
+
+@TechReport{AVP_ILNASReport19,
+  author =       {A. A.Z.A. Ibrahim and S. Varrette and P. Bouvry},
+  title =        {{Best Practices for Cloud Migration and Service Level Agreement Compliances}},
+  institution =  {Interdisciplinary Centre for Security, Reliability and Trust (SnT), ILNAS},
+  year =         {2019},
+  month =        {Jul.},
+  OPTnote =      {},
+  OPTannote =    {}
+}
+
 @TechReport{BV_MUG18,
   author =       {X. Besseron and S. Varrette},
   title =        {{High Performance Computing and Big Data analytics in Luxembourg: Overview and Challenges in the EuroHPC horizon}},

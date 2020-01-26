@@ -1,7 +1,8 @@
 %=======================================================================
-% biblio-varrette.bib -- my personnal BibTeX entries
+% selected-biblio-varrette.bib -- Selected personnal BibTeX entries
+% (typically most recent ones)
 %
-% Copyright (c) 2004-2011 Sebastien Varrette <Sebastien.Varrette@uni.lu>
+% Copyright (c) 2004-2020 Sebastien Varrette <Sebastien.Varrette@uni.lu>
 %               http://varrette.gforge.uni.lu
 %
 %  ____  _ _     _ _         ______     __                  _   _
@@ -16,16 +17,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ Books / and Book Chapters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-@Book{DLTV_Blockchains18,
+@Book{DLTV_Blockchains19,
   author =       {J.-G. Dumas and P. Lafourcade and A. Tichit and S. Varrette},
   title =        {Les blockchains en 50 questions: comprendre le fonctionnement et les enjeux de cette technologie innovante},
   publisher =    {Dunod},
-  year =         {2018},
-  month =        {Sept},
-  OPTseries =       {Hors collection},
-  edition =      {1er},
-  isbn =         {978-2-1007-7924-6},
-  url =          {\url{http://bit.do/blockchains-dunod}},
+  year =         {2019},
+  month =        {Nov},
+  OPTseries =    {Hors collection},
+  edition =      {2nd},
+  isbn =         {978-2-1008-0089-6},
+  url =          {https://varrette.gforge.uni.lu/books/blockchains/},
   note =         {296 pages, in French},
 },
 
@@ -71,7 +72,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ International journals
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@ARTICLE{EVPB_TCC_19,
+  author =       {J. Emeras and S. Varrette and V. Plugaru and P. Bouvry},
+  journal   =    {{IEEE} Trans. Cloud Computing},
+  title =        {Amazon Elastic Compute Cloud (EC2) versus In-House HPC Platform: A Cost Analysis},
+  year =         2019,
+  volume =       7,
+  number =       2,
+  pages =        {456-468},
+  doi =          {10.1109/TCC.2016.2628371},
+  ISSN =         {2372-0018},
+  month =        {April},
+}
+
 @Article{IWVB_MobileIS18,
   author =       {A. A. Z. A. Ibrahim and M. U. Wasim and S. Varrette and Pascal Bouvry},
   title =        {{PRESENCE: Monitoring and Modelling the Performance Metrics of Mobile Cloud SaaS Web Services}},
@@ -82,7 +95,7 @@
   OPTpages =     {},
   month =        {August},
   doi =          {10.1155/2018/1351386/},
-  note =         {Extended journal version of our IEEE ICoin 2018 paper},
+  note =         {Extended journal version of IEEE ICoin 2018 best paper paper},
   OPTannote =    {}
 }
 
@@ -118,49 +131,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%§ International conferences with proceedings and reviews
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@InProceedings{VPKDB_PPAM19,
+  author =       {S. Varrette and F. Pinel and E. Kieffer and G. Danoy and P. Bouvry},
+  title =        {{Automatic Software Tuning of Parallel Programs for Energy-Aware Executions}},
+  booktitle =    {Proc. of 13th Intl. Conf. on Parallel Processing and Applied Mathematics (PPAM 2019)},
+  year =         {2019},
+  series =       {LNCS},
+  OPTvolume =    {},
+  publisher =    {Springer Verlag},
+  OPTisbn =      {},
+  url =          {http://www.ppam.pl/},
+  OPTdoi =       {},
+  OPTpages =     {},
+  OPTmonth =     {},
+  address =      {Bialystok, Poland},
+  note =         {Publication expected to appear in 2020},
+}
+
 @InProceedings{IVP_ICOIN18,
   author =       {A. A.Z.A. Ibrahim and S. Varrette and P. Bouvry},
   title =        {{PRESENCE: Toward a Novel Approach for Performance Evaluation of Mobile Cloud SaaS Web Services
 }},
   booktitle =    {Proc. of the 32nd IEEE Intl. Conf. on Information Networking (ICOIN 2018)},
   year =         {2018},
-  OPTvolume =    {},
-  OPTnumber =    {},
-  OPTseries =    {},
-  OPTpages =     {},
+  pages =        {50-55},
   month =        {January},
+  doi =          {10.1109/ICOIN.2018.8343082},
   address =      {Chiang Mai, Thailand},
   publisher =    {IEEE Computer Society},
   note =         {\textbf{Best Paper Award}},
-}
-
-@InProceedings{EVB_CLOUD16,
-  author =       {J. Emeras and S. Varrette and P. Bouvry},
-  title =        {{Amazon Elastic Compute Cloud (EC2) vs. in-House HPC Platform: a Cost Analysis}},
-  booktitle =    {Proc. of the 9th IEEE Intl. Conf. on Cloud Computing (CLOUD 2016)},
-  year =         {2016},
-  month =        {June},
-  address =      {San Francisco, USA},
-  publisher =    {IEEE Computer Society},
-  OPTnote =      {Acceptance Rate: 15\%},
-  OPTannote =    {}
-}
-
-@InProceedings{PVB_CloudCom14,
-  author = 		 {V. Plugaru and S. Varrette and P. Bouvry},
-  title = 		 {{Performance Analysis of Cloud Environments on Top of Energy-Efficient Platforms Featuring Low Power Processors}},
-  booktitle =    {Proc. of the 6th IEEE Intl. Conf. on Cloud Computing Technology and Science (CloudCom'14)},
-  year = 	     {2014},
-  OPTeditor = 	 {},
-  OPTvolume = 	 {},
-  OPTnumber = 	 {},
-  OPTseries = 	 {},
-  OPTpages = 	 {},
-  month =    	 {Dec. 15--18},
-  address = 	 {Singapore},
-  publisher =    {IEEE Computer Society},
-  OPTnote = 	 {Acceptance rate: 54/301 = 0,179 \%},
-  OPTannote = 	 {}
 }
 
 @InProceedings{MVJB_NSS14,

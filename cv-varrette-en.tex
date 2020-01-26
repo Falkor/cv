@@ -1,4 +1,4 @@
-% Time-stamp: <Tue 2020-01-07 10:38 svarrette>
+% Time-stamp: <Sat 2020-01-25 17:34 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -50,7 +50,7 @@
 \noindent\rule{\textwidth}{0.4pt}
 
 \emph{Short bio:}
-With more than 12 years of postdoctoral and team management experience, Dr. Varrette is Research Scientist within the University of Luxembourg.
+With more than 13 years of postdoctoral and team management experience, Dr. Varrette is Research Scientist within the University of Luxembourg.
 Expert in the deployment and management of High Performance Computing (HPC) systems, he is leading with Prof. Pascal Bouvry the development of the University’s HPC and Big Data platform, as well as the associated core expert team managing and supporting it.\\
 In parallel, he is pursuing his research in the domains of the security and performance of parallel and distributed computing platforms, such as HPC, Cloud Computing or Data Analytics infrastructures.
 His research contributions led to more than 80 publications in high-level scientific journals, or international conference proceedings while co-authoring 4 books. He has a strong involvement in the community with reviewing roles in impact journals, conferences organization (e.g., IEEE CloudCom) and the participation to more than 50 conference program committee.\\
@@ -69,7 +69,7 @@ Finally, he takes part for the management committee and represents Luxembourg wi
 \begin{tabular}{ll}
   \textsc{Technical / Management} & \acf{HPC}, \acf{BD} \& Cloud technologies.
   \\
-  \textsc{Expertise:}& Managing cluster-based \ac{HPC} systems since 2003
+  \textsc{Expertise:}& Managing large-scale \ac{HPC} and Data analytics systems since 2003
                        (Linux environment)
   \\
                                   & \textbf{HPC Team Leader since 2007} (Deputy head, HPC for Research)
@@ -126,6 +126,7 @@ Finally, he takes part for the management committee and represents Luxembourg wi
 
   % ---------- Graduate student supervision -----------
   \input{_supervision}
+  \vspace{-1.5em}
 
   % ---------- Participation PhD. Board -----------
   \iffullcv{\input{_phd_board}}
@@ -133,6 +134,7 @@ Finally, he takes part for the management committee and represents Luxembourg wi
   %\ifsmallcv{\clearpage}
 
   % ---------- Research Project ------------
+  \iffullcv{\clearpage}
   \input{_research_project}
 
   % ---------- Professional development ----------
