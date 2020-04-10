@@ -9,7 +9,7 @@ GEM
       tzinfo (~> 1.1)
     artii (2.1.2)
     awesome_print (1.8.0)
-    bibtex-ruby (4.4.6)
+    bibtex-ruby (5.1.0)
       latex-decode (~> 0.0)
     citeproc (1.0.7)
       namae (~> 1.0)
@@ -49,7 +49,7 @@ GEM
     latex-decode (0.3.1)
     license-generator (0.4.1)
       thor
-    logger (1.2.8)
+    logger (1.4.2)
     method_source (0.9.0)
     minigit (0.0.4)
     minitest (5.11.3)
