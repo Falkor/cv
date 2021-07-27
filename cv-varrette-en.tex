@@ -1,4 +1,4 @@
-% Time-stamp: <Thu 2021-02-18 10:11 svarrette>
+% Time-stamp: <Tue 2021-07-27 16:08 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -28,7 +28,7 @@
   \begin{adresse}
     {\Large\textbf{Sebastien VARRETTE, PhD}}\\
     \ligne\\
-    \textbf{Research Scientist, Head UL HPC Facility}\\
+    \textbf{Research Scientist, Head UL HPC \& Big Data Facility}\\
     \textbf{Management, Security and Performance of HPC systems}\\
     %\textbf{15 years of experience in Linux HPC systems}\\
     \ligne\\
@@ -51,7 +51,7 @@
 
 \emph{Short bio:}
 With more than 14 years of postdoctoral and team management experience, Dr. Varrette is Research Scientist within the University of Luxembourg.
-Expert in the deployment and management of High Performance Computing (HPC) systems, he is leading the University’s HPC and Big Data platform, and  the associated core expert team managing and supporting it.\\
+Expert in the deployment and management of High Performance Computing (HPC) systems, he is leading the University’s HPC and Big Data platform, and  the associated expert team managing and supporting this facility.\\
 In parallel, he is pursuing his research in the domains of the security and performance of parallel and distributed computing platforms, such as HPC, Cloud Computing or Data Analytics infrastructures.
 His research contributions led to more than 80 publications in high-level scientific journals, or international conference proceedings while co-authoring 4 books. He has a strong involvement in the community with reviewing roles in impact journals, conferences organization (e.g., IEEE CloudCom) and the participation to more than 50 conference program committee.\\
 Finally, he takes part for the management committee and represents Luxembourg within multiple EU HPC projects, such as \href{http://www.prace-ri.eu/}{PRACE} (acting Advisor), \href{https://www.castiel-project.eu/}{CASTIEL}, \href{http://www.etp4hpc.eu/}{ETP4HPC} or several COST actions. He has also concrete contributions in several strategic projects linked to HPC developed with multiple key decision makers in the Luxembourg context, either from the private sector or at the governmental level (Ex: EuroHPC MeluXina Supercomputer). He's also acting as HPC expert for the European Commission in the Enhanced Regional EU-ASEAN Dialogue Instrument (E-READI) program.
@@ -76,9 +76,11 @@ Finally, he takes part for the management committee and represents Luxembourg wi
   \iffullcv{
                                   & \emph{Relevant contributions per domains}: \\
                                   % & Main achievements:\\
-                                  & \offset  Crash/cheating faults tolerance \cvcite{VRL_SBAC04,KRJV_EGC05, RV_Pasco07,Var_phD07,GGPV_PDP09,MVBSK_CAMWA12,MVB_CEC2013,MVJB_NSS14,MVB_Evostar2016}\\
+                                  & \offset HPC, Perf. \& Energy efficiency: \cvcite{DVB_SPECTS08,JVOB_EELSDS13,VGPBP_SBACPAD13,VPGBB_ICPP14,EVB_CLOUD16,OLADMFGGLLRMOPPPSSV_NESUS_COSTBook_Chap5,OV_NESUS_COSTBook_SubChap5,EVPB_TCC_19,VPKDB_PPAM19,MVPPB_CCGRID20,PVB_APF21,VKPKPCB_PEARC21} \\
+                                  & \offset Security of Distributed Systems: \cite{BVP_CLOUD11,BVB_SiiS11,DRTV_FoundationCoding15,DRTV_ThCode18,IVP_ICOIN18,DLTV_Blockchains18}\\
+                                  & \offset Crash/cheating faults tolerance \cvcite{VRL_SBAC04,KRJV_EGC05, RV_Pasco07,Var_phD07,GGPV_PDP09,MVBSK_CAMWA12,MVB_CEC2013,MVJB_NSS14,MVB_Evostar2016}\\
                                   & \offset  Code Obfuscation \cvcite{VTB_NIDISC13,BVB_NSS13}, Secure IaaS Cloud \cvcite{BVP_CLOUD11, BVB_Renpar11, BVB_TSI12} \\
-                                  & \offset  Perf. \& Energy efficiency of HPC/Cloud platforms \cvcite{DVB_SPECTS08,DVB_PPAM09,JVOB_EELSDS13,VGPBP_SBACPAD13,VPGBB_ICPP14,PVB_CloudCom14,EVB_CLOUD16,IVP_ICOIN18} \\
+
                                   %& \offset  Design of the authentication system of Grid'5000
                                   % \cvcite{VGMRL_Gada05}\\
                                   %& \offset  Developing security awareness by education \cvcite{DRTV_ThCode07,BCCDV_DistSyst11_Chap11,DRTV_FoundationCoding15,DLTV_Blockchains18}
@@ -88,6 +90,14 @@ Finally, he takes part for the management committee and represents Luxembourg wi
                                   % \multicolumn{2}{l}{I am a quick learner and a good communicator with the
                                   % ability to work within multi-cultural teams.}
   }
+  \textsc{Books} \cite{VB_Prog_C07,DRTV_FoundationCoding15,DRTV_ThCode18,DLTV_Blockchains19}:
+                                  &\\
+                                  & \vspace*{-1em}
+                                    \href{http://varrette.gforge.uni.lu/books/programmation-avancee-c/}{\includegraphics[height=8em]{cover-programmation-avancee-c.jpg}}
+                                    \href{http://varrette.gforge.uni.lu/books/theorie-des-codes/}{\includegraphics      [height=8em]{cover-theorie-des-codes.jpg}}
+                                    \href{http://varrette.gforge.uni.lu/books/foundations-of-coding/}{\includegraphics  [height=8em]{cover-foundations-of-coding.jpg}}
+                                    \href{http://varrette.gforge.uni.lu/books/blockchains/}{\includegraphics            [height=8em]{cover-blockchains.png}}
+  \\
 \end{tabular}
 \iffullcv{\vspace{-1.5em}}
 %}
@@ -97,12 +107,13 @@ Finally, he takes part for the management committee and represents Luxembourg wi
 
 % ---------- Employment -----------
 \ifShortOrFull{
-  \vspace*{-1em}
+  \vspace*{-1.5em}
   \input{_employment}
 }
 
 % ---------- Awards -----------
 \ifShortOrFull{
+  \vspace*{-0.5em}
   \input{_awards}
 }
 \unlesstinycv{
