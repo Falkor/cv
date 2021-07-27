@@ -1,4 +1,4 @@
-% Time-stamp: <Tue 2021-07-27 16:08 svarrette>
+% Time-stamp: <Tue 2021-07-27 16:23 svarrette>
 % ==============================================================================
 % cv-varrette-en.tex -- main LaTeX file of my personal CV
 %
@@ -90,7 +90,7 @@ Finally, he takes part for the management committee and represents Luxembourg wi
                                   % \multicolumn{2}{l}{I am a quick learner and a good communicator with the
                                   % ability to work within multi-cultural teams.}
   }
-  \textsc{Books} \cite{VB_Prog_C07,DRTV_FoundationCoding15,DRTV_ThCode18,DLTV_Blockchains19}:
+  \textsc{Books} \ifShortOrFull{\cite{VB_Prog_C07,DRTV_FoundationCoding15,DRTV_ThCode18,DLTV_Blockchains19}}:
                                   &\\
                                   & \vspace*{-1em}
                                     \href{http://varrette.gforge.uni.lu/books/programmation-avancee-c/}{\includegraphics[height=8em]{cover-programmation-avancee-c.jpg}}
@@ -99,14 +99,16 @@ Finally, he takes part for the management committee and represents Luxembourg wi
                                     \href{http://varrette.gforge.uni.lu/books/blockchains/}{\includegraphics            [height=8em]{cover-blockchains.png}}
   \\
 \end{tabular}
-\iffullcv{\vspace{-1.5em}}
+\ifShortOrFull{\vspace{-1.5em}}
 %}
 
 % ---------- Education -----------
-\input{_education} % ALL
+\ifShortOrFull{
+  \input{_education} % ALL
+}
 
 % ---------- Employment -----------
-\ifShortOrFull{
+\iffullcv{%\ifShortOrFull{
   \vspace*{-1.5em}
   \input{_employment}
 }

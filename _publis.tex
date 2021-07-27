@@ -1,4 +1,4 @@
-% Time-stamp: <Tue 2021-07-27 16:10 svarrette>
+% Time-stamp: <Tue 2021-07-27 16:20 svarrette>
 % ==============================================================================
 % _publis.tex -- List of my personal publication
 %
@@ -50,7 +50,7 @@
   % Detailed list upon FULL cv
   \iffullcv{
     \IfFileExists{__sub_\bibfile_main.tex}{
-      \input{__sub_\bibfile_main}
+      {\small \input{__sub_\bibfile_main}}
     }{}
   }
 
@@ -62,8 +62,8 @@
   % Selected list for short and small CV
   \ifSmallOrShort{
     \vspace{-1em}
-    \paragraph{Selected Publications}~\\
-    \IfFileExists{__sub_selected_\bibfile_main.tex}{\input{__sub_selected_\bibfile_main}}{}
+    \paragraph{Selected Publications}~\\\vspace*{-1em}
+    \IfFileExists{__sub_selected_\bibfile_main.tex}{{\small \input{__sub_selected_\bibfile_main}}}{}
   }
 
 \end{rubrique}
