@@ -21,7 +21,7 @@ GEM
     csl-styles (1.0.1.8)
       csl (~> 1.0)
     deep_merge (1.0.1)
-    diffy (3.3.0)
+    diffy (3.4.2)
     facter (2.4.6)
     facter (2.4.6-universal-darwin)
       CFPropertyList (~> 2.2.6)
